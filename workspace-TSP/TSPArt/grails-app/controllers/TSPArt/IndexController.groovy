@@ -7,18 +7,35 @@ import javax.imageio.ImageIO;
 
 
 
+
 class IndexController {
 
 	def index() {
-		def url = "/home/alagenchev/IMG_2204.JPG"
+		def url = "/home/alagenchev/dog.jpg"
 		BufferedImage img = ImageIO.read(new File(url));
-		def result = pixelate(img, 4)
+
+		def nodes = []
+				
+		def result = pixelate(img, 4, nodes)
 
 
+		BufferedImage result2 = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
+
+		for(int i = 0; i < img.getWidth(); i ++) {
+			for(int j = 0; j < img.getHeight(); j ++) {
+					result2.setRGB(i, j, Color.WHITE.getRGB())
+				}
+		}
+		
+		nodes.each{
+			result2.setRGB(it.X, it.Y, Color.BLACK.getRGB())
+		}
+
+		ImageIO.write(result2, "jpg", new File("/home/alagenchev/result2.jpg"))
 		ImageIO.write(result, "jpg", new File("/home/alagenchev/result.jpg"))
 	}
 
-	public static BufferedImage pixelate(BufferedImage img, int size) {
+	public static BufferedImage pixelate(BufferedImage img, int size, def nodes) {
 		BufferedImage dest = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
 
 		for (int x = 0; x < dest.getWidth(); x+=1) {
@@ -41,12 +58,12 @@ class IndexController {
 
 				def average = (red + green + blue)/3
 
-				if(average < 120) {
+				if(average > 120) {
 					setColor(dest, x, y, 1, Color.WHITE)
 				}
-				else
-				{
+				else {
 					setColor(dest, x, y, 1, Color.BLACK)
+					nodes.add(new TSPNode(x,y))
 				}
 			}
 		}
