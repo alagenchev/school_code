@@ -1,0 +1,51 @@
+package TSPArt
+
+import java.awt.image.BufferedImage;
+import java.util.Random;
+import java.awt.Color;
+import javax.imageio.ImageIO;
+
+
+
+class IndexController {
+
+	def index() {
+		def url = "/home/alagenchev/IMG_2204.JPG"
+		BufferedImage img = ImageIO.read(new File(url));
+		BufferedImage result = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_ARGB)
+		pixelate(result, img, 1)
+		int rgb = result.getRGB(0, 0)
+		Color color = new Color(rgb)
+		
+		ImageIO.write(result, "jpg", new File("/home/alagenchev/result.jpg"))
+		
+	}
+	
+	private BufferedImage pixelate(BufferedImage result, BufferedImage img, int size) {
+		
+		for (int x = 0; x < result.getWidth(); x++) {
+			for (int y = 0; y < result.getHeight(); y++) {
+				int white = Color.white.getRGB()
+				int black = Color.BLACK.getRGB()
+				int red = Color.RED.getRGB()
+				result.setRGB(x, y, Color.WHITE.getRGB())
+				int rgb = result.getRGB(x, y)
+				println ""
+			}
+		}
+	}
+	
+	private void setColor(BufferedImage img, int x, int y, int size, Color color) 
+	{
+		
+		for(int i = x; i < x + size; i ++ )
+		{
+			for(int j = y; j < y + size; j++)
+			{
+				img.setRGB(i, j, color.getRGB())
+			}
+			
+		}
+	}
+	
+}
