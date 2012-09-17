@@ -2,8 +2,14 @@ package TSPArt
 
 import java.awt.image.BufferedImage;
 import java.util.Random;
+import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Graphics2D;
+import TSPArt.TSPLine
+import TSPArt.TSPNode
 import javax.imageio.ImageIO;
+
+import org.springframework.uaa.client.VersionHelper.GetNumbersResult;
 
 
 
@@ -11,28 +17,84 @@ import javax.imageio.ImageIO;
 class IndexController {
 
 	def index() {
-		def url = "/home/alagenchev/dog.jpg"
+		def url = "/home/alagenchev/gabi.jpg"
 		BufferedImage img = ImageIO.read(new File(url));
 
 		def nodes = []
-				
-		def result = pixelate(img, 4, nodes)
+		def lines = []
 
+		//def result = pixelate(img, 10, nodes)
+
+		nodes.add(new TSPNode(100, 100, false))
+		nodes.add(new TSPNode(200, 200, false))
+		nodes.add(new TSPNode(100, 200, false))
+		nodes.add(new TSPNode(200, 100, false))
 
 		BufferedImage result2 = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
 
+		def startNode = nodes[0]
+		startNode.Visited = true
+
+		TSPNode nearestNode = getNearestNode(startNode, nodes)
+
+		while(nearestNode != null)
+		{
+			TSPLine line = createNearestLine(startNode, nearestNode)
+			lines.add(line)
+			nearestNode.Visited = true;
+			
+			nearestNode = getNearestNode(nearestNode, nodes)
+		}
+
 		for(int i = 0; i < img.getWidth(); i ++) {
 			for(int j = 0; j < img.getHeight(); j ++) {
-					result2.setRGB(i, j, Color.WHITE.getRGB())
-				}
+				result2.setRGB(i, j, Color.WHITE.getRGB())
+			}
 		}
-		
+
 		nodes.each{
 			result2.setRGB(it.X, it.Y, Color.BLACK.getRGB())
 		}
 
+		Graphics2D g = result2.createGraphics()
+		g.setColor(Color.BLACK)
+		BasicStroke bs = new BasicStroke(2);
+		g.setStroke(bs);
+
+		lines.each {
+			g.drawLine(it.StartX, it.StartY, it.EndX, it.EndY)
+		}
+
 		ImageIO.write(result2, "jpg", new File("/home/alagenchev/result2.jpg"))
-		ImageIO.write(result, "jpg", new File("/home/alagenchev/result.jpg"))
+		
+	}
+
+	private TSPLine createNearestLine(TSPNode source, TSPNode destination)
+	{
+		new TSPLine(source.X, source.Y, destination.X, destination.Y)
+	}
+
+	private TSPNode getNearestNode(TSPNode source, def nodes)
+	{
+		int currentDistance = Integer.MAX_VALUE
+		TSPNode nearestNode = null
+
+		nodes.each {
+			if(!it.Visited)
+			{
+				def distance = (it.X - source.X)* (it.X - source.X) + (it.Y - source.Y)*(it.Y - source.Y)
+				if(currentDistance > distance)
+				{
+					currentDistance = distance
+					nearestNode = it
+				}
+			}
+		}
+
+		if(currentDistance == Integer.MAX_VALUE){
+			println ""
+		}
+		nearestNode
 	}
 
 	public static BufferedImage pixelate(BufferedImage img, int size, def nodes) {
@@ -63,7 +125,7 @@ class IndexController {
 				}
 				else {
 					setColor(dest, x, y, 1, Color.BLACK)
-					nodes.add(new TSPNode(x,y))
+					nodes.add(new TSPNode(x,y, false))
 				}
 			}
 		}

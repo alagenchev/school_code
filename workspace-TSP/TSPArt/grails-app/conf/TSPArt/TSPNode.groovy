@@ -4,9 +4,11 @@ class TSPNode {
 
 	int X
 	int Y
-	TSPNode(def x, def y)
+	boolean Visited
+	TSPNode(int x, int y, boolean visited)
 	{
 		X = x
 		Y = y
+		Visited = visited
 	}
 }
