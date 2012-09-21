@@ -8,13 +8,16 @@
 int measure_kernel_call()
 {
         long jiffies;
-        long long start_time = start_timer();
+        unsigned long long start_time = start_timer();
+        unsigned long long rdtsc_time = start_rdtsc_timer();
         
-        for (int i=0; i<10000;i++)
+        for (int i=0; i<100000;i++)
         { 
                 jiffies = syscall( SYS_getpid );
         }
         
+        rdtsc_time = stop_rdtsc_timer(rdtsc_time, "pid_sys_call");
+
         stop_timer(start_time, "pid_sys_call");
 
         return 0;
