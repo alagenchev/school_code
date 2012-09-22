@@ -1,0 +1,17 @@
+CC = gcc
+RELEASE_FLAGS = -O2 -w -std=c99
+DEBUG_FLAGS = -g -O0 -std=c99
+SOURCES = *.c
+HEADERS = *.h 
+EXECUTABLE= a.out
+OPTIMIZATION_FLAG = -O
+INCLUDES = -I ./
+all: 
+		$(CC) $(RELEASE_FLAGS) $(SOURCES) $(HEADERS) $(OPTIMIZATION_FLAG) $(INCLUDES) -o $(EXECUTABLE)
+debug:
+		
+		$(CC) $(DEBUG_FLAGS) $(SOURCES) $(HEADERS) -o $(EXECUTABLE)
+clean:
+		rm -rf $(EXECUTABLE)
+test:
+		./$(EXECUTABLE)
