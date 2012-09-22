@@ -12,6 +12,16 @@ inline void start_timer_ivan(struct timespect *time)
 
 }
 
+unsigned long long int rdtsc(void)
+{
+    unsigned long long int x;
+    unsigned a, d;
+
+    __asm__ volatile("rdtsc" : "=a" (a), "=d" (d));
+
+    return ((unsigned long long)a) | (((unsigned long long)d) << 32);;
+}
+
 void measure_read_file()
 {
 
@@ -60,24 +70,29 @@ void measure_read_file()
 
     printf("start again\n");
 
+    //printf("rdtsc: %llu\n",rdtsc());
     struct timespec time;
 
-    start_timer_ivan(&time);
+    //start_timer_ivan(&time);
 
 
-    printf("time: sec %ul, nanosec %ld \n", time.tv_sec, time.tv_nsec);
-
+    //printf("time: sec %ul, nanosec %ld \n", time.tv_sec, time.tv_nsec);
+    
+    printf("rdtsc: %llu\n",rdtsc());
+    unsigned long long rdtsc_time = start_rdtsc_timer();
     for (int i = 0; i < size; i++) 
     {
-        mapped[i];
+        char c = mapped[i];
     }
+    stop_rdtsc_timer(rdtsc_time, "read_file_hdd");
 
-    struct timespec end;
+    //struct timespec end;
 
-    start_timer_ivan(&end);
+    //start_timer_ivan(&end);
 
-    printf("time: sec %ul, nanosec %ld\n", end.tv_sec, end.tv_nsec);
+    //printf("time: sec %ul, nanosec %ld\n", end.tv_sec, end.tv_nsec);
 
+    printf("rdtsc2: %llu\n",rdtsc());
     close(fd);
 
     printf("done\n");

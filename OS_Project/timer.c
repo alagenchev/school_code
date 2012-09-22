@@ -25,7 +25,10 @@ inline unsigned long long start_rdtsc_timer()
 
 inline unsigned long long stop_rdtsc_timer(unsigned long long start_time, char* label)
 {
-	unsigned long long total_time = rdtsc() - start_time;
-	printf("RDTSC: %s: %.5f cycles\n", label, ((float) total_time));
+    unsigned long long end_time = rdtsc();
+    printf("start is %llu, end is %llu\n", start_time, end_time);
+
+	unsigned long long total_time = end_time - start_time;
+	printf("RDTSC: %s: %llu cycles\n", label, total_time);
 	return total_time;
 }
