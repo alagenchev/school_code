@@ -5,7 +5,8 @@
 #include <timer.h>
 int main()
 {
-	measure_kernel_call();
+//	measure_kernel_call();
+    measure_read_file();
 
 	return 0;
 }
