@@ -23,12 +23,12 @@ class IndexController {
 		def nodes = []
 		def lines = []
 
-		//def result = pixelate(img, 10, nodes)
+		def result = pixelate(img, 4, nodes)
 
-		nodes.add(new TSPNode(100, 100, false))
-		nodes.add(new TSPNode(200, 200, false))
-		nodes.add(new TSPNode(100, 200, false))
-		nodes.add(new TSPNode(200, 100, false))
+//		nodes.add(new TSPNode(100, 100, false))
+//		nodes.add(new TSPNode(200, 200, false))
+//		nodes.add(new TSPNode(100, 200, false))
+//		nodes.add(new TSPNode(200, 100, false))
 
 		BufferedImage result2 = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
 
@@ -43,7 +43,9 @@ class IndexController {
 			lines.add(line)
 			nearestNode.Visited = true;
 			
+			startNode = nearestNode
 			nearestNode = getNearestNode(nearestNode, nodes)
+			
 		}
 
 		for(int i = 0; i < img.getWidth(); i ++) {

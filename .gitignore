@@ -4,3 +4,4 @@
 *target-eclipse*
 OS_Project/*.o
 OS_Project/a.out
+*.class
