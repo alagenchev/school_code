@@ -43,7 +43,7 @@ inline unsigned long long start_rdtsc_timer_i()
 inline unsigned long long stop_rdtsc_timer_i(unsigned long long start_time, char* label)
 {
     unsigned long long end_time = rdtsc();
-    printf("rtdsc start is %llu, end is %llu\n", start_time, end_time);
+    //printf("rtdsc start is %llu, end is %llu\n", start_time, end_time);
 
     unsigned long long total_time = end_time - start_time;
     printf("RDTSC: %s: %llu cycles\n", label, total_time);
@@ -61,11 +61,14 @@ void measure_read_file()
     struct stat s;
     size_t size;
     const char* mapped;
+    char c;
 
     system("truncate -s 10M test.file");
     fd = open("test.file",O_RDONLY);
-    printf("descriptor for read is %d\n", fd);
+    // printf("descriptor for read is %d\n", fd);
 
+
+    printf("sys read:\n");
 
     unsigned long long wall_time = start_timer_i();
     unsigned long long rdtsc_time = start_rdtsc_timer_i();
@@ -77,6 +80,21 @@ void measure_read_file()
     rdtsc_time = stop_rdtsc_timer_i(rdtsc_time, "read_file_hdd");
 
     stop_timer_i(wall_time, "read_file_hdd");
+
+    lseek(fd, 0, SEEK_SET);
+    printf("sys read from cache\n");
+    wall_time = start_timer_i();
+    rdtsc_time = start_rdtsc_timer_i();
+
+
+    while( read(fd, buffer, 255)!=0)
+    {
+    }
+
+    rdtsc_time = stop_rdtsc_timer_i(rdtsc_time, "read_file_hdd_cache");
+
+    stop_timer_i(wall_time, "read_file_hdd_cache");
+
 
     close(fd);
 
@@ -98,7 +116,7 @@ void measure_read_file()
         exit(1);
     }
 
-    printf("start again\n");
+    printf("mmap read:\n");
 
     rdtsc_time = start_rdtsc_timer_i();
 
@@ -106,11 +124,24 @@ void measure_read_file()
 
     for (int i = 0; i < size; i++) 
     {
-        char c = mapped[i];
+        c = mapped[i];
     }
 
-    stop_timer_i(wall_time, "read_file_hdd_i");
-    stop_rdtsc_timer_i(rdtsc_time, "read_file_hdd");
+    stop_timer_i(wall_time, "read_file_mmap");
+    stop_rdtsc_timer_i(rdtsc_time, "read_file_mmap");
+
+    rdtsc_time = start_rdtsc_timer_i();
+
+    wall_time = start_timer_i();
+
+    for (int i = 0; i < size; i++) 
+    {
+        c = mapped[i];
+    }
+
+    stop_timer_i(wall_time, "read_file_mmap_cache");
+    stop_rdtsc_timer_i(rdtsc_time, "read_file_mmap_cache");
+
 
     //printf("time: sec %ul, nanosec %ld\n", end.tv_sec, end.tv_nsec);
 
