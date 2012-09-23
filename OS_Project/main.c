@@ -8,7 +8,9 @@ int main()
 
         //measure_read_file();
        // measure_pipe_communication();
-        measure_read_file();
+ //       measure_read_file();
+ 
+		measure_memory();	
         return;
 
         pid_t pid = fork();

@@ -7,48 +7,50 @@
 #include <sys/stat.h> 
 #include <fcntl.h> 
 
+int loop_counter_i = 100000000000000;
+
 inline unsigned long long start_timer_i() 
 {
-    struct timespec time;
-    clock_gettime(CLOCK_MONOTONIC, &time);
-    return time.tv_sec * 1000000000 + time.tv_nsec;
+	struct timespec time;
+	clock_gettime(CLOCK_MONOTONIC, &time);
+	return time.tv_sec * 1000000000 + time.tv_nsec;
 }
 
 inline unsigned long long stop_timer_i(unsigned long long start_time, char *label) 
 {
-    struct timespec time;
-    clock_gettime(CLOCK_MONOTONIC, &time);
+	struct timespec time;
+	clock_gettime(CLOCK_MONOTONIC, &time);
 
-    unsigned long long end_time = time.tv_sec * 1000000000 + time.tv_nsec;
-    printf("%s, %.10f\n", label, ((float) (end_time - start_time)) / (1000 * 1000 * 1000));
-    return end_time - start_time;
+	unsigned long long end_time = time.tv_sec * 1000000000 + time.tv_nsec;
+	printf("%s, %.10f\n", label, ((float) (end_time - start_time)) / (1000 * 1000 * 1000));
+	return end_time - start_time;
 }
 
 
 
 unsigned long long int rdtsc_i(void)
 {
-    unsigned long long int x;
-    unsigned a, d;
+	unsigned long long int x;
+	unsigned a, d;
 
-    __asm__ volatile("rdtsc" : "=a" (a), "=d" (d));
+	__asm__ volatile("rdtsc" : "=a" (a), "=d" (d));
 
-    return ((unsigned long long)a) | (((unsigned long long)d) << 32);;
+	return ((unsigned long long)a) | (((unsigned long long)d) << 32);;
 }
 
 inline unsigned long long start_rdtsc_timer_i()
 {
-    return rdtsc_i();
+	return rdtsc_i();
 }
 
 inline unsigned long long stop_rdtsc_timer_i(unsigned long long start_time, char* label)
 {
-    unsigned long long end_time = rdtsc_i();
-    //printf("rtdsc start is %llu, end is %llu\n", start_time, end_time);
+	unsigned long long end_time = rdtsc_i();
+	//printf("rtdsc start is %llu, end is %llu\n", start_time, end_time);
 
-    unsigned long long total_time = end_time - start_time;
-    printf("RDTSC, %s, %llu\n", label, total_time);
-    return total_time;
+	unsigned long long total_time = end_time - start_time;
+	printf("RDTSC, %s, %llu\n", label, total_time);
+	return total_time;
 }
 
 
@@ -76,9 +78,9 @@ void measure_memory()
 
 	num_pages--;
 
-//	printf("max pages: %d\n", sysconf(_SC_PHYS_PAGES));
+	//	printf("max pages: %d\n", sysconf(_SC_PHYS_PAGES));
 
-//	printf("available pages: %ld, page size is: %ld, for %ld available MB of memory\n", num_pages, page_size, ((num_pages * page_size)/1024)/1024);
+	//	printf("available pages: %ld, page size is: %ld, for %ld available MB of memory\n", num_pages, page_size, ((num_pages * page_size)/1024)/1024);
 
 
 	if(ptr_to_use== NULL)
@@ -96,15 +98,15 @@ void measure_memory()
 	}
 
 	/*
-    for(long i = 0; i < upper ; i ++)
-	{
-		printf("i: %d, val: %d\n", i, *((char *)(ptr_to_use + i*sizeof(char*))) & 1);
-	}
-*/
+	   for(long i = 0; i < upper ; i ++)
+	   {
+	   printf("i: %d, val: %d\n", i, *((char *)(ptr_to_use + i*sizeof(char*))) & 1);
+	   }
+	   */
 
 	void *new_page_address = NULL;
 
-//	printf("Trying /proc/sys/vm/drop_caches... (requires Linux 2.6.16+)\n");
+	//	printf("Trying /proc/sys/vm/drop_caches... (requires Linux 2.6.16+)\n");
 	FILE *f = fopen("/proc/sys/vm/drop_caches", "w");
 	if (!f)
 	{
@@ -121,15 +123,18 @@ void measure_memory()
 	unsigned long long wall_time = start_timer_i();
 	unsigned long long rdtsc_time = start_rdtsc_timer_i();
 
-	for(long i = 0; i < num_pages;i++)
+	for(int j = 0; j < loop_counter_i; j ++)
 	{
-		new_page_address = (ptr_to_use + i * page_size);
-		char val = *((char *) new_page_address);
+		for(long i = 0; i < num_pages;i++)
+		{
+			new_page_address = (ptr_to_use + i * page_size);
+			char val = *((char *) new_page_address);
+		}
 	}
 
 	rdtsc_time = stop_rdtsc_timer_i(rdtsc_time, "page_alloc");
 
 	stop_timer_i(wall_time, "page_alloc");
 
-    free(ptr_to_use);
+	free(ptr_to_use);
 }
