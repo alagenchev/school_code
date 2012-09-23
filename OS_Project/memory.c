@@ -20,7 +20,7 @@ inline unsigned long long stop_timer_i(unsigned long long start_time, char *labe
     clock_gettime(CLOCK_MONOTONIC, &time);
 
     unsigned long long end_time = time.tv_sec * 1000000000 + time.tv_nsec;
-    printf("%s: %.5f sec\n", label, ((float) (end_time - start_time)) / (1000 * 1000 * 1000));
+    printf("%s: %.10f sec\n", label, ((float) (end_time - start_time)) / (1000 * 1000 * 1000));
     return end_time - start_time;
 }
 
@@ -43,7 +43,7 @@ inline unsigned long long start_rdtsc_timer_i()
 
 inline unsigned long long stop_rdtsc_timer_i(unsigned long long start_time, char* label)
 {
-    unsigned long long end_time = rdtsc();
+    unsigned long long end_time = rdtsc_i();
     //printf("rtdsc start is %llu, end is %llu\n", start_time, end_time);
 
     unsigned long long total_time = end_time - start_time;
@@ -65,12 +65,12 @@ void measure_memory()
 	do
 	{
 		ptr_to_use = ptr;
-
 		ptr = (void *) calloc(num_pages , page_size);
 		if(ptr)
 		{
 			free(ptr_to_use);
 		}
+
 		num_pages++;
 	}while(ptr);
 
@@ -81,9 +81,6 @@ void measure_memory()
 	printf("available pages: %ld, page size is: %ld, for %ld available MB of memory\n", num_pages, page_size, ((num_pages * page_size)/1024)/1024);
 
 
-	free(ptr_to_use);
-	return;
-
 	if(ptr_to_use== NULL)
 	{
 		printf("mem allocation failed\n");
@@ -91,10 +88,19 @@ void measure_memory()
 	}
 
 
-	for(long i = 0; i < (num_pages * page_size)/sizeof(char); i ++)
+	long upper = (num_pages * page_size)/sizeof(char*);
+
+	for(long i = 0; i < upper ; i ++)
 	{
-		*((char *)(ptr_to_use + i*sizeof(char))) = ~0;
+		*((char *)(ptr_to_use + i*sizeof(char*))) = ~0;
 	}
+
+	/*
+    for(long i = 0; i < upper ; i ++)
+	{
+		printf("i: %d, val: %d\n", i, *((char *)(ptr_to_use + i*sizeof(char*))) & 1);
+	}
+*/
 
 	void *new_page_address = NULL;
 
@@ -125,5 +131,5 @@ void measure_memory()
 
 	stop_timer_i(wall_time, "page_alloc");
 
-   // free(ptr_to_use);
+    free(ptr_to_use);
 }

@@ -25,7 +25,7 @@ inline unsigned long long stop_timer_i(unsigned long long start_time, char *labe
 
 
 
-unsigned long long int rdtsc(void)
+unsigned long long int rdtsc_p(void)
 {
     unsigned long long int x;
     unsigned a, d;
@@ -37,12 +37,12 @@ unsigned long long int rdtsc(void)
 
 inline unsigned long long start_rdtsc_timer_i()
 {
-    return rdtsc();
+    return rdtsc_p();
 }
 
 inline unsigned long long stop_rdtsc_timer_i(unsigned long long start_time, char* label)
 {
-    unsigned long long end_time = rdtsc();
+    unsigned long long end_time = rdtsc_p();
     //printf("rtdsc start is %llu, end is %llu\n", start_time, end_time);
 
     unsigned long long total_time = end_time - start_time;
