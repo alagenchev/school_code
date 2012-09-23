@@ -19,7 +19,7 @@ inline unsigned long long stop_timer_i(unsigned long long start_time, char *labe
     clock_gettime(CLOCK_MONOTONIC, &time);
 
     unsigned long long end_time = time.tv_sec * 1000000000 + time.tv_nsec;
-    printf("%s: %.5f sec\n", label, ((float) (end_time - start_time)) / (1000 * 1000 * 1000));
+    printf("MONOTONIC,%s, %.5f\n", label, ((float) (end_time - start_time)) / (1000 * 1000 * 1000));
     return end_time - start_time;
 }
 
@@ -46,7 +46,7 @@ inline unsigned long long stop_rdtsc_timer_i(unsigned long long start_time, char
     //printf("rtdsc start is %llu, end is %llu\n", start_time, end_time);
 
     unsigned long long total_time = end_time - start_time;
-    printf("RDTSC: %s: %llu cycles\n", label, total_time);
+    printf("RDTSC,%s,%llu\n", label, total_time);
     return total_time;
 }
 
@@ -68,8 +68,6 @@ void measure_read_file()
     // printf("descriptor for read is %d\n", fd);
 
 
-    printf("sys read:\n");
-
     unsigned long long wall_time = start_timer_i();
     unsigned long long rdtsc_time = start_rdtsc_timer_i();
 
@@ -82,7 +80,6 @@ void measure_read_file()
     stop_timer_i(wall_time, "read_file_hdd");
 
     lseek(fd, 0, SEEK_SET);
-    printf("sys read from cache\n");
     wall_time = start_timer_i();
     rdtsc_time = start_rdtsc_timer_i();
 
@@ -116,7 +113,7 @@ void measure_read_file()
         exit(1);
     }
 
-    printf("mmap read:\n");
+    //printf("mmap read:\n");
 
     rdtsc_time = start_rdtsc_timer_i();
 
@@ -147,5 +144,5 @@ void measure_read_file()
 
     close(fd);
 
-    printf("done\n");
+ //   printf("done\n");
 }
