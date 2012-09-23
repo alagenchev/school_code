@@ -3,21 +3,64 @@
 #include  <signal.h>
 #include  <sys/ipc.h>
 #include  <sys/shm.h>
-#include <timer.h>
+#include <time.h>
 
 pid_t   receiver_pid;
 unsigned long long wall_time;
 unsigned long long rdtsc_time;
 void  SIGINT_handler_sender(int);   
 
+inline unsigned long long start_timer_sender() 
+{
+    struct timespec time;
+    clock_gettime(CLOCK_MONOTONIC, &time);
+    return time.tv_sec * 1000000000 + time.tv_nsec;
+}
+
+inline unsigned long long stop_timer_sender(unsigned long long start_time, char *label) 
+{
+    struct timespec time;
+    clock_gettime(CLOCK_MONOTONIC, &time);
+
+    unsigned long long end_time = time.tv_sec * 1000000000 + time.tv_nsec;
+    printf("%s: %.5f sec\n", label, ((float) (end_time - start_time)) / (1000 * 1000 * 1000));
+    return end_time - start_time;
+}
+
+
+
+unsigned long long int rdtsc_sender(void)
+{
+    unsigned long long int x;
+    unsigned a, d;
+
+    __asm__ volatile("rdtsc" : "=a" (a), "=d" (d));
+
+    return ((unsigned long long)a) | (((unsigned long long)d) << 32);;
+}
+
+inline unsigned long long start_rdtsc_timer_sender()
+{
+    return rdtsc_sender();
+}
+
+inline unsigned long long stop_rdtsc_timer_sender(unsigned long long start_time, char* label)
+{
+    unsigned long long end_time = rdtsc_sender();
+    //printf("rtdsc start is %llu, end is %llu\n", start_time, end_time);
+
+    unsigned long long total_time = end_time - start_time;
+    printf("RDTSC: %s: %llu \n", label, total_time);
+    return total_time;
+}
 void  start_sender(void)
 {
         //shmdt(ShmPTR);                    
         register_handlers_sender();
         get_receiver_id();
         set_sender_id();
-        wall_time = start_timer();
-        rdtsc_time = start_rdtsc_timer();
+        wall_time = start_timer_sender();
+        rdtsc_time = start_rdtsc_timer_sender();
         kill(receiver_pid, SIGINT);
         printf("Sent a SIGINT signal from sender\n");
         wait();
@@ -62,8 +105,8 @@ void register_handlers_sender()
 }
 void  SIGINT_handler_sender(int sig)
 {
-        rdtsc_time = stop_rdtsc_timer(rdtsc_time, "signal exchange");
-        stop_timer(wall_time, "signal exchange");
+        rdtsc_time = stop_rdtsc_timer_sender(rdtsc_time, "signal exchange");
+        stop_timer_sender(wall_time, "signal exchange");
 	
         signal(sig, SIG_IGN);
 	printf("From SIGINT: just got a %d (SIGINT ^C) signal back from receiver\n", sig);
