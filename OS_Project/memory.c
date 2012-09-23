@@ -20,7 +20,7 @@ inline unsigned long long stop_timer_i(unsigned long long start_time, char *labe
     clock_gettime(CLOCK_MONOTONIC, &time);
 
     unsigned long long end_time = time.tv_sec * 1000000000 + time.tv_nsec;
-    printf("%s: %.5f sec\n", label, ((float) (end_time - start_time)) / (1000 * 1000 * 1000));
+    printf("%s: %.10f sec\n", label, ((float) (end_time - start_time)) / (1000 * 1000 * 1000));
     return end_time - start_time;
 }
 
@@ -88,10 +88,19 @@ void measure_memory()
 	}
 
 
-	for(long i = 0; i < (num_pages * page_size)/sizeof(char*); i ++)
+	long upper = (num_pages * page_size)/sizeof(char*);
+
+	for(long i = 0; i < upper ; i ++)
 	{
-		*((char *)(ptr_to_use + i*sizeof(char))) = ~0;
+		*((char *)(ptr_to_use + i*sizeof(char*))) = ~0;
 	}
+
+	/*
+    for(long i = 0; i < upper ; i ++)
+	{
+		printf("i: %d, val: %d\n", i, *((char *)(ptr_to_use + i*sizeof(char*))) & 1);
+	}
+*/
 
 	void *new_page_address = NULL;
 
