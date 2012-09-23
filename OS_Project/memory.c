@@ -2,7 +2,57 @@
 #include <memory.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <timer.h>
+#include <time.h>
+#include <sys/types.h> 
+#include <sys/stat.h> 
+#include <fcntl.h> 
+
+inline unsigned long long start_timer_i() 
+{
+    struct timespec time;
+    clock_gettime(CLOCK_MONOTONIC, &time);
+    return time.tv_sec * 1000000000 + time.tv_nsec;
+}
+
+inline unsigned long long stop_timer_i(unsigned long long start_time, char *label) 
+{
+    struct timespec time;
+    clock_gettime(CLOCK_MONOTONIC, &time);
+
+    unsigned long long end_time = time.tv_sec * 1000000000 + time.tv_nsec;
+    printf("%s: %.5f sec\n", label, ((float) (end_time - start_time)) / (1000 * 1000 * 1000));
+    return end_time - start_time;
+}
+
+
+
+unsigned long long int rdtsc_i(void)
+{
+    unsigned long long int x;
+    unsigned a, d;
+
+    __asm__ volatile("rdtsc" : "=a" (a), "=d" (d));
+
+    return ((unsigned long long)a) | (((unsigned long long)d) << 32);;
+}
+
+inline unsigned long long start_rdtsc_timer_i()
+{
+    return rdtsc_i();
+}
+
+inline unsigned long long stop_rdtsc_timer_i(unsigned long long start_time, char* label)
+{
+    unsigned long long end_time = rdtsc();
+    //printf("rtdsc start is %llu, end is %llu\n", start_time, end_time);
+
+    unsigned long long total_time = end_time - start_time;
+    printf("RDTSC: %s: %llu cycles\n", label, total_time);
+    return total_time;
+}
+
+
+
 
 void measure_memory()
 {
@@ -60,8 +110,8 @@ void measure_memory()
 		return 0;
 	}
 
-	unsigned long long wall_time = start_timer();
-	unsigned long long rdtsc_time = start_rdtsc_timer();
+	unsigned long long wall_time = start_timer_i();
+	unsigned long long rdtsc_time = start_rdtsc_timer_i();
 
 	for(long i = 0; i < num_pages;i++)
 	{
@@ -69,8 +119,9 @@ void measure_memory()
 		char val = *((char *) new_page_address);
 	}
 
-	rdtsc_time = stop_rdtsc_timer(rdtsc_time, "page_alloc");
+	rdtsc_time = stop_rdtsc_timer_i(rdtsc_time, "page_alloc");
 
-	stop_timer(wall_time, "page_alloc");
+	stop_timer_i(wall_time, "page_alloc");
 
+   // free(ptr_to_use);
 }

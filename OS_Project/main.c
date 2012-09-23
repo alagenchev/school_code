@@ -6,7 +6,8 @@
 int main()
 {
 
-    measure_read_file();
+    measure_memory();
+//    measure_read_file();
 
     return;
 
