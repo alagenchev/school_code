@@ -2,7 +2,6 @@
 #include <sys/types.h>
 #include <string.h>
 #include <time.h>
-#include <gmp.h>
 
 inline unsigned long long start_timer_pipe() 
 {

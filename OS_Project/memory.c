@@ -20,7 +20,7 @@ inline unsigned long long stop_timer_i(unsigned long long start_time, char *labe
     clock_gettime(CLOCK_MONOTONIC, &time);
 
     unsigned long long end_time = time.tv_sec * 1000000000 + time.tv_nsec;
-    printf("%s: %.10f sec\n", label, ((float) (end_time - start_time)) / (1000 * 1000 * 1000));
+    printf("%s, %.10f\n", label, ((float) (end_time - start_time)) / (1000 * 1000 * 1000));
     return end_time - start_time;
 }
 
@@ -47,7 +47,7 @@ inline unsigned long long stop_rdtsc_timer_i(unsigned long long start_time, char
     //printf("rtdsc start is %llu, end is %llu\n", start_time, end_time);
 
     unsigned long long total_time = end_time - start_time;
-    printf("RDTSC: %s: %llu cycles\n", label, total_time);
+    printf("RDTSC, %s, %llu\n", label, total_time);
     return total_time;
 }
 
@@ -76,9 +76,9 @@ void measure_memory()
 
 	num_pages--;
 
-	printf("max pages: %d\n", sysconf(_SC_PHYS_PAGES));
+//	printf("max pages: %d\n", sysconf(_SC_PHYS_PAGES));
 
-	printf("available pages: %ld, page size is: %ld, for %ld available MB of memory\n", num_pages, page_size, ((num_pages * page_size)/1024)/1024);
+//	printf("available pages: %ld, page size is: %ld, for %ld available MB of memory\n", num_pages, page_size, ((num_pages * page_size)/1024)/1024);
 
 
 	if(ptr_to_use== NULL)
@@ -104,7 +104,7 @@ void measure_memory()
 
 	void *new_page_address = NULL;
 
-	printf("Trying /proc/sys/vm/drop_caches... (requires Linux 2.6.16+)\n");
+//	printf("Trying /proc/sys/vm/drop_caches... (requires Linux 2.6.16+)\n");
 	FILE *f = fopen("/proc/sys/vm/drop_caches", "w");
 	if (!f)
 	{
