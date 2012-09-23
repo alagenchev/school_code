@@ -81,6 +81,8 @@ void measure_memory()
 	printf("available pages: %ld, page size is: %ld, for %ld available MB of memory\n", num_pages, page_size, ((num_pages * page_size)/1024)/1024);
 
 
+	free(ptr_to_use);
+	return;
 
 	if(ptr_to_use== NULL)
 	{
