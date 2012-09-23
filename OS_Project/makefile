@@ -1,6 +1,6 @@
 CC = gcc
 RELEASE_FLAGS = -O2 -w -std=gnu99 -lrt
-DEBUG_FLAGS = -g -O0 -std=c99 -lrt
+DEBUG_FLAGS = -g -O0 -std=gnu99 -lrt
 SOURCES = *.c
 HEADERS = *.h 
 EXECUTABLE= a.out

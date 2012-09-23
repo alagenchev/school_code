@@ -6,8 +6,10 @@
 int main()
 {
 
+<<<<<<< HEAD
         //measure_read_file();
         measure_pipe_communication();
+        measure_memory();
         return;
 
         pid_t pid = fork();
