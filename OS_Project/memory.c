@@ -7,8 +7,6 @@
 #include <sys/stat.h> 
 #include <fcntl.h> 
 
-int loop_counter_i = 1000;
-
 inline unsigned long long start_timer_i() 
 {
 	struct timespec time;
@@ -58,6 +56,7 @@ inline unsigned long long stop_rdtsc_timer_i(unsigned long long start_time, char
 
 void measure_memory()
 {
+	long long iterations[] = {1, 10000, 100000, 1000000, 10000000, 100000000};
 	int num_pages = 0;
 	long page_size = sysconf(_SC_PAGESIZE);
 	void *ptr = NULL;
@@ -102,40 +101,42 @@ void measure_memory()
 	   {
 	   printf("i: %d, val: %d\n", i, *((char *)(ptr_to_use + i*sizeof(char*))) & 1);
 	   }
-	   */
+	 */
 
 	void *new_page_address = NULL;
 
 	//	printf("Trying /proc/sys/vm/drop_caches... (requires Linux 2.6.16+)\n");
-/*	FILE *f = fopen("/proc/sys/vm/drop_caches", "w");
-	if (!f)
-	{
+	/*	FILE *f = fopen("/proc/sys/vm/drop_caches", "w");
+		if (!f)
+		{
 		printf("Error opening /proc/sys/vm/drop_caches: %s\n");
 		return 0;
-	}
+		}
 
-	if (fprintf(f, "3\n") < 0)
-	{
+		if (fprintf(f, "3\n") < 0)
+		{
 		printf("Error writing to file\n");
 		return 0;
-	}
-*/
-
-	unsigned long long wall_time = start_timer_i();
-	unsigned long long rdtsc_time = start_rdtsc_timer_i();
-
-	for(int j = 0; j < loop_counter_i; j ++)
-	{
-		for(long i = 0; i < num_pages;i++)
-		{
-			new_page_address = (ptr_to_use + i * page_size);
-			char val = *((char *) new_page_address);
 		}
+	 */
+
+	for (int i = 0; i< 6; i++)
+	{
+		unsigned long long wall_time = start_timer_i();
+		unsigned long long rdtsc_time = start_rdtsc_timer_i();
+		for(int j = 0; j < iterations[i]; j ++)
+		{
+			for(long i = 0; i < num_pages;i++)
+			{
+				new_page_address = (ptr_to_use + i * page_size);
+				char val = *((char *) new_page_address);
+			}
+		}
+		printf("\n\nIterations = %d\n", iterations[i]);
+		rdtsc_time = stop_rdtsc_timer_i(rdtsc_time, "page_alloc");
+
+		stop_timer_i(wall_time, "page_alloc");
 	}
-
-	rdtsc_time = stop_rdtsc_timer_i(rdtsc_time, "page_alloc");
-
-	stop_timer_i(wall_time, "page_alloc");
 
 	free(ptr_to_use);
 }
