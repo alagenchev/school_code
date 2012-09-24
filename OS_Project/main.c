@@ -5,13 +5,13 @@
 #include <timer.h>
 int main()
 {
-
+//	measure_kernel_call();
         //measure_read_file();
-       // measure_pipe_communication();
+//        measure_pipe_communication();
  //       measure_read_file();
  
-		measure_memory();	
-        return;
+//		measure_memory();	
+  //      return;
 
         pid_t pid = fork();
         if (pid==0) // start receiver for child
