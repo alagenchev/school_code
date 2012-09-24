@@ -7,7 +7,7 @@
 #include <sys/stat.h> 
 #include <fcntl.h> 
 
-int loop_counter_i = 100000000000000;
+int loop_counter_i = 1000;
 
 inline unsigned long long start_timer_i() 
 {
@@ -107,7 +107,7 @@ void measure_memory()
 	void *new_page_address = NULL;
 
 	//	printf("Trying /proc/sys/vm/drop_caches... (requires Linux 2.6.16+)\n");
-	FILE *f = fopen("/proc/sys/vm/drop_caches", "w");
+/*	FILE *f = fopen("/proc/sys/vm/drop_caches", "w");
 	if (!f)
 	{
 		printf("Error opening /proc/sys/vm/drop_caches: %s\n");
@@ -119,6 +119,7 @@ void measure_memory()
 		printf("Error writing to file\n");
 		return 0;
 	}
+*/
 
 	unsigned long long wall_time = start_timer_i();
 	unsigned long long rdtsc_time = start_rdtsc_timer_i();

@@ -63,12 +63,12 @@ void measure_read_file()
     const char* mapped;
     char c;
 
-    system("truncate -s 10M test.file");
+
+    system("truncate -s 200M test.file");
     fd = open("test.file",O_RDONLY);
-    // printf("descriptor for read is %d\n", fd);
 
 
-    unsigned long long wall_time = start_timer_i();
+   // unsigned long long wall_time = start_timer_i();
     unsigned long long rdtsc_time = start_rdtsc_timer_i();
 
     while( read(fd, buffer, 255)!=0)
@@ -77,10 +77,11 @@ void measure_read_file()
 
     rdtsc_time = stop_rdtsc_timer_i(rdtsc_time, "read_file_hdd");
 
-    stop_timer_i(wall_time, "read_file_hdd");
+return;
+   // stop_timer_i(wall_time, "read_file_hdd");
 
     lseek(fd, 0, SEEK_SET);
-    wall_time = start_timer_i();
+   unsigned long long wall_time = start_timer_i();
     rdtsc_time = start_rdtsc_timer_i();
 
 
@@ -95,7 +96,9 @@ void measure_read_file()
 
     close(fd);
 
-    system("truncate -s 10M test2.file");
+return;
+
+    system("truncate -s 200M test2.file");
     fd = open("test2.file",O_RDONLY);
     //printf("descriptor for mmap read is %d\n", fd);
 
@@ -117,15 +120,17 @@ void measure_read_file()
 
     rdtsc_time = start_rdtsc_timer_i();
 
-    wall_time = start_timer_i();
+  //  unsigned long long wall_time = start_timer_i();
 
     for (int i = 0; i < size; i++) 
     {
         c = mapped[i];
     }
 
-    stop_timer_i(wall_time, "read_file_mmap");
+//    stop_timer_i(wall_time, "read_file_mmap");
     stop_rdtsc_timer_i(rdtsc_time, "read_file_mmap");
+
+return;
 
     rdtsc_time = start_rdtsc_timer_i();
 
