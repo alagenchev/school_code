@@ -68,26 +68,27 @@ void measure_read_file()
     fd = open("test.file",O_RDONLY);
 
 
-   // unsigned long long wall_time = start_timer_i();
+ //   unsigned long long wall_time = start_timer_i();
+    //unsigned long long rdtsc_time = start_rdtsc_timer_i();
+
+    while( read(fd, buffer, 255)!=0)
+    {
+    }
+
+    //rdtsc_time = stop_rdtsc_timer_i(rdtsc_time, "read_file_hdd");
+
+   // stop_timer_i(wall_time, "read_file_hdd");
+    lseek(fd, 0, SEEK_SET);
+    unsigned long long  wall_time = start_timer_i();
     unsigned long long rdtsc_time = start_rdtsc_timer_i();
 
+
+for(int i = 0; i < 10000; i++)
+{
     while( read(fd, buffer, 255)!=0)
     {
     }
-
-    rdtsc_time = stop_rdtsc_timer_i(rdtsc_time, "read_file_hdd");
-
-return;
-   // stop_timer_i(wall_time, "read_file_hdd");
-
-    lseek(fd, 0, SEEK_SET);
-   unsigned long long wall_time = start_timer_i();
-    rdtsc_time = start_rdtsc_timer_i();
-
-
-    while( read(fd, buffer, 255)!=0)
-    {
-    }
+}
 
     rdtsc_time = stop_rdtsc_timer_i(rdtsc_time, "read_file_hdd_cache");
 
