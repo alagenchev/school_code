@@ -6,6 +6,13 @@
 #include <time.h>
 
 pid_t   receiver_pid;
+
+//long long iterations = 10;
+long long iterations[] = {1, 10000, 100000, 1000000, 10000000, 100000000};
+//long long current_iteration = 0;
+long long current_iteration = 0;
+int loop_index = 0;
+
 unsigned long long wall_time;
 unsigned long long rdtsc_time;
 void  SIGINT_handler_sender(int);   
@@ -105,15 +112,33 @@ void register_handlers_sender()
 }
 void  SIGINT_handler_sender(int sig)
 {
-        rdtsc_time = stop_rdtsc_timer_sender(rdtsc_time, "signal exchange");
-        stop_timer_sender(wall_time, "signal exchange");
-	
-        signal(sig, SIG_IGN);
-	printf("From SIGINT: just got a %d (SIGINT ^C) signal back from receiver\n", sig);
-	signal(sig, SIGINT_handler_sender);
-	kill(receiver_pid, SIGINT);
+	current_iteration += 1;
+	if(current_iteration < iterations[loop_index])
+	{
+		kill(receiver_pid, SIGINT);
+	}else
+	{
+		printf("\n\nIterations = %d\n", iterations[loop_index]);
+		rdtsc_time = stop_rdtsc_timer_sender(rdtsc_time, "signal exchange");
+		stop_timer_sender(wall_time, "signal exchange");
+		loop_index += 1;
+		if(loop_index < 6)
+		{
+			current_iteration = 0;
+			set_sender_id();
+			wall_time = start_timer_sender();
+			rdtsc_time = start_rdtsc_timer_sender();
+			kill(receiver_pid, SIGINT);
+		}else 
+		{
 
-        printf("About to send a SIGQUIT signal to receiver\n");
-        kill(receiver_pid, SIGQUIT);     
-        exit(0);
+			//printf("From SIGINT: just got a %d (SIGINT ^C) signal back from receiver\n", sig);
+			signal(sig, SIGINT_handler_sender);
+
+			//printf("About to send a SIGQUIT signal to receiver\n");
+			//kill(receiver_pid, SIGINT);
+			kill(receiver_pid, SIGQUIT);     
+			exit(0);
+		}
+	}
 }

@@ -2,7 +2,7 @@
 #include <sys/types.h>
 #include <string.h>
 #include <time.h>
-
+#include <stdlib.h>
 inline unsigned long long start_timer_pipe() 
 {
     struct timespec time;
@@ -57,6 +57,7 @@ int measure_pipe_communication()
 
         pipe(fd_child_write);
         pipe(fd_parent_write);
+	long long iterations[] = {1, 10000, 100000, 1000000, 10000000, 100000000};
 
         if((childpid = fork()) == -1)
         {
@@ -67,36 +68,47 @@ int measure_pipe_communication()
         if(childpid == 0)
         {
                 /* Child process closes up input side of pipe */
-                unsigned long long wall_time = start_timer_pipe();
-                unsigned long long rdtsc_time = start_rdtsc_timer_pipe();
-                close(fd_child_write[0]);
-                close(fd_parent_write[1]);
+		close(fd_child_write[0]);
+		close(fd_parent_write[1]);
+		for (int j = 0; j < 6; j++)
+		{
+			unsigned long long wall_time = start_timer_pipe();
+			unsigned long long rdtsc_time = start_rdtsc_timer_pipe();
+			for (int i = 0; i < iterations[j]; i++)
+			{
 
-                /* Send "string" through the output side of pipe */
-                write(fd_child_write[1], string, (strlen(string)+1));
-                nbytes = read(fd_parent_write[0], readbuffer_child, sizeof(readbuffer_child));
-                printf("Received response: %s\n", readbuffer_child);
-                rdtsc_time = stop_rdtsc_timer_pipe(rdtsc_time, "piping process switch");
-                stop_timer_pipe(wall_time, "piping process switch");
-
-                exit(0);
-        }
+				/* Send "string" through the output side of pipe */
+				write(fd_child_write[1], string, (strlen(string)+1));
+				nbytes = read(fd_parent_write[0], readbuffer_child, sizeof(readbuffer_child));
+			//	printf("Received response: %s\n", readbuffer_child);
+			}
+			printf("\n\nIterations = %d\n", iterations[j]);
+			rdtsc_time = stop_rdtsc_timer_pipe(rdtsc_time, "piping process switch");
+			stop_timer_pipe(wall_time, "piping process switch");
+		}
+		exit(0);
+	}
         else
         {
-                /* Parent process closes up output side of pipe */
-                close(fd_child_write[1]);
-                close(fd_parent_write[0]);
+		/* Parent process closes up output side of pipe */
+		close(fd_child_write[1]);
+		close(fd_parent_write[0]);
 
-                /* Read in a string from the pipe */
-                nbytes = read(fd_child_write[0], readbuffer, sizeof(readbuffer));
-                printf("Received string: %s", readbuffer);
-                if(strcmp(readbuffer, string) == 0)
-                {
-                        char* response = "got the response\n";
-                        printf("Sending response\n");
-                        write(fd_parent_write[1], response, strlen(response) + 1);
-                }
-        }
-
+		for (int j = 0; j < 6; j++) 
+		{
+			for (int i = 0; i < iterations[j]; i++)
+			{
+				/* Read in a string from the pipe */
+				nbytes = read(fd_child_write[0], readbuffer, sizeof(readbuffer));
+				//printf("Received string: %s", readbuffer);
+				if(strcmp(readbuffer, string) == 0)
+				{
+					char response[10] = "RESPONSE" ;
+				//	printf("Sending response\n");
+					write(fd_parent_write[1], response, strlen(response) + 1);
+				}
+			}
+		}
+	}
         return(0);
 }
