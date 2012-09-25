@@ -1,0 +1,32 @@
+MONOTONIC,read_file_mmap_cache, 0.06386
+RDTSC,read_file_mmap_cache,165208000
+
+
+iterations = 1
+RDTSC: pid_sys_call: 4194 
+pid_sys_call: 0.00000 sec
+
+
+iterations = 10000
+RDTSC: pid_sys_call: 1155288 
+pid_sys_call: 0.00045 sec
+
+
+iterations = 100000
+RDTSC: pid_sys_call: 11887358 
+pid_sys_call: 0.00461 sec
+
+
+iterations = 1000000
+RDTSC: pid_sys_call: 108826119 
+pid_sys_call: 0.04213 sec
+
+
+iterations = 10000000
+RDTSC: pid_sys_call: 1106950650 
+pid_sys_call: 0.42843 sec
+
+
+iterations = 100000000
+RDTSC: pid_sys_call: 10890284766 
+pid_sys_call: 4.21494 sec
