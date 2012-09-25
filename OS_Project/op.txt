@@ -1,0 +1,25 @@
+
+
+Iterations = 1
+RDTSC, page_alloc, 320360
+page_alloc, 0.0001266990
+
+
+Iterations = 10000
+RDTSC, page_alloc, 13479538600
+page_alloc, 5.0674901009
+
+
+Iterations = 100000
+RDTSC, page_alloc, 110646701032
+page_alloc, 41.5965232849
+
+
+Iterations = 1000000
+RDTSC, page_alloc, 914647524568
+page_alloc, 343.8525085449
+
+
+Iterations = 10000000
+RDTSC, page_alloc, 10159597588672
+page_alloc, 3819.3979492188

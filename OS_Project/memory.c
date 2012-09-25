@@ -67,6 +67,9 @@ void measure_memory()
 	//	printf("max pages: %d\n", sysconf(_SC_PHYS_PAGES));
 
 	//	printf("available pages: %ld, page size is: %ld, for %ld available MB of memory\n", num_pages, page_size, ((num_pages * page_size)/1024)/1024);
+	unsigned long long wall_time = start_timer_i();
+		unsigned long long rdtsc_time = start_rdtsc_timer_i();
+
 
 		do
 		{
@@ -79,6 +82,9 @@ void measure_memory()
 
 			num_pages++;
 		}while(ptr);
+		rdtsc_time = stop_rdtsc_timer_i(rdtsc_time, "page_alloc");
+		stop_timer_i(wall_time, "page_alloc");
+
 
 		num_pages--;
 
@@ -93,8 +99,8 @@ void measure_memory()
 		long upper = (num_pages * page_size)/sizeof(char*);
 
 
-		unsigned long long wall_time = start_timer_i();
-		unsigned long long rdtsc_time = start_rdtsc_timer_i();
+	wall_time = start_timer_i();
+	 rdtsc_time = start_rdtsc_timer_i();
 
 
 
@@ -104,8 +110,8 @@ void measure_memory()
 			}
 		//printf("\n\nIterations = %d\n", iterations[i]);
 
-		rdtsc_time = stop_rdtsc_timer_i(rdtsc_time, "page_alloc");
-		stop_timer_i(wall_time, "page_alloc");
+		rdtsc_time = stop_rdtsc_timer_i(rdtsc_time, "page_access");
+		stop_timer_i(wall_time, "page_access");
 
 		free(ptr_to_use);
 
