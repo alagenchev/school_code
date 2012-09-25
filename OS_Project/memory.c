@@ -56,45 +56,59 @@ inline unsigned long long stop_rdtsc_timer_i(unsigned long long start_time, char
 
 void measure_memory()
 {
-	long long iterations[] = {1, 10000, 100000, 1000000, 10000000, 100000000};
+	long long iterations[] = {1, 2,100, 200, 300, 400};
 	int num_pages = 0;
 	long page_size = sysconf(_SC_PAGESIZE);
 	void *ptr = NULL;
 
 	void *ptr_to_use = NULL;
 
-	do
-	{
-		ptr_to_use = ptr;
-		ptr = (void *) calloc(num_pages , page_size);
-		if(ptr)
-		{
-			free(ptr_to_use);
-		}
-
-		num_pages++;
-	}while(ptr);
-
-	num_pages--;
 
 	//	printf("max pages: %d\n", sysconf(_SC_PHYS_PAGES));
 
 	//	printf("available pages: %ld, page size is: %ld, for %ld available MB of memory\n", num_pages, page_size, ((num_pages * page_size)/1024)/1024);
 
+		do
+		{
+			ptr_to_use = ptr;
+			ptr = (void *) calloc(num_pages , page_size);
+			if(ptr)
+			{
+				free(ptr_to_use);
+			}
 
-	if(ptr_to_use== NULL)
-	{
-		printf("mem allocation failed\n");
-		exit(1);
-	}
+			num_pages++;
+		}while(ptr);
+
+		num_pages--;
 
 
-	long upper = (num_pages * page_size)/sizeof(char*);
+		if(ptr_to_use== NULL)
+		{
+			printf("mem allocation failed\n");
+			exit(1);
+		}
 
-	for(long i = 0; i < upper ; i ++)
-	{
-		*((char *)(ptr_to_use + i*sizeof(char*))) = ~0;
-	}
+
+		long upper = (num_pages * page_size)/sizeof(char*);
+
+
+		unsigned long long wall_time = start_timer_i();
+		unsigned long long rdtsc_time = start_rdtsc_timer_i();
+
+
+
+			for(long i = 0; i < upper ; i ++)
+			{
+				*((char *)(ptr_to_use + i*sizeof(char*))) = ~0;
+			}
+		//printf("\n\nIterations = %d\n", iterations[i]);
+
+		rdtsc_time = stop_rdtsc_timer_i(rdtsc_time, "page_alloc");
+		stop_timer_i(wall_time, "page_alloc");
+
+		free(ptr_to_use);
+
 
 	/*
 	   for(long i = 0; i < upper ; i ++)
@@ -103,40 +117,4 @@ void measure_memory()
 	   }
 	 */
 
-	void *new_page_address = NULL;
-
-	//	printf("Trying /proc/sys/vm/drop_caches... (requires Linux 2.6.16+)\n");
-	/*	FILE *f = fopen("/proc/sys/vm/drop_caches", "w");
-		if (!f)
-		{
-		printf("Error opening /proc/sys/vm/drop_caches: %s\n");
-		return 0;
-		}
-
-		if (fprintf(f, "3\n") < 0)
-		{
-		printf("Error writing to file\n");
-		return 0;
-		}
-	 */
-
-	for (int i = 0; i< 6; i++)
-	{
-		unsigned long long wall_time = start_timer_i();
-		unsigned long long rdtsc_time = start_rdtsc_timer_i();
-		for(int j = 0; j < iterations[i]; j ++)
-		{
-			for(long i = 0; i < num_pages;i++)
-			{
-				new_page_address = (ptr_to_use + i * page_size);
-				char val = *((char *) new_page_address);
-			}
-		}
-		printf("\n\nIterations = %d\n", iterations[i]);
-		rdtsc_time = stop_rdtsc_timer_i(rdtsc_time, "page_alloc");
- fflush(stdout);
-		stop_timer_i(wall_time, "page_alloc");
-	}
-
-	free(ptr_to_use);
 }

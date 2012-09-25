@@ -5,11 +5,12 @@
 #include <timer.h>
 int main()
 {
-        //measure_read_file();
+//        measure_read_file();
 //        measure_pipe_communication();
  //       measure_read_file();
  
-		measure_memory();	
+
+		measure_memory();
   //      return;
 //        measure_kernel_call();
 	return;
