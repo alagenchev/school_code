@@ -134,7 +134,7 @@ void measure_memory()
 		}
 		printf("\n\nIterations = %d\n", iterations[i]);
 		rdtsc_time = stop_rdtsc_timer_i(rdtsc_time, "page_alloc");
-
+ fflush(stdout);
 		stop_timer_i(wall_time, "page_alloc");
 	}
 
