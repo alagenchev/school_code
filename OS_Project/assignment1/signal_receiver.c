@@ -36,9 +36,9 @@ void  SIGINT_handler_receiver(int sig)
 {
 	signal(sig, SIG_IGN);
 	get_sender_id();
-	//printf("From SIGINT: just got a %d (SIGINT ^C) signal from sender\n", sig);
+	printf("From SIGINT: just got a %d (SIGINT ^C) signal from sender\n", sig);
 	signal(sig, SIGINT_handler_receiver);
-	//printf("Sending interrupt to sender\n");
+	printf("Sending interrupt to sender\n");
 	kill(sender_pid, SIGINT);
 }
 void get_sender_id()
