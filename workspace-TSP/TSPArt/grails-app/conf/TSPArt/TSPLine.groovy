@@ -5,6 +5,7 @@ class TSPLine {
 	def StartY
 	def EndX
 	def EndY
+	boolean ShouldDraw
 	
 	TSPLine(int startX, int startY, int endX, int endY)
 	{
@@ -12,5 +13,6 @@ class TSPLine {
 		StartY = startY
 		EndX = endX
 		EndY = endY
+		ShouldDraw = true
 	}
 }
