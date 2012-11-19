@@ -14,4 +14,5 @@ class IndexControllerTests {
     void testSomething() {
        controller.index()
     }
+	
 }
