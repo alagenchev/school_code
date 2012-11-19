@@ -1,0 +1,1 @@
+extern int scanf (__const char *__restrict __format, ...) __wur;
