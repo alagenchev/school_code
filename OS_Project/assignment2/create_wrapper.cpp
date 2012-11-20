@@ -11,7 +11,7 @@ std::string get_line_header(std::string line);
 std::string get_return_type(std::string line);
 std::string get_function_name(std::string line);
 void output_dmtcp_stuff(std::ofstream &output);
-void output_replaced_call(std::ofstream &output, std:: string func_name, std::string params[]);
+void output_replaced_call(std::ofstream &output, std:: string func_name, std::vector<std::string> params);
 std::vector<std::string> get_parameter_names(std::string line);
 void output_headers(std::ofstream &output);
 static inline std::string &ltrim(std::string &s);
@@ -50,7 +50,7 @@ int main(int argc, char** argv)
 		}
 		outputFile<<"\ttypeof("<<function_name<<") *old_"<<function_name<<";"<<endl;
 		output_dmtcp_stuff(outputFile);
-		output_replaced_call(outputFile, function_name, &params[0]);
+		output_replaced_call(outputFile, function_name, params);
 		outputFile<<"}"<<endl;
 		//outputFile<<inputLine<<endl;
 	}
@@ -145,14 +145,14 @@ std::string extract_parm_name(std::string text)
 	return name;
 }
 
-void output_replaced_call(std::ofstream &output, std::string func_name, std::string params[])
+void output_replaced_call(std::ofstream &output, std::string func_name, std::vector<std::string> params)
 {
 	using namespace std;
 	output<<"\told_"<<func_name<<" = dlsym(RTLD_NEXT, \""<<func_name<<"\");"<<endl;
 	output<<"\treturn_value = (*old_"<<func_name<<")(";
 	cout<<"params"<<endl;
-	int size = sizeof(params)/sizeof(string);
-	for(int i = 0; i < size; i++)
+
+	for(std::vector<string>::size_type i = 0; i < params.size(); i++)
 	{
 		cout<<params[i]<<endl;
 	}
