@@ -42,12 +42,6 @@ int main(int argc, char** argv)
 		string function_name = get_function_name(inputLine);
 		vector<string> params = get_parameter_names(inputLine);
 
-		cout<<"params:"<<endl;
-		for(vector<string>::size_type i = 0; i < params.size(); i++)
-		{
-			cout<<params[i]<<endl;
-		}
-
 		outputFile<<header<<endl;
 		outputFile<<"{"<<endl;
 		if(return_type != "void")
@@ -78,10 +72,6 @@ void output_headers(std::ofstream &output)
 std::vector<std::string> get_parameter_names(std::string line)
 {
 	using namespace std;
-
-	line = "te";
-	string test = "ivan";
-	cout<<"line is: "<<line<<endl;
 
 	vector <string> parameters;
 	int start = line.find("(");
@@ -160,6 +150,12 @@ void output_replaced_call(std::ofstream &output, std::string func_name, std::str
 	using namespace std;
 	output<<"\told_"<<func_name<<" = dlsym(RTLD_NEXT, \""<<func_name<<"\");"<<endl;
 	output<<"\treturn_value = (*old_"<<func_name<<")(";
+	cout<<"params"<<endl;
+	int size = sizeof(params)/sizeof(string);
+	for(int i = 0; i < size; i++)
+	{
+		cout<<params[i]<<endl;
+	}
 	//output<< output all parameters here
 	output<<"\treturn return_value;"<<endl;
 }
