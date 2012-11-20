@@ -1,13 +1,8 @@
-extern int scanf (__const char *__restrict __format, ...) __wur
-{
-	int return_value;
-	typeof(scanf) *old_scanf;
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <dlfcn.h>
+include "dmtcpaware.h"
 
-	if(dmtcpIsEnabled())
-	{
-		dmtcpCheckpoint();
-	}
-
-	old_scanf = dlsym(RTLD_NEXT, "scanf");
-	return_value = (*old_scanf)(	return return_value;
-}
