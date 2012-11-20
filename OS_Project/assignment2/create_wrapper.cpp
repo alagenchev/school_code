@@ -5,6 +5,10 @@
 std::string get_line_header(std::string line);
 std::string get_return_type(std::string line);
 std::string get_function_name(std::string line);
+void output_dmtcp_stuff(std::ofstream &output);
+void output_replaced_call(std::ofstream &output, std:: string func_name, std::string params[]);
+void get_parameter_names(std::string line, std::string params[]);
+
 
 int main(int argc, char** argv)
 {
@@ -16,14 +20,18 @@ int main(int argc, char** argv)
     }*/
 
     string inputLine;
+	string outputFileName = "output.txt";
+	string* params;
+
     ifstream inputFile(argv[1], ifstream::in);
-    ofstream outputFile(argv[2], ofstream::out);
+    ofstream outputFile(outputFileName.c_str(), ofstream::out);
     
     while(getline(inputFile, inputLine))
     {
         string header = get_line_header(inputLine);
         string return_type = get_return_type(inputLine);
         string function_name = get_function_name(inputLine);
+		get_parameter_names(inputLine, params);
 
         outputFile<<header<<endl;
         outputFile<<"{"<<endl;
@@ -32,11 +40,39 @@ int main(int argc, char** argv)
             outputFile<<"\t"<<return_type<<" return_value;"<<endl;
         }
         outputFile<<"\ttypeof("<<function_name<<") *old_"<<function_name<<";"<<endl;
+		output_dmtcp_stuff(outputFile);
+		output_replaced_call(outputFile, function_name, params);
         outputFile<<"}"<<endl;
         //outputFile<<inputLine<<endl;
     }
 
     return 0;
+}
+
+void get_parameter_names(std::string line, std::string params[])
+{
+	using namespace std;
+	cout<<"line is "<<line<<endl;
+}
+
+void output_replaced_call(std::ofstream &output, std::string func_name, std::string params[])
+{
+	using namespace std;
+	output<<"\told_"<<func_name<<" = dlsym(RTLD_NEXT, \""<<func_name<<"\");"<<endl;
+	output<<"\treturn_value = (*old_"<<func_name<<")(";
+	//output<< output all parameters here
+	output<<"\treturn return_value;"<<endl;
+}
+
+void output_dmtcp_stuff(std::ofstream &output)
+{
+	using namespace std;
+	output<<endl;
+	output<<"\tif(dmtcpIsEnabled())"<<endl;
+	output<<"\t{"<<endl;
+	output<<"\t\tdmtcpCheckpoint();"<<endl;
+	output<<"\t}"<<endl;
+	output<<endl;
 }
 
 std::string get_function_name(std::string line)

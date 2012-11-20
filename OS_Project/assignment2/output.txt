@@ -1,0 +1,13 @@
+extern int scanf (__const char *__restrict __format, ...) __wur
+{
+	int return_value;
+	typeof(scanf) *old_scanf;
+
+	if(dmtcpIsEnabled())
+	{
+		dmtcpCheckpoint();
+	}
+
+	old_scanf = dlsym(RTLD_NEXT, "scanf");
+	return_value = (*old_scanf)(	return return_value;
+}
