@@ -29,7 +29,7 @@ int main(int argc, char** argv)
 	   }*/
 
 	string inputLine;
-	string outputFileName = "output.txt";
+	string outputFileName = "output.c";
 
 	ifstream inputFile(argv[1], ifstream::in);
 	ofstream outputFile(outputFileName.c_str(), ofstream::out);
@@ -66,7 +66,7 @@ void output_headers(std::ofstream &output)
 	output<<"#include <unistd.h>"<<endl;
 	output<<"#include <sys/types.h>"<<endl;
 	output<<"#include <dlfcn.h>"<<endl;
-	output<<"include \"dmtcpaware.h\""<<endl;
+	output<<"#include \"dmtcpaware.h\""<<endl;
 	output<<endl;
 }
 std::vector<std::string> get_parameter_names(std::string line)
@@ -147,17 +147,43 @@ std::string extract_parm_name(std::string text)
 
 void output_replaced_call(std::ofstream &output, std::string func_name, std::vector<std::string> params)
 {
-	using namespace std;
-	output<<"\told_"<<func_name<<" = dlsym(RTLD_NEXT, \""<<func_name<<"\");"<<endl;
-	output<<"\treturn_value = (*old_"<<func_name<<")(";
-	cout<<"params"<<endl;
+    using namespace std;
 
-	for(std::vector<string>::size_type i = 0; i < params.size(); i++)
-	{
-		cout<<params[i]<<endl;
-	}
-	//output<< output all parameters here
-	output<<"\treturn return_value;"<<endl;
+    for(std::vector<string>::size_type i = 0; i < params.size(); i++)
+    {
+        if(i < params.size() - 1 && params[i+1] == "...")
+        {
+            output<<"\tva_list args;"<<endl;
+            output<<"\tva_end(args);"<<endl;
+        }
+    }
+
+    output<<"\told_"<<func_name<<" = dlsym(RTLD_NEXT, \""<<func_name<<"\");"<<endl;
+    output<<"\treturn_value = (*old_"<<func_name<<")(";
+
+    for(std::vector<string>::size_type i = 0; i < params.size(); i++)
+    {
+        if(i < params.size() - 1 && params[i+1] == "...")
+        {
+
+            output<<params[i];
+            
+            output<<", args";
+        }
+        else if(params[i]!="...")
+        {
+            output<<params[i]<<endl;
+        }
+        if(i != params.size() - 1)
+        {
+            output<<",";
+        }
+    }
+
+    output<<");"<<endl;
+
+
+    output<<"\treturn return_value;"<<endl;
 }
 
 void output_dmtcp_stuff(std::ofstream &output)
