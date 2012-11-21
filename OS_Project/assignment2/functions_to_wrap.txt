@@ -1,1 +1,4 @@
-extern int scanf (__const char *__restrict __format, ...) __wur;
+//extern int scanf (__const char *__restrict __format, ...) __wur;
+//extern FILE *fopen (__const char *__restrict __filename,__const char *__restrict __modes) __wur;
+extern FILE *fmemopen (void *__s, size_t __len, __const char *__modes) __THROW __wur;
+//extern int remove (__const char *__filename) __THROW;
