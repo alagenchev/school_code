@@ -11,8 +11,10 @@ class TSPHelper {
 
 		for(int i = 0; i < newTour.Lines.size; i++) {
 			def line = newTour.Lines[i];
+			
 			for(int j = 0; j< newTour.Lines.size;j++) {
 				def otherLine = newTour.Lines[j];
+				
 				if(!line.isEquivalent(otherLine)) {
 
 					def intersect = doesIntersect(line.StartX, line.StartY, line.EndX, line.EndY,
@@ -28,8 +30,6 @@ class TSPHelper {
 						fix_intersection(line, otherLine, i, j, newTour)
 					//	println "" + line + " and " + otherLine
 						//println ""
-						
-						continue;
 					}
 				}
 			}
