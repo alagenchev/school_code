@@ -7,6 +7,9 @@
 #include <cctype>
 #include <locale>
 
+
+using namespace std;
+
 std::string get_line_header(std::string line);
 std::string get_return_type(std::string line);
 std::string get_function_name(std::string line);
@@ -17,137 +20,162 @@ void output_headers(std::ofstream &output);
 static inline std::string &ltrim(std::string &s);
 static inline std::string &trim(std::string &s);
 std::string extract_parm_name(std::string text);
-
+void output_scanf(std::ofstream &output);
+int count_stars(const char *text);
 
 int main(int argc, char** argv)
 {
-	using namespace std;
-	/*
-	   if(argc != 3)
-	   {
-	   std::cout<<"USAGE: create_wrapper inputFile outputFile"<<endl;
-	   }*/
+    /*
+       if(argc != 3)
+       {
+       std::cout<<"USAGE: create_wrapper inputFile outputFile"<<endl;
+       }*/
 
-	string inputLine;
-	string outputFileName = "output.c";
+    string inputLine;
+    string outputFileName = "output.c";
 
-	ifstream inputFile(argv[1], ifstream::in);
-	ofstream outputFile(outputFileName.c_str(), ofstream::out);
+    ifstream inputFile(argv[1], ifstream::in);
+    ofstream outputFile(outputFileName.c_str(), ofstream::out);
 
-	output_headers(outputFile);
-	while(getline(inputFile, inputLine))
-	{
-		string header = get_line_header(inputLine);
-		string return_type = get_return_type(inputLine);
-		string function_name = get_function_name(inputLine);
-		vector<string> params = get_parameter_names(inputLine);
+    output_headers(outputFile);
+    while(getline(inputFile, inputLine))
+    {
+        if(inputLine.length() > 1 && inputLine[0]=='/' && inputLine[1] == '/')
+        {
+            continue;
+        }
 
-		outputFile<<header<<endl;
-		outputFile<<"{"<<endl;
-		if(return_type != "void")
-		{
-			outputFile<<"\t"<<return_type<<" return_value;"<<endl;
-		}
-		outputFile<<"\ttypeof("<<function_name<<") *old_"<<function_name<<";"<<endl;
-		output_dmtcp_stuff(outputFile);
-		output_replaced_call(outputFile, function_name, params);
-		outputFile<<"}"<<endl;
-		//outputFile<<inputLine<<endl;
-	}
+        string header = get_line_header(inputLine);
+        string return_type = get_return_type(inputLine);
+        string function_name = get_function_name(inputLine);
+        vector<string> params = get_parameter_names(inputLine);
 
-	return 0;
+        outputFile<<header<<endl;
+        outputFile<<"{"<<endl;
+        if(return_type != "void")
+        {
+            outputFile<<"\t"<<return_type<<" return_value;"<<endl;
+        }
+
+        output_dmtcp_stuff(outputFile);
+
+        if(function_name == "scanf")
+        {
+            output_scanf(outputFile);
+        }
+        else
+        {
+            outputFile<<"\ttypeof("<<function_name<<") *old_"<<function_name<<";"<<endl;
+            output_replaced_call(outputFile, function_name, params);
+        }
+
+        outputFile<<"}"<<endl;
+    }
+
+    return 0;
 }
+void output_scanf(std::ofstream & output)
+{
+    output<<"\tva_list args;"<<endl;
+    output<<"\tva_start(args, __format);"<<endl;
+    output<<"\treturn_value = _IO_vfscanf(stdin, __format, args, NULL);"<<endl;
+    output<<"\tva_end(args);"<<endl;
+    output<<endl;
+    output<<"\treturn return_value;"<<endl;
+}
+
 void output_headers(std::ofstream &output)
 {
-	using namespace std;
-	output<<"#include <stdio.h>"<<endl;
-	output<<"#include <stdlib.h>"<<endl;
-	output<<"#include <stdarg.h>"<<endl;
-	output<<"#include <unistd.h>"<<endl;
-	output<<"#include <sys/types.h>"<<endl;
-	output<<"#include <dlfcn.h>"<<endl;
-	output<<"#include \"dmtcpaware.h\""<<endl;
-	output<<endl;
+    output<<"#define _GNU_SOURCE"<<endl;
+    output<<"#include <stdio.h>"<<endl;
+    output<<"#include <stdlib.h>"<<endl;
+    output<<"#include <stdarg.h>"<<endl;
+    output<<"#include <unistd.h>"<<endl;
+    output<<"#include <sys/types.h>"<<endl;
+    output<<"#include <dlfcn.h>"<<endl;
+    output<<"#include \"dmtcpaware.h\""<<endl;
+    output<<endl;
 }
 std::vector<std::string> get_parameter_names(std::string line)
 {
-	using namespace std;
 
-	vector <string> parameters;
-	int start = line.find("(");
-	int end = line.find(")");
-	line = line.substr(start + 1, end - start - 1);
-	line = trim(line);
+    vector <string> parameters;
+    int start = line.find("(");
+    int end = line.find(")");
+    line = line.substr(start + 1, end - start - 1);
+    line = trim(line);
 
-	if(line.length() == 0)//we have no params
-	{
-		return parameters;
-	}
+    if(line.length() == 0)//we have no params
+    {
+        return parameters;
+    }
 
-	int index = (int)string::npos;
+    int index = (int)string::npos;
 
-	do
-	{
-		index = line.find_first_of(',');
-		string parm_name = "";
+    do
+    {
+        index = line.find_first_of(',');
+        string parm_name = "";
 
-		if(index == string::npos)//parse single parm
-		{
-			line = trim(line);
-			parm_name = extract_parm_name(line);
-			index = line.find_first_of(parm_name);
-			line = line.substr(index + parm_name.length(), line.length() - parm_name.length());
-		}
-		else
-		{
-			string temp = line.substr(0, index);
-			temp = trim(temp);
-			parm_name = extract_parm_name(temp);
+        if(index == string::npos)//parse single parm
+        {
+            line = trim(line);
+            parm_name = extract_parm_name(line);
 
-			line = line.substr(index + 1, line.length() - index);
-		}
+            parameters.push_back(parm_name);
+            break;//if we've parsed the last parm, don't parse anymore
+            //index = line.find_first_of(parm_name);
+            //int start = index + parm_name.length();
+            // int length = line.length() - parm_name.length();
+            //	line = line.substr(start, length);
+        }
+        else
+        {
+            string temp = line.substr(0, index);
+            temp = trim(temp);
+            parm_name = extract_parm_name(temp);
 
-		parameters.push_back(parm_name);
+            line = line.substr(index + 1, line.length() - index);
 
-		line = trim(line);
-	}
-	while(line.length() != 0);
+            parameters.push_back(parm_name);
+        }
 
-	return parameters;
+
+        line = trim(line);
+    }
+    while(line.length() != 0);
+
+    return parameters;
 }
 
 std::string extract_parm_name(std::string text)
 {
-	using namespace std;
-	string name = "";
-	int index = text.find_last_of(" ");//get beginning of parm name
-	if(index == -1)
-	{
-		index = text.find("...");//variable list parameter
-		if(index > -1)
-		{
-			return "...";
-		}
-	}
-	name = text.substr(index + 1, text.length() - index - 1);
+    string name = "";
+    int index = text.find_last_of(" ");//get beginning of parm name
+    if(index == -1)
+    {
+        index = text.find("...");//variable list parameter
+        if(index > -1)
+        {
+            return "...";
+        }
+    }
+    name = text.substr(index + 1, text.length() - index - 1);
 
-	char *name_ptr = new char[name.length() + 1];
-	std::copy(name.begin(), name.end(), name_ptr);
+    const char *name_ptr = name.c_str();
 
-	while(*name_ptr == '*')
-	{
-		name_ptr++;
-	}
-	
-	name = string(name_ptr);
+    while(*name_ptr == '*')
+    {
+        name_ptr++;
+    }
 
-	delete[] name_ptr;
-	return name;
+    name = string(name_ptr);
+
+    return name;
 }
 
 void output_replaced_call(std::ofstream &output, std::string func_name, std::vector<std::string> params)
 {
-    using namespace std;
 
     for(std::vector<string>::size_type i = 0; i < params.size(); i++)
     {
@@ -156,6 +184,10 @@ void output_replaced_call(std::ofstream &output, std::string func_name, std::vec
             output<<"\tva_list args;"<<endl;
             output<<"\tva_end(args);"<<endl;
         }
+        /*   else
+             {
+             cout<<params[i]<<endl;
+             }*/
     }
 
     output<<"\told_"<<func_name<<" = dlsym(RTLD_NEXT, \""<<func_name<<"\");"<<endl;
@@ -167,16 +199,16 @@ void output_replaced_call(std::ofstream &output, std::string func_name, std::vec
         {
 
             output<<params[i];
-            
+
             output<<", args";
         }
         else if(params[i]!="...")
         {
-            output<<params[i]<<endl;
+            output<<params[i];
         }
         if(i != params.size() - 1)
         {
-            output<<",";
+            output<<", ";
         }
     }
 
@@ -188,80 +220,127 @@ void output_replaced_call(std::ofstream &output, std::string func_name, std::vec
 
 void output_dmtcp_stuff(std::ofstream &output)
 {
-	using namespace std;
-	output<<endl;
-	output<<"\tif(dmtcpIsEnabled())"<<endl;
-	output<<"\t{"<<endl;
-	output<<"\t\tdmtcpCheckpoint();"<<endl;
-	output<<"\t}"<<endl;
-	output<<endl;
+    output<<endl;
+    output<<"\tif(dmtcpIsEnabled())"<<endl;
+    output<<"\t{"<<endl;
+    output<<"\t\tdmtcpCheckpoint();"<<endl;
+    output<<"\t}"<<endl;
+    output<<endl;
 
 }
 
 std::string get_function_name(std::string line)
 {
-	using namespace std;
 
-	int open_paren_pos = line.find_first_of("(");
-	string temp = line.substr(0, open_paren_pos - 1);
-	int index = temp.find_last_of(" ");
+    int open_paren_pos = line.find_first_of("(");
+    string temp = line.substr(0, open_paren_pos - 1);
+    int index = temp.find_last_of(" ");
 
-	temp = temp.substr(index + 1,temp.length());
+    temp = temp.substr(index + 1,temp.length());
 
-	return temp;
+    const char *temp_ptr = temp.c_str();
+
+    while(*temp_ptr == '*')
+    {
+        temp_ptr++;
+    }
+
+    temp = string(temp_ptr);
+
+    return temp;
 
 }
 
 std::string get_return_type(std::string line)
 {
-	using namespace std;
 
-	int open_paren_pos = line.find_first_of("(");
-	string temp = line.substr(0, open_paren_pos);
-	int hasExtern = temp.find("extern");
+    string return_type = "";
+    int open_paren_pos = line.find_first_of("(");
+    string temp = line.substr(0, open_paren_pos);
+    int hasExtern = temp.find("extern");
 
-	if(hasExtern >= 0)
-	{
-		temp = temp.substr(hasExtern + 7, temp.length());
-	}
+    if(hasExtern >= 0)
+    {
+        temp = temp.substr(hasExtern + 7, temp.length());
+    }
 
-	int hasPtr = temp.find("*");
+    int hasPtr = temp.find("*");
 
-	if(hasPtr >= 0)
-	{
-	}
-	else
-	{
-		int index = temp.find(" ");
-		string return_type = temp.substr(0, index);
-		return return_type;
-	}
+    if(hasPtr >= 0)
+    {
+        int index = temp.find(" ");
+        return_type = temp.substr(0, index);
+        return_type = trim(return_type);
+        return_type +=" ";  //this combined with the above might be weird, 
+        //but I'm making sure the # of spaces is consistent
 
-	return "";
+        int num_stars = count_stars(temp.c_str());
+
+        for(int i = 0; i < num_stars; i++)
+        {
+            return_type += "*";
+        }
+
+    }
+    else
+    {
+        int index = temp.find(" ");
+        return_type = temp.substr(0, index);
+    }
+
+    return return_type;
+}
+
+int count_stars(const char *text)
+{
+
+    const char * ptr = text;
+    int count = 0;
+
+    while(*ptr != '\0')
+    {
+        if(*ptr == '*')
+        {
+            count++;
+        }
+
+        ptr++;
+    }
+
+    return count;
+
 }
 
 std::string get_line_header(std::string line)
 {
-	using namespace std;
-	int semicolon_pos = line.find_last_of(";");
-	string header = line.substr(0, semicolon_pos);
-	return header;
+    int semicolon_pos = line.find_last_of(";");
+    string header = line.substr(0, semicolon_pos);
+
+    int index = header.find("__THROW");
+
+    if(index >=0)
+    {
+        string temp = header.substr(0, index);
+        temp += header.substr(index + 7, header.length() - index - 7); 
+        header = temp;
+    }
+    return header;
 }
 
 
 // trim from start
 static inline std::string &ltrim(std::string &s) {
-	s.erase(s.begin(), std::find_if(s.begin(), s.end(), std::not1(std::ptr_fun<int, int>(std::isspace))));
-	return s;
+    s.erase(s.begin(), std::find_if(s.begin(), s.end(), std::not1(std::ptr_fun<int, int>(std::isspace))));
+    return s;
 }
 
 // trim from end
 static inline std::string &rtrim(std::string &s) {
-	s.erase(std::find_if(s.rbegin(), s.rend(), std::not1(std::ptr_fun<int, int>(std::isspace))).base(), s.end());
-	return s;
+    s.erase(std::find_if(s.rbegin(), s.rend(), std::not1(std::ptr_fun<int, int>(std::isspace))).base(), s.end());
+    return s;
 }
 
 // trim from both ends
 static inline std::string &trim(std::string &s) {
-	return ltrim(rtrim(s));
+    return ltrim(rtrim(s));
 }
