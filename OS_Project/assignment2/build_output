@@ -1,3 +1,3 @@
 #!/bin/bash
 
-gcc -g -shared -fPIC -o liboverride.so output.c -ldl libdmtcpaware.a
+gcc -g -Wall -shared -fPIC -o liboverride.so output.c -ldl libdmtcpaware.a

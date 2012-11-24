@@ -20,7 +20,6 @@ void output_headers(std::ofstream &output);
 static inline std::string &ltrim(std::string &s);
 static inline std::string &trim(std::string &s);
 std::string extract_parm_name(std::string text);
-void output_scanf(std::ofstream &output);
 int count_stars(const char *text);
 
 int main(int argc, char** argv)
@@ -59,29 +58,12 @@ int main(int argc, char** argv)
 
         output_dmtcp_stuff(outputFile);
 
-        if(function_name == "scanf")
-        {
-            output_scanf(outputFile);
-        }
-        else
-        {
-            outputFile<<"\ttypeof("<<function_name<<") *old_"<<function_name<<";"<<endl;
-            output_replaced_call(outputFile, function_name, params);
-        }
+        output_replaced_call(outputFile, function_name, params);
 
         outputFile<<"}"<<endl;
     }
 
     return 0;
-}
-void output_scanf(std::ofstream & output)
-{
-    output<<"\tva_list args;"<<endl;
-    output<<"\tva_start(args, __format);"<<endl;
-    output<<"\treturn_value = _IO_vfscanf(stdin, __format, args, NULL);"<<endl;
-    output<<"\tva_end(args);"<<endl;
-    output<<endl;
-    output<<"\treturn return_value;"<<endl;
 }
 
 void output_headers(std::ofstream &output)
@@ -173,25 +155,54 @@ std::string extract_parm_name(std::string text)
 
     return name;
 }
+void replace_varargs_call(std::ofstream &output, std::string func_name, std::vector<std::string> params)
+{
+    output<<"\treturn_value = ";
+    if(func_name.find("fscanf") != std::string::npos )
+    {
+        output<<"vfscanf(";
+    }
+    else if(func_name.find("sscanf") != std::string::npos )
+    {
+        output<<"vsscanf(";
+    }
+    else if(func_name.find("scanf") != std::string::npos )
+    {
+        output<<"vscanf(";
+    }
+}
 
 void output_replaced_call(std::ofstream &output, std::string func_name, std::vector<std::string> params)
 {
+
+    output<<endl;
+    output<<"\tprintf(\"REPLACED: "<<func_name<< "\\n\");"<< endl;
+    output<<endl;
+
+    bool hasVarArgs = false;
 
     for(std::vector<string>::size_type i = 0; i < params.size(); i++)
     {
         if(i < params.size() - 1 && params[i+1] == "...")
         {
             output<<"\tva_list args;"<<endl;
-            output<<"\tva_end(args);"<<endl;
+            output<<"\tva_start(args, __format);"<<endl;
+            hasVarArgs = true;
         }
-        /*   else
-             {
-             cout<<params[i]<<endl;
-             }*/
     }
 
-    output<<"\told_"<<func_name<<" = dlsym(RTLD_NEXT, \""<<func_name<<"\");"<<endl;
-    output<<"\treturn_value = (*old_"<<func_name<<")(";
+
+    if(hasVarArgs)
+    {
+        replace_varargs_call(output, func_name, params);
+    }
+    else
+    {
+
+        output<<"\ttypeof("<<func_name<<") *old_"<<func_name<<";"<<endl;
+        output<<"\told_"<<func_name<<" = dlsym(RTLD_NEXT, \""<<func_name<<"\");"<<endl;
+        output<<"\treturn_value = (*old_"<<func_name<<")(";
+    }
 
     for(std::vector<string>::size_type i = 0; i < params.size(); i++)
     {
@@ -202,11 +213,12 @@ void output_replaced_call(std::ofstream &output, std::string func_name, std::vec
 
             output<<", args";
         }
-        else if(params[i]!="...")
+        else if(params[i]!="..." && params[i]!="void")
         {
             output<<params[i];
         }
-        if(i != params.size() - 1)
+        if(i != params.size() - 1 && params[i+1] != "...")
+            //we check for varargs before we are actually at the varargs args, so skip the comma
         {
             output<<", ";
         }
@@ -215,6 +227,10 @@ void output_replaced_call(std::ofstream &output, std::string func_name, std::vec
     output<<");"<<endl;
 
 
+    if(hasVarArgs)
+    {
+        output<<"\tva_end(args);"<<endl;
+    }
     output<<"\treturn return_value;"<<endl;
 }
 
