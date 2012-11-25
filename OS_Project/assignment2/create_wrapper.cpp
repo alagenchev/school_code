@@ -176,10 +176,20 @@ void output_replaced_call(std::ofstream &output, std::string func_name, std::vec
 {
 
     output<<endl;
-    output<<"\tFILE *fp;"<<endl;
-    output<<"\tfp=fopen(\"trace.txt\",\"a\");"<<endl;
-    output<<"\tfprintf(fp,\"REPLACED: "<<func_name<< "\\n\");"<< endl;
-    output<<"\tfclose(fp);"<<endl;
+    if(func_name.find("fdopen") == string::npos && func_name.find("fopen") == string::npos && func_name.find("freopen") == string::npos)
+    {
+        output<<"\tprintf(\"REPLACED: "<<func_name<< "\\n\");"<< endl;
+        output<<"\tFILE *fp;"<<endl;
+        output<<"\tfp=fopen(\"trace.txt\",\"a\");"<<endl;
+        output<<"\tfprintf(fp,\"REPLACED: "<<func_name<< "\\n\");"<< endl;
+        output<<"\tfclose(fp);"<<endl;
+    }
+    else
+    {
+
+        output<<"\tprintf(\"REPLACED: "<<func_name<< "\\n\");"<< endl;
+    }
+
     output<<endl;
 
     bool hasVarArgs = false;
