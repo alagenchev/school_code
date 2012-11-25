@@ -5,6 +5,8 @@ if [ $# -eq 0 ]; then
 	exit 1
 fi
 
+echo "Running program $1"
+
 export LD_PRELOAD="$PWD/liboverride.so"
 
 $1 "${@:2}"
