@@ -1,4 +1,4 @@
-extern FILE *fopen (__const char *__restrict __filename, __const char *__restrict __modes) __wur;
+//extern FILE *fopen (__const char *__restrict __filename, __const char *__restrict __modes) __wur;
 extern FILE *freopen (__const char *__restrict __filename, __const char *__restrict __modes, FILE *__restrict __stream) __wur;
 extern FILE *fopen64 (__const char *__restrict __filename, __const char *__restrict __modes) __wur;
 extern FILE *freopen64 (__const char *__restrict __filename, __const char *__restrict __modes, FILE *__restrict __stream) __wur;
@@ -29,9 +29,9 @@ extern char *fgets (char *__restrict __s, int __n, FILE *__restrict __stream) __
 extern char *gets (char *__s) __wur;
 extern char *fgets_unlocked (char *__restrict __s, int __n, FILE *__restrict __stream) __wur;
 extern _IO_ssize_t __getdelim (char **__restrict __lineptr, size_t *__restrict __n, int __delimiter, FILE *__restrict __stream) __wur;
-extern _IO_ssize_t getdelim (char **__restrict __lineptr, size_t *__restrict __n, int __delimiter, FILE *__restrict __stream) __wur;
+//extern _IO_ssize_t getdelim (char **__restrict __lineptr, size_t *__restrict __n, int __delimiter, FILE *__restrict __stream) __wur;
 extern _IO_ssize_t getline (char **__restrict __lineptr, size_t *__restrict __n, FILE *__restrict __stream) __wur;
 extern size_t fread (void *__restrict __ptr, size_t __size, size_t __n, FILE *__restrict __stream) __wur;
 extern size_t fread_unlocked (void *__restrict __ptr, size_t __size, size_t __n, FILE *__restrict __stream) __wur;
 extern FILE *popen (__const char *__command, __const char *__modes) __wur;
-ssize_t read (int fd, void *buffer, size_t length);
+//ssize_t read (int fd, void *buffer, size_t length);
