@@ -38,6 +38,7 @@ END_LEGAL */
 #include <iostream>
 #include <string.h>
 #include "pin.H"
+#include <execinfo.h>
 
 ofstream outFile;
 
@@ -57,13 +58,36 @@ typedef struct RtnCount
 RTN_COUNT * RtnList = 0;
 
 // This function is called before every instruction is executed
-VOID instrument_routine(RTN rtn)
+VOID instrument_routine(RTN rtn, void *ip)
 {
     string name = RTN_Name(rtn);
-    //if(strcmp(name,"ivan")==0)
-   // {
-        cout<<"instrumenting routine: " << name<<endl;
-   // }
+    if(name == "ivan")
+    {
+        int count;
+        void *stack[50]; // can hold 50, adjust appropriately
+        char **symbols;
+
+        count = backtrace(stack, 50);
+        symbols = backtrace_symbols(stack, count);
+
+        for (int i = 0; i < count; i++)
+            puts(symbols[i]);
+
+        delete(symbols);
+
+
+        void *array[10];
+        size_t size;
+
+        // get void*'s for all entries on the stack
+        size = backtrace(array, 10);
+        //
+        //     // print out all the frames to stderr
+        //       fprintf(stderr, "Error: signal %d:\n", sig);
+        backtrace_symbols_fd(array, size, 2);
+
+        cout<<"instrumenting routine: " << name<<", ip is: "<<ip<<endl;
+    }
 }
     
 VOID instrument_instruction(INS ins)

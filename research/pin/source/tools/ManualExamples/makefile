@@ -45,7 +45,7 @@ endif
 
 ifeq ($(TARGET_COMPILER),gnu)
     include ../makefile.gnu.config
-    CXXFLAGS ?= -Wall -Werror -Wno-unknown-pragmas $(DBG) $(OPT)
+    CXXFLAGS ?= -Wall -g -Werror -Wno-unknown-pragmas $(DBG) $(OPT)
 endif
 
 ifeq ($(TARGET_COMPILER),ms)

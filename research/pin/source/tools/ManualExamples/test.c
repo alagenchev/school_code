@@ -2,6 +2,8 @@
 
 void ivan()
 {
+
+   int i = 5;
     printf("from ivan\n");
 }
 
