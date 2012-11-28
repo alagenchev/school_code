@@ -1,0 +1,220 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ACCESS_TYPE	pin_cache.H	/^    } ACCESS_TYPE;$/;"	t	class:CACHE_BASE	typeref:enum:CACHE_BASE::__anon2
+ACCESS_TYPE_LOAD	pin_cache.H	/^        ACCESS_TYPE_LOAD,$/;"	e	enum:CACHE_BASE::__anon2
+ACCESS_TYPE_NUM	pin_cache.H	/^        ACCESS_TYPE_NUM$/;"	e	enum:CACHE_BASE::__anon2
+ACCESS_TYPE_STORE	pin_cache.H	/^        ACCESS_TYPE_STORE,$/;"	e	enum:CACHE_BASE::__anon2
+Access	pin_cache.H	/^bool CACHE<SET,MAX_SETS,STORE_ALLOCATION>::Access(ADDRINT addr, UINT32 size, ACCESS_TYPE accessType)$/;"	f	class:CACHE
+AccessSingleLine	pin_cache.H	/^bool CACHE<SET,MAX_SETS,STORE_ALLOCATION>::AccessSingleLine(ADDRINT addr, ACCESS_TYPE accessType)$/;"	f	class:CACHE
+Accesses	pin_cache.H	/^    CACHE_STATS Accesses() const { return Hits() + Misses();}$/;"	f	class:CACHE_BASE
+Accesses	pin_cache.H	/^    CACHE_STATS Accesses(ACCESS_TYPE accessType) const { return Hits(accessType) + Misses(accessType);}$/;"	f	class:CACHE_BASE
+Associativity	pin_cache.H	/^    UINT32 Associativity() const { return _associativity; }$/;"	f	class:CACHE_BASE
+CACHE	pin_cache.H	/^    CACHE(std::string name, UINT32 cacheSize, UINT32 lineSize, UINT32 associativity)$/;"	f	class:CACHE
+CACHE	pin_cache.H	/^class CACHE : public CACHE_BASE$/;"	c
+CACHE_ALLOC	pin_cache.H	/^namespace CACHE_ALLOC$/;"	n
+CACHE_BASE	pin_cache.H	/^CACHE_BASE::CACHE_BASE(std::string name, UINT32 cacheSize, UINT32 lineSize, UINT32 associativity)$/;"	f	class:CACHE_BASE
+CACHE_BASE	pin_cache.H	/^class CACHE_BASE$/;"	c
+CACHE_DIRECT_MAPPED	pin_cache.H	488;"	d
+CACHE_ROUND_ROBIN	pin_cache.H	489;"	d
+CACHE_SET	pin_cache.H	/^namespace CACHE_SET$/;"	n
+CACHE_TAG	pin_cache.H	/^    CACHE_TAG(ADDRINT tag = 0) { _tag = tag; }$/;"	f	class:CACHE_TAG
+CACHE_TAG	pin_cache.H	/^class CACHE_TAG$/;"	c
+COMPRESSOR	pin_profile.H	/^    COMPRESSOR() { _nextIndex = 0; }$/;"	f	class:COMPRESSOR
+COMPRESSOR	pin_profile.H	/^class COMPRESSOR$/;"	c
+COMPRESSOR_COUNTER	pin_profile.H	/^    COMPRESSOR_COUNTER(UINT32 initCounterSize = defaultInitCounterSize)$/;"	f	class:COMPRESSOR_COUNTER
+COMPRESSOR_COUNTER	pin_profile.H	/^class COMPRESSOR_COUNTER : public COMPRESSOR<KEY, INDEX>$/;"	c
+COUNTER_ARRAY	pin_profile.H	/^class COUNTER_ARRAY$/;"	c
+CacheSize	pin_cache.H	/^    UINT32 CacheSize() const { return _cacheSize; }$/;"	f	class:CACHE_BASE
+CeilLog2	pin_cache.H	/^static inline INT32 CeilLog2(UINT32 n)$/;"	f
+DIRECT_MAPPED	pin_cache.H	/^    DIRECT_MAPPED(UINT32 associativity = 1) { ASSERTX(associativity == 1); }$/;"	f	class:CACHE_SET::DIRECT_MAPPED
+DIRECT_MAPPED	pin_cache.H	/^class DIRECT_MAPPED$/;"	c	namespace:CACHE_SET
+DisableKnobFamily	pin.H	48;"	d
+EnableKnobFamily	pin.H	49;"	d
+Find	pin_cache.H	/^    UINT32 Find(CACHE_TAG tag) { return(_tag == tag); }$/;"	f	class:CACHE_SET::DIRECT_MAPPED
+Find	pin_cache.H	/^    UINT32 Find(CACHE_TAG tag)$/;"	f	class:CACHE_SET::ROUND_ROBIN
+FloorLog2	pin_cache.H	/^static inline INT32 FloorLog2(UINT32 n)$/;"	f
+Flush	pin_cache.H	/^    VOID Flush() { _tag = 0; }$/;"	f	class:CACHE_SET::DIRECT_MAPPED
+Flush	pin_cache.H	/^    VOID Flush()$/;"	f	class:CACHE_SET::ROUND_ROBIN
+Flush	pin_cache.H	/^void CACHE<SET,MAX_SETS,STORE_ALLOCATION>::Flush()$/;"	f	class:CACHE
+Flushes	pin_cache.H	/^    CACHE_STATS Flushes() const { return _numberOfFlushes;}$/;"	f	class:CACHE_BASE
+GIGA	pin_util.H	49;"	d
+GetAssociativity	pin_cache.H	/^    UINT32 GetAssociativity(UINT32 associativity) { return 1; }$/;"	f	class:CACHE_SET::DIRECT_MAPPED
+GetAssociativity	pin_cache.H	/^    UINT32 GetAssociativity(UINT32 associativity) { return _tagsLastIndex + 1; }$/;"	f	class:CACHE_SET::ROUND_ROBIN
+HIT_MISS_NUM	pin_cache.H	/^    static const UINT32 HIT_MISS_NUM = 2;$/;"	m	class:CACHE_BASE
+Hits	pin_cache.H	/^    CACHE_STATS Hits() const { return SumAccess(true);}$/;"	f	class:CACHE_BASE
+Hits	pin_cache.H	/^    CACHE_STATS Hits(ACCESS_TYPE accessType) const { return _access[accessType][true];}$/;"	f	class:CACHE_BASE
+INS_Address	pin_basic.h	60;"	d
+INS_FallThroughAddress	pin_basic.h	71;"	d
+INS_HasFallThrough	pin_basic.h	70;"	d
+INS_HasStaticTarget	pin_basic.h	72;"	d
+INS_Invalid	pin_basic.h	63;"	d
+INS_IsControlFlowChange	pin_basic.h	69;"	d
+INS_IsMemoryRead	pin_basic.h	76;"	d
+INS_IsMemoryWrite	pin_basic.h	77;"	d
+INS_IsSyscall	pin_basic.h	68;"	d
+INS_MemoryReadSize	pin_basic.h	80;"	d
+INS_MemoryWriteSize	pin_basic.h	81;"	d
+INS_Next	pin_basic.h	61;"	d
+INS_Opr	pin_basic.h	64;"	d
+INS_Predicate	pin_basic.h	65;"	d
+INS_Prev	pin_basic.h	62;"	d
+INS_StaticTargetAddress	pin_basic.h	73;"	d
+IncFlushCounter	pin_cache.H	/^    VOID IncFlushCounter()$/;"	f	class:CACHE_BASE
+IncResetCounter	pin_cache.H	/^    VOID IncResetCounter()$/;"	f	class:CACHE_BASE
+IsPower2	pin_cache.H	/^static inline bool IsPower2(UINT32 n)$/;"	f
+KILO	pin_util.H	47;"	d
+LEVEL_BASE_IA32	pin_isa.H	/^namespace LEVEL_BASE_IA32$/;"	n
+LEVEL_CORE	pin_isa.H	/^namespace LEVEL_CORE$/;"	n
+LineSize	pin_cache.H	/^    UINT32 LineSize() const { return _lineSize; }$/;"	f	class:CACHE_BASE
+MAP	pin_profile.H	/^    typedef std::map<KEY, INDEX> MAP;$/;"	t	class:COMPRESSOR
+MEGA	pin_util.H	48;"	d
+Map	pin_profile.H	/^    INDEX Map(KEY key)$/;"	f	class:COMPRESSOR
+Map	pin_profile.H	/^    INDEX Map(KEY key)$/;"	f	class:COMPRESSOR_COUNTER
+Misses	pin_cache.H	/^    CACHE_STATS Misses() const { return SumAccess(false);}$/;"	f	class:CACHE_BASE
+Misses	pin_cache.H	/^    CACHE_STATS Misses(ACCESS_TYPE accessType) const { return _access[accessType][false];}$/;"	f	class:CACHE_BASE
+NumSets	pin_cache.H	/^    UINT32 NumSets() const { return _setIndexMask + 1; }$/;"	f	class:CACHE_BASE
+OPR_Invalid	pin_basic.h	88;"	d
+OPR_Next	pin_basic.h	87;"	d
+PAIR	pin_profile.H	/^    typedef std::pair<const KEY, INDEX> PAIR;$/;"	t	class:COMPRESSOR
+PINAPP_H	pinapp.h	34;"	d
+PINTOOL_UNDEF_USE_GNU	pin_ucontext.h	83;"	d
+PINTOOL_UNDEF_USE_GNU	pin_ucontext.h	91;"	d
+PIN_AInsertCall	pin_basic.h	85;"	d
+PIN_ArrayBaseRoot	pin_basic.h	83;"	d
+PIN_BASIC_H	pin_basic.h	40;"	d
+PIN_CACHE_H	pin_cache.H	40;"	d
+PIN_ERRTYPE	pin-errtype.h	/^} PIN_ERRTYPE;$/;"	t	typeref:enum:__anon4
+PIN_ERRTYPE_H	pin-errtype.h	43;"	d
+PIN_ERR_ACCESS_DENIED	pin-errtype.h	/^    PIN_ERR_ACCESS_DENIED,          \/*!< 0 args. file access denied due to bad permissions *\/$/;"	e	enum:__anon4
+PIN_ERR_ALREADY_ATTACHED	pin-errtype.h	/^    PIN_ERR_ALREADY_ATTACHED,       \/*!< 0 args. pin is already attached to the process. *\/$/;"	e	enum:__anon4
+PIN_ERR_APP_RESUME	pin-errtype.h	/^    PIN_ERR_APP_RESUME,             \/*!< 1 arg:  errno. resuming application failed. *\/$/;"	e	enum:__anon4
+PIN_ERR_ASSERT	pin-errtype.h	/^    PIN_ERR_ASSERT,                 \/*!< 0 args. internal pin assertion has occurred. *\/$/;"	e	enum:__anon4
+PIN_ERR_ATTACH_NYI	pin-errtype.h	/^    PIN_ERR_ATTACH_NYI,             \/*!< 0 arg:  attach to running process is NYI for Pin\/Windows in JIT mode. *\/$/;"	e	enum:__anon4
+PIN_ERR_ATTACH_PID	pin-errtype.h	/^    PIN_ERR_ATTACH_PID,             \/*!< 2 arg:  pid, errno. attach to "pid" failed. *\/$/;"	e	enum:__anon4
+PIN_ERR_ATTACH_PTRACE_SCOPE_1	pin-errtype.h	/^    PIN_ERR_ATTACH_PTRACE_SCOPE_1,  \/*!< 1 arg:  pid, ptrace attach rejected due to sysctl kernel.yama.ptrace_scope. *\/$/;"	e	enum:__anon4
+PIN_ERR_ATTACH_REJECTED	pin-errtype.h	/^    PIN_ERR_ATTACH_REJECTED,        \/*!< 0 arg:  ptrace attach rejected. *\/$/;"	e	enum:__anon4
+PIN_ERR_BAD_OS_FILE	pin-errtype.h	/^    PIN_ERR_BAD_OS_FILE,            \/*!< 0 args. cannot determine os release. *\/$/;"	e	enum:__anon4
+PIN_ERR_BIN32	pin-errtype.h	/^    PIN_ERR_BIN32,                  \/*!< 0 args. 32-bit binary detected. *\/$/;"	e	enum:__anon4
+PIN_ERR_BIN64	pin-errtype.h	/^    PIN_ERR_BIN64,                  \/*!< 0 args. 64-bit binary detected. *\/$/;"	e	enum:__anon4
+PIN_ERR_BLOCKSIG_APP	pin-errtype.h	/^    PIN_ERR_BLOCKSIG_APP,           \/*!< 1 arg: signal number.  Application received asynchronous$/;"	e	enum:__anon4
+PIN_ERR_BLOCKSIG_TOOL	pin-errtype.h	/^    PIN_ERR_BLOCKSIG_TOOL,          \/*!< 1 arg: signal number.  Tool intercepted signal and forwarded$/;"	e	enum:__anon4
+PIN_ERR_CANNOT_EXECUTE_FILE	pin-errtype.h	/^    PIN_ERR_CANNOT_EXECUTE_FILE,    \/*!< 1 arg:  filename. cannot execute application. *\/$/;"	e	enum:__anon4
+PIN_ERR_CANNOT_LOAD_TOOL	pin-errtype.h	/^    PIN_ERR_CANNOT_LOAD_TOOL,       \/*!< 1 arg:  tool name. pin cannot load "tool". *\/$/;"	e	enum:__anon4
+PIN_ERR_CANNOT_RUN	pin-errtype.h	/^    PIN_ERR_CANNOT_RUN,             \/*!< 1 arg:  errno. error in running pin. *\/$/;"	e	enum:__anon4
+PIN_ERR_CHILD_PTRACEME	pin-errtype.h	/^    PIN_ERR_CHILD_PTRACEME,         \/*!< 1 arg:  errno. parent cannot trace the child. *\/$/;"	e	enum:__anon4
+PIN_ERR_CHILD_RESUME	pin-errtype.h	/^    PIN_ERR_CHILD_RESUME,           \/*!< 1 arg:  errno. resuming child failed. *\/$/;"	e	enum:__anon4
+PIN_ERR_CMD_LINE	pin-errtype.h	/^    PIN_ERR_CMD_LINE,               \/*!< 0 args. tool arguments are incorrect. *\/$/;"	e	enum:__anon4
+PIN_ERR_DETACH_PID	pin-errtype.h	/^    PIN_ERR_DETACH_PID,             \/*!< 2 arg:  pid, errno. detach failed. *\/$/;"	e	enum:__anon4
+PIN_ERR_ELF_HEADER	pin-errtype.h	/^    PIN_ERR_ELF_HEADER,             \/*!< 1 arg:  file name. unable to read elf header of "filename".  *\/$/;"	e	enum:__anon4
+PIN_ERR_EMPTY_STRING	pin-errtype.h	/^    PIN_ERR_EMPTY_STRING,           \/*!< 0 args. Empty string passed to conversion utility. *\/$/;"	e	enum:__anon4
+PIN_ERR_EXCEPTION_NEEDS_ADDR	pin-errtype.h	/^    PIN_ERR_EXCEPTION_NEEDS_ADDR,   \/*!< 1 arg: string. Must specify access address for exception. *\/$/;"	e	enum:__anon4
+PIN_ERR_FATAL	pin-errtype.h	/^    PIN_ERR_FATAL,                 \/*!< fatal error, Pin exits after printing message. *\/$/;"	e	enum:__anon3
+PIN_ERR_FILE_NOT_FOUND	pin-errtype.h	/^    PIN_ERR_FILE_NOT_FOUND,         \/*!< 1 arg:  file name. error in application file name or path. *\/$/;"	e	enum:__anon4
+PIN_ERR_ILLEGAL_EXCEPTION	pin-errtype.h	/^    PIN_ERR_ILLEGAL_EXCEPTION,      \/*!< 1 arg: string. Tool raised invalid exception. *\/$/;"	e	enum:__anon4
+PIN_ERR_INTERNAL	pin-errtype.h	/^    PIN_ERR_INTERNAL,               \/*!< 0 args. internal pin error has occurred. *\/$/;"	e	enum:__anon4
+PIN_ERR_INVALID_ADDRESS	pin-errtype.h	/^    PIN_ERR_INVALID_ADDRESS,        \/*!< 1 arg:  address. "address" is invalid. *\/$/;"	e	enum:__anon4
+PIN_ERR_INVALID_ADDRESS_RANGE	pin-errtype.h	/^    PIN_ERR_INVALID_ADDRESS_RANGE,  \/*!< 2 args: low address, high address. address range is invalid. *\/$/;"	e	enum:__anon4
+PIN_ERR_INVALID_PLOAD	pin-errtype.h	/^    PIN_ERR_INVALID_PLOAD,          \/*!< 0 args. invalid pload argument. *\/$/;"	e	enum:__anon4
+PIN_ERR_KNOB_BAD	pin-errtype.h	/^    PIN_ERR_KNOB_BAD,               \/*!< 1 arg:  knob. unknown "knob" on command line. *\/$/;"	e	enum:__anon4
+PIN_ERR_LAST	pin-errtype.h	/^    PIN_ERR_LAST                    \/\/ end sentinel$/;"	e	enum:__anon4
+PIN_ERR_LONG_PATH	pin-errtype.h	/^    PIN_ERR_LONG_PATH,              \/*!< 0 args. fully qualified pathname of pin executable is too long. *\/$/;"	e	enum:__anon4
+PIN_ERR_MS_DOS	pin-errtype.h	/^    PIN_ERR_MS_DOS,                 \/*!< 0 args. ms-dos & win16 application are not supported. *\/$/;"	e	enum:__anon4
+PIN_ERR_NONE	pin-errtype.h	/^    PIN_ERR_NONE = 0,               \/*!< 0 args. no error. *\/$/;"	e	enum:__anon4
+PIN_ERR_NONFATAL	pin-errtype.h	/^    PIN_ERR_NONFATAL               \/*!< non-fatal error *\/$/;"	e	enum:__anon3
+PIN_ERR_NON_NUMERIC_STRING	pin-errtype.h	/^    PIN_ERR_NON_NUMERIC_STRING,     \/*!< 1 arg: string. Non-numeric string passed to conversion utility. *\/$/;"	e	enum:__anon4
+PIN_ERR_NO_APP	pin-errtype.h	/^    PIN_ERR_NO_APP,                 \/*!< 0 args. missing application name. *\/$/;"	e	enum:__anon4
+PIN_ERR_NO_ENTRY_OFFSET	pin-errtype.h	/^    PIN_ERR_NO_ENTRY_OFFSET,        \/*!< 1 arg:  file name. no entry in aux vector. *\/$/;"	e	enum:__anon4
+PIN_ERR_NO_INSTRUMENT	pin-errtype.h	/^    PIN_ERR_NO_INSTRUMENT,          \/*!< 2 args: file name, errno. could not instrument process. *\/$/;"	e	enum:__anon4
+PIN_ERR_NO_PIE	pin-errtype.h	/^    PIN_ERR_NO_PIE,                 \/*!< 1 arg:  file name. pie binaries not supported on this system.  *\/$/;"	e	enum:__anon4
+PIN_ERR_NO_RELOCS	pin-errtype.h	/^    PIN_ERR_NO_RELOCS,              \/*!< 0 args. regular relocations not found, relink with -q.  *\/$/;"	e	enum:__anon4
+PIN_ERR_NUMERIC_FROM_STRING	pin-errtype.h	/^    PIN_ERR_NUMERIC_FROM_STRING,    \/*!< 1 arg: string. Error in numeric to string conversion utility. *\/$/;"	e	enum:__anon4
+PIN_ERR_OUT_OF_MEMORY	pin-errtype.h	/^    PIN_ERR_OUT_OF_MEMORY,          \/*!< 0 args. pin is out of memory. *\/$/;"	e	enum:__anon4
+PIN_ERR_PARSING	pin-errtype.h	/^    PIN_ERR_PARSING,                \/*!< 0 args. command line arguments are incorrect. *\/$/;"	e	enum:__anon4
+PIN_ERR_PIN_INJECTION	pin-errtype.h	/^    PIN_ERR_PIN_INJECTION,          \/*!< 0 arg:  can't inject pin in running process. *\/$/;"	e	enum:__anon4
+PIN_ERR_PREDEFINED_INSTRUMENTATION_FAILED	pin-errtype.h	/^    PIN_ERR_PREDEFINED_INSTRUMENTATION_FAILED, \/*!< 1 arg: string. Specified function can not be instrumented *\/$/;"	e	enum:__anon4
+PIN_ERR_RELINK_APP	pin-errtype.h	/^    PIN_ERR_RELINK_APP,             \/*!< 0 args: application address overlaps with pin, relink. *\/$/;"	e	enum:__anon4
+PIN_ERR_SEVERITY_TYPE	pin-errtype.h	/^} PIN_ERR_SEVERITY_TYPE;$/;"	t	typeref:enum:__anon3
+PIN_ERR_STEP_PID	pin-errtype.h	/^    PIN_ERR_STEP_PID,               \/*!< 2 arg:  pid, errno. single step failed. *\/$/;"	e	enum:__anon4
+PIN_ERR_TOOL	pin-errtype.h	/^    PIN_ERR_TOOL,                   \/*!< 0 args. tool error has been detected. *\/$/;"	e	enum:__anon4
+PIN_ERR_UNSUPPORTED_OS	pin-errtype.h	/^    PIN_ERR_UNSUPPORTED_OS,         \/*!< 0 args. unsupported os. *\/$/;"	e	enum:__anon4
+PIN_ERR_UNSUPPORTED_SYSCALL	pin-errtype.h	/^    PIN_ERR_UNSUPPORTED_SYSCALL,    \/*!< 1 arg: string. System call is not supported by Pin *\/$/;"	e	enum:__anon4
+PIN_ERR_USER_SPECIFIED_ERROR	pin-errtype.h	/^    PIN_ERR_USER_SPECIFIED_ERROR,   \/*!< reserved. internal use only *\/$/;"	e	enum:__anon4
+PIN_ERR_VERSION_SKEW	pin-errtype.h	/^    PIN_ERR_VERSION_SKEW,           \/*!< 0 args. pintool version does not match pin version. *\/$/;"	e	enum:__anon4
+PIN_ERR_WAIT_EXECV	pin-errtype.h	/^    PIN_ERR_WAIT_EXECV,             \/*!< 1 arg:  errno. wait after execv failed. *\/$/;"	e	enum:__anon4
+PIN_ERR_WAIT_FOR_INJECTOR	pin-errtype.h	/^    PIN_ERR_WAIT_FOR_INJECTOR,      \/*!< 2 args: pid, errno. injector "pid" failed to exit. *\/$/;"	e	enum:__anon4
+PIN_ERR_WAIT_PID	pin-errtype.h	/^    PIN_ERR_WAIT_PID,               \/*!< 2 arg:  pid, errno. wait for child failed. *\/$/;"	e	enum:__anon4
+PIN_H	pin.H	35;"	d
+PIN_ISA_H	pin_isa.H	40;"	d
+PIN_PROFILE_H	pin_profile.H	40;"	d
+PIN_UTIL_H	pin_util.H	40;"	d
+PORTABILITY_H	portability.H	32;"	d
+PROFILE	pin_profile.H	272;"	d
+ROUND_ROBIN	pin_cache.H	/^    ROUND_ROBIN(UINT32 associativity = MAX_ASSOCIATIVITY)$/;"	f	class:CACHE_SET::ROUND_ROBIN
+ROUND_ROBIN	pin_cache.H	/^class ROUND_ROBIN$/;"	c	namespace:CACHE_SET
+Replace	pin_cache.H	/^    VOID Replace(CACHE_TAG tag) { _tag = tag; }$/;"	f	class:CACHE_SET::DIRECT_MAPPED
+Replace	pin_cache.H	/^    VOID Replace(CACHE_TAG tag)$/;"	f	class:CACHE_SET::ROUND_ROBIN
+ResetStats	pin_cache.H	/^void CACHE<SET,MAX_SETS,STORE_ALLOCATION>::ResetStats()$/;"	f	class:CACHE
+Resets	pin_cache.H	/^    CACHE_STATS Resets() const { return _numberOfResets;}$/;"	f	class:CACHE_BASE
+STORE_ALLOCATE	pin_cache.H	/^        STORE_ALLOCATE,$/;"	e	enum:CACHE_ALLOC::__anon1
+STORE_ALLOCATION	pin_cache.H	/^    } STORE_ALLOCATION;$/;"	t	namespace:CACHE_ALLOC	typeref:enum:CACHE_ALLOC::__anon1
+STORE_NO_ALLOCATE	pin_cache.H	/^        STORE_NO_ALLOCATE$/;"	e	enum:CACHE_ALLOC::__anon1
+SetAssociativity	pin_cache.H	/^    VOID SetAssociativity(UINT32 associativity) { ASSERTX(associativity == 1); }$/;"	f	class:CACHE_SET::DIRECT_MAPPED
+SetAssociativity	pin_cache.H	/^    VOID SetAssociativity(UINT32 associativity)$/;"	f	class:CACHE_SET::ROUND_ROBIN
+SetCounterName	pin_profile.H	/^    VOID SetCounterName(const std::string & counterName)$/;"	f	class:COMPRESSOR_COUNTER
+SetKeyName	pin_profile.H	/^    VOID SetKeyName(const std::string & keyName)$/;"	f	class:COMPRESSOR
+SetThreshold	pin_profile.H	/^    VOID SetThreshold(const COUNTER& threshold)$/;"	f	class:COMPRESSOR_COUNTER
+SplitAddress	pin_cache.H	/^    VOID SplitAddress(const ADDRINT addr, CACHE_TAG & tag, UINT32 & setIndex) const$/;"	f	class:CACHE_BASE
+SplitAddress	pin_cache.H	/^    VOID SplitAddress(const ADDRINT addr, CACHE_TAG & tag, UINT32 & setIndex, UINT32 & lineIndex) const$/;"	f	class:CACHE_BASE
+StatsLong	pin_cache.H	/^std::ostream & CACHE_BASE::StatsLong(std::ostream & out) const$/;"	f	class:CACHE_BASE
+StringHex	pin_util.H	/^GLOBALFUN std::string StringHex(UINT64 val, UINT32 width=0, CHAR padding=' ')$/;"	f
+StringInt	pin_util.H	/^GLOBALFUN std::string StringInt(UINT64 val, UINT32 width=0, CHAR padding=' ')$/;"	f
+StringLong	pin_profile.H	/^    std::string StringLong () const$/;"	f	class:COMPRESSOR
+StringLong	pin_profile.H	/^    std::string StringLong () const$/;"	f	class:COMPRESSOR_COUNTER
+StringString	pin_util.H	/^GLOBALFUN std::string StringString(std::string val, UINT32 width=0, CHAR padding=' ')$/;"	f
+SumAccess	pin_cache.H	/^    CACHE_STATS SumAccess(bool hit) const$/;"	f	class:CACHE_BASE
+VECTOR	pin_profile.H	/^    typedef std::vector<COUNTER> VECTOR;$/;"	t	class:COMPRESSOR_COUNTER
+__USE_GNU	pin_ucontext.h	82;"	d
+__USE_GNU	pin_ucontext.h	90;"	d
+_access	pin_cache.H	/^    CACHE_STATS _access[ACCESS_TYPE_NUM][HIT_MISS_NUM];$/;"	m	class:CACHE_BASE
+_associativity	pin_cache.H	/^    const UINT32 _associativity;$/;"	m	class:CACHE_BASE
+_cacheSize	pin_cache.H	/^    const UINT32 _cacheSize;$/;"	m	class:CACHE_BASE
+_counterName	pin_profile.H	/^    std::string _counterName;$/;"	m	class:COMPRESSOR_COUNTER
+_counters	pin_profile.H	/^    NUMTYPE _counters[NUM_COUNTERS];$/;"	m	class:COUNTER_ARRAY
+_counters	pin_profile.H	/^    VECTOR _counters;$/;"	m	class:COMPRESSOR_COUNTER
+_keyName	pin_profile.H	/^    std::string _keyName;$/;"	m	class:COMPRESSOR
+_lineShift	pin_cache.H	/^    const UINT32 _lineShift;$/;"	m	class:CACHE_BASE
+_lineSize	pin_cache.H	/^    const UINT32 _lineSize;$/;"	m	class:CACHE_BASE
+_map	pin_profile.H	/^    MAP _map;$/;"	m	class:COMPRESSOR
+_name	pin_cache.H	/^    const std::string _name;$/;"	m	class:CACHE_BASE
+_nextIndex	pin_profile.H	/^    INDEX _nextIndex;$/;"	m	class:COMPRESSOR
+_nextReplaceIndex	pin_cache.H	/^    UINT32 _nextReplaceIndex;$/;"	m	class:CACHE_SET::ROUND_ROBIN
+_numberOfFlushes	pin_cache.H	/^    UINT32 _numberOfFlushes;$/;"	m	class:CACHE_BASE
+_numberOfResets	pin_cache.H	/^    UINT32 _numberOfResets;$/;"	m	class:CACHE_BASE
+_setIndexMask	pin_cache.H	/^    const UINT32 _setIndexMask;$/;"	m	class:CACHE_BASE
+_sets	pin_cache.H	/^    SET _sets[MAX_SETS];$/;"	m	class:CACHE
+_tag	pin_cache.H	/^    ADDRINT _tag;$/;"	m	class:CACHE_TAG
+_tag	pin_cache.H	/^    CACHE_TAG _tag;$/;"	m	class:CACHE_SET::DIRECT_MAPPED
+_tags	pin_cache.H	/^    CACHE_TAG _tags[MAX_ASSOCIATIVITY];$/;"	m	class:CACHE_SET::ROUND_ROBIN
+_tagsLastIndex	pin_cache.H	/^    UINT32 _tagsLastIndex;$/;"	m	class:CACHE_SET::ROUND_ROBIN
+_threshold	pin_profile.H	/^    COUNTER _threshold;$/;"	m	class:COMPRESSOR_COUNTER
+at	pin_profile.H	/^    COUNTER & at(INDEX index) { return _counters.at(index); }$/;"	f	class:COMPRESSOR_COUNTER
+at	pin_profile.H	/^    NUMTYPE & at(UINT32 index)$/;"	f	class:COUNTER_ARRAY
+at	pin_profile.H	/^    const COUNTER & at(INDEX index) const { return _counters.at(index); }$/;"	f	class:COMPRESSOR_COUNTER
+at	pin_profile.H	/^    const NUMTYPE & at(UINT32 index) const$/;"	f	class:COUNTER_ARRAY
+defaultInitCounterSize	pin_profile.H	/^    static const UINT32 defaultInitCounterSize = 8*1024;$/;"	m	class:COMPRESSOR_COUNTER
+getpid_portable	portability.H	/^GLOBALINLINE UINT32 getpid_portable()$/;"	f
+operator !=	pin_profile.H	/^    bool operator!=(const COUNTER_ARRAY& x) const { return ! operator==(x); }$/;"	f	class:COUNTER_ARRAY
+operator <<	pin_cache.H	/^std::ostream & operator<< (std::ostream & out, const CACHE_BASE & cacheBase)$/;"	f
+operator <=	pin_profile.H	/^    bool operator<=(const COUNTER_ARRAY& x) const$/;"	f	class:COUNTER_ARRAY
+operator ==	pin_cache.H	/^    bool operator==(const CACHE_TAG &right) const { return _tag == right._tag; }$/;"	f	class:CACHE_TAG
+operator ==	pin_profile.H	/^    bool operator==(const COUNTER_ARRAY& x) const$/;"	f	class:COUNTER_ARRAY
+operator ADDRINT	pin_cache.H	/^    operator ADDRINT() const { return _tag; }$/;"	f	class:CACHE_TAG
+operator []	pin_profile.H	/^    COUNTER & operator[] (INDEX index) { return _counters[index]; }$/;"	f	class:COMPRESSOR_COUNTER
+operator []	pin_profile.H	/^    NUMTYPE & operator[] (UINT32 index) { return _counters[index]; }$/;"	f	class:COUNTER_ARRAY
+operator []	pin_profile.H	/^    const COUNTER & operator[] (INDEX index) const { return _counters[index]; }$/;"	f	class:COMPRESSOR_COUNTER
+operator []	pin_profile.H	/^    const NUMTYPE & operator[] (UINT32 index) const { return _counters[index]; }$/;"	f	class:COUNTER_ARRAY
+str	pin_profile.H	/^    std::string str() const$/;"	f	class:COUNTER_ARRAY
