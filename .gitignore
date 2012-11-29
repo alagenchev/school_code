@@ -354,3 +354,8 @@
 OS_Project/*.o
 OS_Project/a.out
 *.class
+/research/pin/source/tools/ToolUnitTests/obj-intel64/*
+/research/pin/source/tools/*/obj-intel64/*
+/research/pin/source/tools/ManualExamples/*.log
+/research/pin/source/tools/PinPoints/bin-ia32e/*
+/research/pin/source/tools/CrossIa32Intel64/obj-ia32/*
