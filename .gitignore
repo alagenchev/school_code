@@ -1,10 +1,6 @@
 /research/pin/doc/html/classDEBUGGER__SHELL_1_1ICUSTOM__INSTRUMENTOR-members.html
 *.html
 *html*
-*.exe
-*.so
-*.a
-*.o
 /OS_Project/assignment2/output.c
 /workspace-TSP/TSPArt/TSPArt-grailsPlugins.iml
 /workspace-TSP/TSPArt/TSPArt.iml
