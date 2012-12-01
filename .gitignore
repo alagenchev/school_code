@@ -1,3 +1,11 @@
+/research/pin/source/tools/IvanPinTool/dmtcp_checkpoint
+/research/pin/source/tools/IvanPinTool/dmtcp_coordinator
+/research/pin/source/tools/IvanPinTool/dmtcp_restart
+/research/pin/source/tools/IvanPinTool/dmtcphijack.so
+/research/pin/source/tools/IvanPinTool/file
+/research/pin/source/tools/IvanPinTool/libdmtcpaware.so.1.0.0
+/research/pin/source/tools/IvanPinTool/pin.log
+/research/pin/source/tools/IvanPinTool/testapp.s
 /research/pin/source/tools/AVX2/gatherdpd_intel64_l.exe
 /research/pin/source/tools/AVX2/gatherdpd_intel64_w.exe
 /research/pin/source/tools/AVX2/gatherdps_for_rewrite_add4_app_ia32_w.exe
