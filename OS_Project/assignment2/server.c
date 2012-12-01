@@ -1,0 +1,92 @@
+/* A simple server in the internet domain using TCP
+The port number is passed as an argument */
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/types.h> 
+#include <sys/socket.h>
+#include <netinet/in.h>
+
+#define BUFFER_SIZE 256
+
+void error(const char *msg)
+{
+	perror(msg);
+	exit(1);
+}
+
+int readStuff(int fd, char* buffer)
+{
+	char temp_buffer[8];
+	int n =	read(fd, temp_buffer, 32);
+	if(n > 0)
+		memcpy(buffer, temp_buffer, n);
+	return n;
+}
+
+int main(int argc, char *argv[])
+{
+	int sockfd, newsockfd, portno;
+	socklen_t clilen;
+	char buffer[BUFFER_SIZE];
+	char record[1024];
+	struct sockaddr_in serv_addr, cli_addr;
+	int count = 0;
+	
+	int n;
+	if (argc < 2) {
+		fprintf(stderr,"ERROR, no port provided\n");
+		exit(1);
+	}
+	
+	sockfd = socket(AF_INET, SOCK_STREAM, 0);
+	if (sockfd < 0) 
+		error("ERROR opening socket");
+	
+	bzero(record, 1024);
+	
+	bzero((char *) &serv_addr, sizeof(serv_addr));
+	portno = atoi(argv[1]);
+	serv_addr.sin_family = AF_INET;
+	serv_addr.sin_addr.s_addr = INADDR_ANY;
+	serv_addr.sin_port = htons(portno);
+	if (bind(sockfd, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0) 
+		error("ERROR on binding");
+	listen(sockfd,5);
+	clilen = sizeof(cli_addr);
+	newsockfd = accept(sockfd, (struct sockaddr *) &cli_addr, &clilen);
+	if (newsockfd < 0) 
+		error("ERROR on accept");
+	
+	while(count < 100)
+	{
+		bzero(buffer,BUFFER_SIZE);
+		n = readStuff(newsockfd, buffer);
+		//count = atoi(buffer);
+		if (n < 0) 
+			error("ERROR reading from socket");
+		printf("Received: %s",buffer);
+		
+		if(strcmp(buffer,"exit\n") == 0)
+			break;
+		
+		strcat(record, buffer);
+		
+		sleep(1);
+		
+		bzero(buffer,BUFFER_SIZE);
+		sprintf(buffer,"%d",count);
+		n = write(newsockfd,buffer,strlen(buffer));
+		printf("Sent: %s\n",buffer);
+		if (n < 0) 
+			error("ERROR writing to socket");
+		count++;
+	}
+	
+	printf("Record: %s |\n", record); 
+	
+	close(newsockfd);
+	close(sockfd);
+	return 0; 
+}

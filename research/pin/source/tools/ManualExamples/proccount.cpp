@@ -56,44 +56,53 @@ typedef struct RtnCount
 
 // Linked list of instruction counts for each routine
 RTN_COUNT * RtnList = 0;
-
+VOID instrument_instruction(INS ins)
+{
+        //cout<<"instrumenting instruction: "<< INS_Mnemonic(ins).c_str()<<"in routine "<<routine<<endl;
+        cout<<"instrumenting instruction: "<< INS_Mnemonic(ins).c_str()<<endl;
+}
 // This function is called before every instruction is executed
 VOID instrument_routine(RTN rtn, void *ip)
 {
-    string name = RTN_Name(rtn);
-    if(name == "ivan")
-    {
-        int count;
-        void *stack[50]; // can hold 50, adjust appropriately
-        char **symbols;
+	string name = RTN_Name(rtn);
+	if(name == "ivan")
+	{
+		int count;
+		void *stack[50]; // can hold 50, adjust appropriately
+		char **symbols;
 
-        count = backtrace(stack, 50);
-        symbols = backtrace_symbols(stack, count);
+		count = backtrace(stack, 50);
+		symbols = backtrace_symbols(stack, count);
 
-        for (int i = 0; i < count; i++)
-            puts(symbols[i]);
+		for (int i = 0; i < count; i++)
+			puts(symbols[i]);
 
-        delete(symbols);
+		delete(symbols);
 
 
-        void *array[10];
-        size_t size;
+		void *array[10];
+		size_t size;
 
-        // get void*'s for all entries on the stack
-        size = backtrace(array, 10);
-        //
-        //     // print out all the frames to stderr
-        //       fprintf(stderr, "Error: signal %d:\n", sig);
-        backtrace_symbols_fd(array, size, 2);
+		// get void*'s for all entries on the stack
+		size = backtrace(array, 10);
+		//
+		//     // print out all the frames to stderr
+		//       fprintf(stderr, "Error: signal %d:\n", sig);
+		backtrace_symbols_fd(array, size, 2);
 
-        cout<<"instrumenting routine: " << name<<", ip is: "<<ip<<endl;
-    }
+		cout<<"instrumenting routine: " << name<<", ip is: "<<ip<<endl;
+
+    RTN_Open(rtn);
+		for (INS ins = RTN_InsHead(rtn); INS_Valid(ins); ins = INS_Next(ins))
+		{
+			// Insert a call to docount to increment the instruction counter for this rtn
+			INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)instrument_instruction, IARG_PTR,ins,  IARG_END);
+		}
+		RTN_Close(rtn);
+	}
 }
     
-VOID instrument_instruction(INS ins)
-{
-        cout<<"instrumenting instruction: "<< INS_Mnemonic(ins).c_str()<<endl;
-}
+
 
 const char * StripPath(const char * path)
 {
