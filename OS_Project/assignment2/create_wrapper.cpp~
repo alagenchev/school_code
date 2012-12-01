@@ -183,7 +183,7 @@ void output_replaced_call(std::ofstream &output, std::string func_name, std::vec
 	output<<"\tputs(\"OVERSEER: "<<func_name<<"\");"<<endl;
         output<<"\twhile(1) {"<<endl;
         output<<"\tpid = fork();"<<endl;
-        output<<"\tif(pid != 0) { wait(&status); if(status == 0) exit(0); else puts(\"OVERSEER: Restarting...\"); } else break;"<< endl;
+        output<<"\tif(pid != 0) { wait(&status); if(status == 0) exit(0);} else break;"<< endl;
         output<<"\t}"<<endl;
     }
 
