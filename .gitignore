@@ -353,6 +353,8 @@
 /workspace-TSP/TSPArt/.idea/misc.xml
 /workspace-TSP/TSPArt/.idea/modules.xml
 /workspace-TSP/TSPArt/.idea/scopes/scope_settings.xml
+*.swp
+*.gch
 /workspace-TSP/TSPArt/.idea/vcs.xml
 /workspace-TSP/TSPArt/.idea/workspace.xml
 /theory/self_printing/a.out

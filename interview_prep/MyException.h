@@ -1,6 +1,7 @@
 #ifndef MYEXCEPTION_H
 #define MYEXCEPTOIN_H
 #include <exception>
+#include <string>
 
 using namespace std;
 
