@@ -18,12 +18,12 @@ int main()
 	queue.Remove();
 	queue.Remove();
 
-	queue.printAll();
+	//queue.printAll();
 	queue.Add(7);
 	queue.Add(8);
 	queue.Add(9);
 
-	queue.printAll();
+//	queue.printAll();
 //	cout<<"queue: "<<queue.toString()<<endl;
     
 }
