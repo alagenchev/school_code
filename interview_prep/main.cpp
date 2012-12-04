@@ -14,19 +14,16 @@ int main()
 	queue.Add(4);
 	queue.Add(5);
 
-	int i = queue.Remove();
-
-	queue.printAll();
 
 	queue.Remove();
 	queue.Remove();
 
 	queue.printAll();
-	cout<<"queue: "<<queue.toString()<<endl;
-	queue.Add(6);
-	queue.Add(6);
+	queue.Add(7);
+	queue.Add(8);
+	queue.Add(9);
 
 	queue.printAll();
-	cout<<"queue: "<<queue.toString()<<endl;
+//	cout<<"queue: "<<queue.toString()<<endl;
     
 }

@@ -3,6 +3,7 @@
 #include <exception>
 #include "MyException.h"
 #include <sstream>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -24,7 +25,7 @@ MyQueue::CircularQueue::CircularQueue()
 
 MyQueue::CircularQueue::~CircularQueue()
 {
-	delete [] _queue;
+	delete _queue;
 }
 
 int MyQueue::CircularQueue::getSize()
@@ -34,9 +35,27 @@ int MyQueue::CircularQueue::getSize()
 
 void MyQueue::CircularQueue::Add(int newElement)
 {
-	if(_count == _size)
+	cout<<"adding: "<<newElement<<" size is: " <<_size<<" count is: " << _count<<endl;
+	if(_count == _size && _tail > _head)
 	{
-		throw MyException("queue is full, can't add!");
+		cout<<"REALLOCATING W REALLOC"<<endl;
+		_size++;
+		_queue = (int *) realloc(_queue, _size * sizeof(int)); 
+		_queue[_tail] = newElement;
+	}
+	else if(_count == _size && _tail == _head)
+	{
+		cout<<"Second type of Reallocation"<<endl;
+		_size++;
+		int *newPtr = (int *) calloc(_size, sizeof(int));
+
+		for(int i = _head; i < _size; i++)
+		{
+			newPtr[i - _head] = _queue[i];
+
+			cout<<"newPtr["<<i - _head<<"] = "<<newPtr[i - _head]<<endl;
+		}
+
 	}
 	else if(_tail==_size && _head != 0)
 	{
