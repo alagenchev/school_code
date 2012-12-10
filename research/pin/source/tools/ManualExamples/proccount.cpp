@@ -56,116 +56,71 @@ typedef struct RtnCount
 
 // Linked list of instruction counts for each routine
 RTN_COUNT * RtnList = 0;
-VOID print_register_value(ADDRINT addr)
+VOID print_register_value(INS ins, ADDRINT addr)
 {
+	cout<<"reg value: "<<*(int*)addr<<endl;
     //cout<<"reg value: "<<addr<<endl;
 }
 
 VOID instrument_instruction(INS ins)
 {
-    cout<<"NEW"<<endl;
-
-        int opCount = INS_OperandCount(ins);
-    cout<<"ins opcode: " <<INS_Opcode(ins)<<", mnemonic:"<<INS_Mnemonic(ins).c_str()<<" opCount: "<<opCount<<endl;
-        //cout<<"instrumenting instruction: "<< INS_Mnemonic(ins).c_str()<<"in routine "<<routine<<endl;
-
-
-        if(INS_IsMemoryRead(ins))
-        {
-            cout<<"instr is read"<<endl;
-        }
-        else if(INS_IsMemoryWrite(ins))
-        {
-            cout<<"instr is write"<<endl;
-
-            for(int i = 0; i< opCount;i++)
-            {
-                if(INS_OperandRead(ins,i))
-                {
-                    cout<<"source is: "<<i<<" out of "<<opCount;
-                    if(INS_OperandIsMemory(ins, i))
-                    {
-                        cout<<"memory"<<endl;
-                    }
-                    if(INS_OperandIsImmediate(ins, i))
-                    {
-                        cout<<"immediate"<<endl;
-                    }
-                    if(INS_OperandIsReg(ins, i))
-                    {
-                        cout<<"register ";
-                        REG regist = INS_OperandReg(ins,i);
-                        cout<<REG_StringShort(regist)<<endl;
-                        if(REG_StringShort(regist) == "r13")
-                        INS_InsertCall(ins,IPOINT_BEFORE, (AFUNPTR)print_register_value, IARG_REG_VALUE, REG_EAX, IARG_END);
-                    }
-                    if(INS_OperandIsFixedMemop(ins, i))
-                    {
-                        cout<<"fixed memop"<<endl;
-                    }
-
-                }
-                if(INS_OperandWritten(ins,i))
-                {
-                    cout<<"destination is: "<<i<<" out of "<<opCount;
-
-                    if(INS_OperandIsMemory(ins, i))
-                    {
-                        cout<<"memory"<<endl;
-                    }
-                    if(INS_OperandIsImmediate(ins, i))
-                    {
-                        cout<<"immediate"<<endl;
-                    }
-                    if(INS_OperandIsReg(ins, i))
-                    {
-                        cout<<"register"<<endl;
-                    }
-                    if(INS_OperandIsFixedMemop(ins, i))
-                    {
-                        cout<<"fixed memop"<<endl;
-                    }
-                }
-            }
-        }
+	
 }
+VOID RecordMemWrite(VOID * ip, VOID * addr)
+{
+	    printf("%p: W %d\n", ip, *(int *)addr);
+}
+
 // This function is called before every instruction is executed
 VOID instrument_routine(RTN rtn, void *ip)
 {
 	string name = RTN_Name(rtn);
 	if(name == "ivan")
 	{
-        /*
-		int count;
-		void *stack[50]; // can hold 50, adjust appropriately
-		char **symbols;
-
-		count = backtrace(stack, 50);
-		symbols = backtrace_symbols(stack, count);
-
-		for (int i = 0; i < count; i++)
-			puts(symbols[i]);
-
-		delete(symbols);
-
-*/
-        /*
-		void *array[10];
-		size_t size;
-
-		// get void*'s for all entries on the stack
-		size = backtrace(array, 10);
-		//
-		//     // print out all the frames to stderr
-		//       fprintf(stderr, "Error: signal %d:\n", sig);
-		backtrace_symbols_fd(array, size, 2);
-*/
-
-    RTN_Open(rtn);
+		RTN_Open(rtn);
 		for (INS ins = RTN_InsHead(rtn); INS_Valid(ins); ins = INS_Next(ins))
 		{
-			// Insert a call to docount to increment the instruction counter for this rtn
-			INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)instrument_instruction, IARG_PTR,ins, IARG_END);
+			int opCount = INS_OperandCount(ins);
+
+			if(INS_IsMemoryWrite(ins))
+			{
+				for(int i = 0; i< opCount;i++)
+				{
+					cout<<"next op is: "<<i<<endl;
+					if(INS_OperandIsImmediate(ins,i))
+					{
+						cout<<"immediate"<<INS_OperandImmediate(ins,i)<<endl;
+					}
+					if(INS_MemoryOperandIsWritten(ins,i))
+					{
+						cout<<"writen"<<endl;
+						   INS_InsertPredicatedCall(
+								                   ins, IPOINT_AFTER, (AFUNPTR)RecordMemWrite,
+												                   IARG_INST_PTR,
+																                   IARG_MEMORYOP_EA, i,
+																				                   IARG_END);
+					}
+					/*
+					else if(INS_OperandRead(ins,i))
+					{
+						if(INS_OperandIsReg(ins, i))
+						{
+							cout<<"register ";
+							REG regist = INS_OperandReg(ins,i);
+							cout<<REG_StringShort(regist)<<endl;
+							//if(REG_StringShort(regist) == "r13")
+							//{
+								//	print_register_value(ins, IARG_REG_VALUE, regist, IARG_END);
+								INS_InsertCall(ins,IPOINT_BEFORE, (AFUNPTR)print_register_value, IARG_PTR, ins, IARG_REG_VALUE, regist, IARG_END);
+								INS_InsertCall(ins,IPOINT_AFTER, (AFUNPTR)print_register_value, IARG_PTR, ins, IARG_REG_VALUE, regist, IARG_END);
+							//}
+
+						}
+					}
+					*/
+				}
+			}
+			//		INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)instrument_instruction, IARG_PTR,ins, IARG_END);
 		}
 		RTN_Close(rtn);
 	}
