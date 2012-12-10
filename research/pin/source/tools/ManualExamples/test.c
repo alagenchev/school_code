@@ -2,15 +2,11 @@
 
 void ivan()
 {
-
-   int i = 5;
-    printf("from ivan\n");
+    int i = 666;
 }
 
 int main()
 {
-    ivan();
-    printf("hello world\n");
     ivan();
     return 0;
 }

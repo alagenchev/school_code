@@ -56,10 +56,78 @@ typedef struct RtnCount
 
 // Linked list of instruction counts for each routine
 RTN_COUNT * RtnList = 0;
+VOID print_register_value(ADDRINT addr)
+{
+    //cout<<"reg value: "<<addr<<endl;
+}
+
 VOID instrument_instruction(INS ins)
 {
+    cout<<"NEW"<<endl;
+
+        int opCount = INS_OperandCount(ins);
+    cout<<"ins opcode: " <<INS_Opcode(ins)<<", mnemonic:"<<INS_Mnemonic(ins).c_str()<<" opCount: "<<opCount<<endl;
         //cout<<"instrumenting instruction: "<< INS_Mnemonic(ins).c_str()<<"in routine "<<routine<<endl;
-        cout<<"instrumenting instruction: "<< INS_Mnemonic(ins).c_str()<<endl;
+
+
+        if(INS_IsMemoryRead(ins))
+        {
+            cout<<"instr is read"<<endl;
+        }
+        else if(INS_IsMemoryWrite(ins))
+        {
+            cout<<"instr is write"<<endl;
+
+            for(int i = 0; i< opCount;i++)
+            {
+                if(INS_OperandRead(ins,i))
+                {
+                    cout<<"source is: "<<i<<" out of "<<opCount;
+                    if(INS_OperandIsMemory(ins, i))
+                    {
+                        cout<<"memory"<<endl;
+                    }
+                    if(INS_OperandIsImmediate(ins, i))
+                    {
+                        cout<<"immediate"<<endl;
+                    }
+                    if(INS_OperandIsReg(ins, i))
+                    {
+                        cout<<"register ";
+                        REG regist = INS_OperandReg(ins,i);
+                        cout<<REG_StringShort(regist)<<endl;
+                        if(REG_StringShort(regist) == "r13")
+                        INS_InsertCall(ins,IPOINT_BEFORE, (AFUNPTR)print_register_value, IARG_REG_VALUE, REG_EAX, IARG_END);
+                    }
+                    if(INS_OperandIsFixedMemop(ins, i))
+                    {
+                        cout<<"fixed memop"<<endl;
+                    }
+
+                }
+                if(INS_OperandWritten(ins,i))
+                {
+                    cout<<"destination is: "<<i<<" out of "<<opCount;
+
+                    if(INS_OperandIsMemory(ins, i))
+                    {
+                        cout<<"memory"<<endl;
+                    }
+                    if(INS_OperandIsImmediate(ins, i))
+                    {
+                        cout<<"immediate"<<endl;
+                    }
+                    if(INS_OperandIsReg(ins, i))
+                    {
+                        cout<<"register"<<endl;
+                    }
+                    if(INS_OperandIsFixedMemop(ins, i))
+                    {
+                        cout<<"fixed memop"<<endl;
+                    }
+                }
+            }
+        }
 }
 // This function is called before every instruction is executed
 VOID instrument_routine(RTN rtn, void *ip)
@@ -67,6 +135,7 @@ VOID instrument_routine(RTN rtn, void *ip)
 	string name = RTN_Name(rtn);
 	if(name == "ivan")
 	{
+        /*
 		int count;
 		void *stack[50]; // can hold 50, adjust appropriately
 		char **symbols;
@@ -79,7 +148,8 @@ VOID instrument_routine(RTN rtn, void *ip)
 
 		delete(symbols);
 
-
+*/
+        /*
 		void *array[10];
 		size_t size;
 
@@ -89,14 +159,13 @@ VOID instrument_routine(RTN rtn, void *ip)
 		//     // print out all the frames to stderr
 		//       fprintf(stderr, "Error: signal %d:\n", sig);
 		backtrace_symbols_fd(array, size, 2);
-
-		cout<<"instrumenting routine: " << name<<", ip is: "<<ip<<endl;
+*/
 
     RTN_Open(rtn);
 		for (INS ins = RTN_InsHead(rtn); INS_Valid(ins); ins = INS_Next(ins))
 		{
 			// Insert a call to docount to increment the instruction counter for this rtn
-			INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)instrument_instruction, IARG_PTR,ins,  IARG_END);
+			INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)instrument_instruction, IARG_PTR,ins, IARG_END);
 		}
 		RTN_Close(rtn);
 	}
@@ -148,33 +217,6 @@ VOID Routine(RTN rtn, VOID *v)
     
     RTN_Close(rtn);
 }
-
-// This function is called when the application exits
-// It prints the name and count for each procedure
-VOID Fini(INT32 code, VOID *v)
-{
-    outFile << setw(23) << "Procedure" << " "
-          << setw(15) << "Image" << " "
-          << setw(18) << "Address" << " "
-          << setw(12) << "Calls" << " "
-          << setw(12) << "Instructions" << endl;
-
-    for (RTN_COUNT * rc = RtnList; rc; rc = rc->_next)
-    {
-        if (rc->_icount > 0)
-            outFile << setw(23) << rc->_name << " "
-                  << setw(15) << rc->_image << " "
-                  << setw(18) << hex << rc->_address << dec <<" "
-                  << setw(12) << rc->_rtnCount << " "
-                  << setw(12) << rc->_icount << endl;
-    }
-
-}
-
-/* ===================================================================== */
-/* Print Help Message                                                    */
-/* ===================================================================== */
-
 INT32 Usage()
 {
     cerr << "This Pintool counts the number of times a routine is executed" << endl;
@@ -192,18 +234,12 @@ int main(int argc, char * argv[])
     // Initialize symbol table code, needed for rtn instrumentation
     PIN_InitSymbols();
 
-    outFile.open("proccount.out");
-
     // Initialize pin
     if (PIN_Init(argc, argv)) return Usage();
 
     // Register Routine to be called to instrument rtn
-    RTN_AddInstrumentFunction(Routine, 0);
+    RTN_AddInstrumentFunction(instrument_routine, 0);
 
-    // Register Fini to be called when the application exits
-    PIN_AddFiniFunction(Fini, 0);
-    
-    // Start the program, never returns
     PIN_StartProgram();
     
     return 0;
