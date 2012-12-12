@@ -66,14 +66,23 @@ VOID instrument_instruction(INS ins)
 {
 	
 }
+
 VOID RecordMemWrite(VOID * ip, VOID * addr)
 {
 	    printf("%p: addr: %p, W %d\n", ip,addr, *(int *)addr);
         if(*(int *)addr == 666)
         {
         cout<<"will write"<<endl;
-           *(int *)addr = 999;
+           *(((int *)addr)+1) = 999;
            cout<<"wrote"<<endl;
+        }
+}
+VOID RecordMemRead(VOID * ip, VOID * addr)
+{
+	    printf("%p: addr: %p, R %d\n", ip,addr, *(((int *)addr)+1));
+        if(*(int *)addr == 999)
+        {
+            *(int *)addr = 777;
         }
 }
 
@@ -88,24 +97,38 @@ VOID instrument_routine(RTN rtn, void *ip)
 		{
 			int opCount = INS_OperandCount(ins);
 
+            if(INS_IsMemoryRead(ins))
+            {
+
+				for(int i = 0; i< opCount;i++)
+                {
+                    if(INS_MemoryOperandIsRead(ins,i))
+                    {
+                        INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)RecordMemRead,
+                                IARG_INST_PTR,
+                                IARG_MEMORYOP_EA, i,
+                                IARG_END);
+                    }
+                }
+            }
+
 			if(INS_IsMemoryWrite(ins))
 			{
 				for(int i = 0; i< opCount;i++)
 				{
-					cout<<"next op is: "<<i<<endl;
 					if(INS_OperandIsImmediate(ins,i))
 					{
 						cout<<"immediate "<<INS_OperandImmediate(ins,i)<<endl;
 					}
 					if(INS_MemoryOperandIsWritten(ins,i) && INS_HasFallThrough(ins))
                     {
-                        INS_InsertPredicatedCall(
+                        INS_InsertCall(
                                 ins, IPOINT_BEFORE, (AFUNPTR)RecordMemWrite,
                                 IARG_INST_PTR,
                                 IARG_MEMORYOP_EA, i,
                                 IARG_END);
 
-                        INS_InsertPredicatedCall(
+                        INS_InsertCall(
                                 ins, IPOINT_AFTER, (AFUNPTR)RecordMemWrite,
                                 IARG_INST_PTR,
                                 IARG_MEMORYOP_EA, i,
