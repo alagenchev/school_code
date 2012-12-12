@@ -77,13 +77,17 @@ VOID RecordMemWrite(VOID * ip, VOID * addr)
            cout<<"wrote"<<endl;
         }
 }
-VOID RecordMemRead(VOID * ip, VOID * addr)
+
+VOID RecordMemRead(INS ins, VOID * ip, VOID * addr)
 {
-	    printf("%p: addr: %p, R %d\n", ip,addr, *(((int *)addr)+1));
-        if(*(int *)addr == 999)
-        {
-            *(int *)addr = 777;
-        }
+
+    cout<<"opcode:"<<INS_Opcode(ins)<<", mnemonic: "<<INS_Mnemonic(ins)<<endl;
+    printf("%p: addr: %p, R %d\n", ip,addr, *(((int *)addr)+1));
+    if(*(int *)addr == 666)
+    {
+        cout<<"replacing"<<endl;
+        *(int *)addr = 777;
+    }
 }
 
 // This function is called before every instruction is executed
@@ -100,11 +104,12 @@ VOID instrument_routine(RTN rtn, void *ip)
             if(INS_IsMemoryRead(ins))
             {
 
-				for(int i = 0; i< opCount;i++)
+
+                for(int i = 0; i< opCount;i++)
                 {
                     if(INS_MemoryOperandIsRead(ins,i))
                     {
-                        INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)RecordMemRead,
+                        INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)RecordMemRead,IARG_PTR,ins,
                                 IARG_INST_PTR,
                                 IARG_MEMORYOP_EA, i,
                                 IARG_END);
