@@ -68,7 +68,13 @@ VOID instrument_instruction(INS ins)
 }
 VOID RecordMemWrite(VOID * ip, VOID * addr)
 {
-	    printf("%p: W %d\n", ip, *(int *)addr);
+	    printf("%p: addr: %p, W %d\n", ip,addr, *(int *)addr);
+        if(*(int *)addr == 666)
+        {
+        cout<<"will write"<<endl;
+           *(int *)addr = 999;
+           cout<<"wrote"<<endl;
+        }
 }
 
 // This function is called before every instruction is executed
@@ -89,17 +95,22 @@ VOID instrument_routine(RTN rtn, void *ip)
 					cout<<"next op is: "<<i<<endl;
 					if(INS_OperandIsImmediate(ins,i))
 					{
-						cout<<"immediate"<<INS_OperandImmediate(ins,i)<<endl;
+						cout<<"immediate "<<INS_OperandImmediate(ins,i)<<endl;
 					}
-					if(INS_MemoryOperandIsWritten(ins,i))
-					{
-						cout<<"writen"<<endl;
-						   INS_InsertPredicatedCall(
-								                   ins, IPOINT_AFTER, (AFUNPTR)RecordMemWrite,
-												                   IARG_INST_PTR,
-																                   IARG_MEMORYOP_EA, i,
-																				                   IARG_END);
-					}
+					if(INS_MemoryOperandIsWritten(ins,i) && INS_HasFallThrough(ins))
+                    {
+                        INS_InsertPredicatedCall(
+                                ins, IPOINT_BEFORE, (AFUNPTR)RecordMemWrite,
+                                IARG_INST_PTR,
+                                IARG_MEMORYOP_EA, i,
+                                IARG_END);
+
+                        INS_InsertPredicatedCall(
+                                ins, IPOINT_AFTER, (AFUNPTR)RecordMemWrite,
+                                IARG_INST_PTR,
+                                IARG_MEMORYOP_EA, i,
+                                IARG_END);
+                    }
 					/*
 					else if(INS_OperandRead(ins,i))
 					{
