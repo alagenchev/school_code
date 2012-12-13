@@ -42,29 +42,14 @@ END_LEGAL */
 
 ofstream outFile;
 
-// Holds instruction count for a single procedure
-typedef struct RtnCount
-{
-    string _name;
-    string _image;
-    ADDRINT _address;
-    RTN _rtn;
-    UINT64 _rtnCount;
-    UINT64 _icount;
-    struct RtnCount * _next;
-} RTN_COUNT;
+REG GetScratchReg(UINT32 index);
+ADDRINT GetMemAddress(ADDRINT ea);
+ADDRINT GetMemAddress2(ADDRINT ea);
 
-// Linked list of instruction counts for each routine
-RTN_COUNT * RtnList = 0;
 VOID print_register_value(INS ins, ADDRINT addr)
 {
 	cout<<"reg value: "<<*(int*)addr<<endl;
     //cout<<"reg value: "<<addr<<endl;
-}
-
-VOID instrument_instruction(INS ins)
-{
-	
 }
 
 VOID RecordMemWrite(VOID * ip, VOID * addr)
@@ -83,11 +68,11 @@ VOID RecordMemRead(INS ins, VOID * ip, VOID * addr)
 
     cout<<"opcode:"<<INS_Opcode(ins)<<", mnemonic: "<<INS_Mnemonic(ins)<<endl;
     printf("%p: addr: %p, R %d\n", ip,addr, *(((int *)addr)+1));
-    if(*(int *)addr == 666)
+    /*if(*(int *)addr == 666)
     {
         cout<<"replacing"<<endl;
         *(int *)addr = 777;
-    }
+    }*/
 }
 
 // This function is called before every instruction is executed
@@ -101,6 +86,7 @@ VOID instrument_routine(RTN rtn, void *ip)
 		{
 			int opCount = INS_OperandCount(ins);
 
+                int opcode = INS_Opcode(ins);
             if(INS_IsMemoryRead(ins))
             {
 
@@ -109,10 +95,22 @@ VOID instrument_routine(RTN rtn, void *ip)
                 {
                     if(INS_MemoryOperandIsRead(ins,i))
                     {
-                        INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)RecordMemRead,IARG_PTR,ins,
-                                IARG_INST_PTR,
-                                IARG_MEMORYOP_EA, i,
-                                IARG_END);
+                        /*
+                           INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)RecordMemRead,IARG_PTR,ins,
+                           IARG_INST_PTR,
+                           IARG_MEMORYOP_EA, i,
+                           IARG_END);
+                           */
+
+                        cout<<"opcode:"<<INS_Opcode(ins)<<", mnemonic: "<<INS_Mnemonic(ins)<<endl;
+                        if(INS_Opcode(ins)!= XED_ICLASS_RET_NEAR)
+                        {
+                            REG scratchReg = GetScratchReg(i);
+                            INS_InsertCall(ins, IPOINT_BEFORE, AFUNPTR(GetMemAddress), 
+                                    IARG_MEMORYOP_EA, i, IARG_RETURN_REGS, scratchReg, IARG_END);
+
+                            INS_RewriteMemoryOperand(ins, i, scratchReg);
+                        }
                     }
                 }
             }
@@ -121,12 +119,16 @@ VOID instrument_routine(RTN rtn, void *ip)
 			{
 				for(int i = 0; i< opCount;i++)
 				{
+                    /*
 					if(INS_OperandIsImmediate(ins,i))
 					{
 						cout<<"immediate "<<INS_OperandImmediate(ins,i)<<endl;
 					}
+                    */
 					if(INS_MemoryOperandIsWritten(ins,i) && INS_HasFallThrough(ins))
                     {
+
+                        /*
                         INS_InsertCall(
                                 ins, IPOINT_BEFORE, (AFUNPTR)RecordMemWrite,
                                 IARG_INST_PTR,
@@ -138,85 +140,53 @@ VOID instrument_routine(RTN rtn, void *ip)
                                 IARG_INST_PTR,
                                 IARG_MEMORYOP_EA, i,
                                 IARG_END);
-                    }
-					/*
-					else if(INS_OperandRead(ins,i))
-					{
-						if(INS_OperandIsReg(ins, i))
-						{
-							cout<<"register ";
-							REG regist = INS_OperandReg(ins,i);
-							cout<<REG_StringShort(regist)<<endl;
-							//if(REG_StringShort(regist) == "r13")
-							//{
-								//	print_register_value(ins, IARG_REG_VALUE, regist, IARG_END);
-								INS_InsertCall(ins,IPOINT_BEFORE, (AFUNPTR)print_register_value, IARG_PTR, ins, IARG_REG_VALUE, regist, IARG_END);
-								INS_InsertCall(ins,IPOINT_AFTER, (AFUNPTR)print_register_value, IARG_PTR, ins, IARG_REG_VALUE, regist, IARG_END);
-							//}
+                                */
 
-						}
-					}
-					*/
+                        if(opcode != XED_ICLASS_PUSH)
+                        {
+                            REG scratchReg = GetScratchReg(i);
+                            INS_InsertCall(ins, IPOINT_BEFORE, AFUNPTR(GetMemAddress), 
+                                    IARG_MEMORYOP_EA, i, IARG_RETURN_REGS, scratchReg, IARG_END);
+
+                            INS_RewriteMemoryOperand(ins, i, scratchReg);
+                        }
+
+                    }
 				}
 			}
-			//		INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)instrument_instruction, IARG_PTR,ins, IARG_END);
 		}
 		RTN_Close(rtn);
 	}
 }
     
-
-
-const char * StripPath(const char * path)
+REG GetScratchReg(UINT32 index)
 {
-    const char * file = strrchr(path,'/');
-    if (file)
-        return file+1;
-    else
-        return path;
-}
+    static std::vector<REG> regs;
 
-// Pin calls this function every time a new rtn is executed
-VOID Routine(RTN rtn, VOID *v)
-{
-    
-    // Allocate a counter for this routine
-    RTN_COUNT * rc = new RTN_COUNT;
-
-    // The RTN goes away when the image is unloaded, so save it now
-    // because we need it in the fini
-    rc->_name = RTN_Name(rtn);
-    rc->_image = StripPath(IMG_Name(SEC_Img(RTN_Sec(rtn))).c_str());
-    rc->_address = RTN_Address(rtn);
-    rc->_icount = 0;
-    rc->_rtnCount = 0;
-
-    // Add to list of routines
-    rc->_next = RtnList;
-    RtnList = rc;
-            
-    RTN_Open(rtn);
-            
-    // Insert a call at the entry point of a routine to increment the call count
-    RTN_InsertCall(rtn, IPOINT_BEFORE, (AFUNPTR)instrument_routine, IARG_PTR, rtn, IARG_END);
-    
-    /*
-    // For each instruction of the routine
-    for (INS ins = RTN_InsHead(rtn); INS_Valid(ins); ins = INS_Next(ins))
+    while (index >= regs.size())
     {
-        // Insert a call to docount to increment the instruction counter for this rtn
-        INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)instrument_instruction, IARG_PTR,ins, IARG_END);
+        REG reg = PIN_ClaimToolRegister();
+        if (reg == REG_INVALID())
+        {
+            std::cerr << "*** Ran out of tool registers" << std::endl;
+            PIN_ExitProcess(1);
+            /* does not return */
+        }
+        regs.push_back(reg);
     }
-*/
-    
-    RTN_Close(rtn);
+
+    return regs[index];
 }
-INT32 Usage()
+
+ADDRINT GetMemAddress2(ADDRINT ea)
 {
-    cerr << "This Pintool counts the number of times a routine is executed" << endl;
-    cerr << "and the number of instructions executed in a routine" << endl;
-    cerr << endl << KNOB_BASE::StringKnobSummary() << endl;
-    return -1;
+    return ea;
+}
+
+ADDRINT GetMemAddress(ADDRINT ea)
+{
+    ea++;
+    return ea;
 }
 
 /* ===================================================================== */
@@ -227,14 +197,8 @@ int main(int argc, char * argv[])
 {
     // Initialize symbol table code, needed for rtn instrumentation
     PIN_InitSymbols();
-
-    // Initialize pin
-    if (PIN_Init(argc, argv)) return Usage();
-
-    // Register Routine to be called to instrument rtn
+    PIN_Init(argc, argv);
     RTN_AddInstrumentFunction(instrument_routine, 0);
-
     PIN_StartProgram();
-    
     return 0;
 }
