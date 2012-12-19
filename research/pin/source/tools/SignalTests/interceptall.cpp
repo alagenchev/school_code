@@ -37,6 +37,7 @@ END_LEGAL */
 #include <pin.H>
 #include <signal.h>
 #include <iostream>
+#include<stdio.h>
 
 #ifdef TARGET_BSD
  #ifndef SIGRTMIN
@@ -50,26 +51,98 @@ END_LEGAL */
  #endif
 #endif
 
-static BOOL Intercept(THREADID, INT32, CONTEXT *, BOOL, const EXCEPTION_INFO *, VOID *);
+ADDRINT mine;
+static CONTEXT saved;
 
+static BOOL Intercept(THREADID, INT32, CONTEXT *, BOOL, const EXCEPTION_INFO * ex, VOID *);
+static VOID SysBefore(ADDRINT ip, ADDRINT num, ADDRINT arg0, ADDRINT arg1, ADDRINT arg2, ADDRINT arg3, ADDRINT arg4, ADDRINT arg5);
+
+VOID SysBefore(ADDRINT ip,ADDRINT raddr, ADDRINT num, ADDRINT arg0, ADDRINT arg1, ADDRINT arg2, ADDRINT arg3, ADDRINT arg4, ADDRINT arg5)
+{
+
+    if(num == 1)
+    {
+        //mine = ip;
+        printf("at ip: 0x%lx,at return address: %p, syscall: %ld(0x%lx, 0x%lx, 0x%lx, 0x%lx, 0x%lx, 0x%lx)\n",
+                (unsigned long)ip,
+                raddr,
+                (long)num,
+                (unsigned long)arg0,
+                (unsigned long)arg1,
+                (unsigned long)arg2,
+                (unsigned long)arg3,
+                (unsigned long)arg4,
+                (unsigned long)arg5);
+    }
+}
+
+
+VOID SyscallEntry(THREADID threadIndex, CONTEXT *ctxt, SYSCALL_STANDARD std, VOID *v)
+{
+    SysBefore(PIN_GetContextReg(ctxt, REG_INST_PTR),
+PIN_GetContextReg(ctxt, LEVEL_BASE::REG_RSP),
+            PIN_GetSyscallNumber(ctxt, std),
+            PIN_GetSyscallArgument(ctxt, std, 0),
+            PIN_GetSyscallArgument(ctxt, std, 1),
+            PIN_GetSyscallArgument(ctxt, std, 2),
+            PIN_GetSyscallArgument(ctxt, std, 3),
+            PIN_GetSyscallArgument(ctxt, std, 4),
+            PIN_GetSyscallArgument(ctxt, std, 5));
+}
+
+VOID GetReturnAddress(CONTEXT * context)
+{
+    cout<<"in get return address ";
+    ADDRINT temp = PIN_GetContextReg(context, LEVEL_BASE::REG_RSP);
+    mine = temp;
+    printf("rsp: %p\n", temp);
+    PIN_SaveContext(context,&saved);
+}
+
+VOID instrument_routine(RTN rtn, void *ip)
+{
+	string name = RTN_Name(rtn);
+	if(name == "helloworld")
+	{
+        RTN_Open(rtn);
+        INS ins = RTN_InsHead(rtn);
+        INS_InsertCall(ins, IPOINT_BEFORE, AFUNPTR(GetReturnAddress),IARG_CONTEXT,IARG_END);
+        RTN_Close(rtn);
+
+	}
+}
 
 int main(int argc, char **argv)
 {
+
+    PIN_InitSymbols();    
     PIN_Init(argc, argv);
 
+    RTN_AddInstrumentFunction(instrument_routine, 0);
+    
     for (int sig = 1;  sig < SIGRTMIN;  sig++)
     {
         PIN_InterceptSignal(sig, Intercept, 0);
         PIN_UnblockSignal(sig, TRUE);
     }
 
+    PIN_AddSyscallEntryFunction(SyscallEntry,0);
+
     PIN_StartProgram();
     return 0;
 }
 
 
-static BOOL Intercept(THREADID, INT32 sig, CONTEXT *, BOOL, const EXCEPTION_INFO *, VOID *)
+static BOOL Intercept(THREADID, INT32 sig, CONTEXT * context, BOOL, const EXCEPTION_INFO * ex, VOID *)
 {
     std::cerr << "Intercepted signal " << sig << std::endl;
-    return TRUE;
+    cout<<PIN_ExceptionToString(ex)<<endl;
+    printf("rip:%p\n",PIN_GetContextReg(context, REG_INST_PTR));
+    ADDRINT temp = PIN_GetContextReg(context, LEVEL_BASE::REG_RSP);
+    printf("rsp: %p\n", temp);
+    printf("mine: %p\n", mine);
+    PIN_SetContextReg(context,REG_INST_PTR, mine );
+    //PIN_ExecuteAt(&saved);
+    context = &saved;
+    return false;
 }
