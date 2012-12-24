@@ -39,77 +39,102 @@ END_LEGAL */
 #include <iostream>
 #include<stdio.h>
 
-#ifdef TARGET_BSD
- #ifndef SIGRTMIN
-  #define SIGRTMIN 128
- #endif
-#endif
-
-#ifdef TARGET_MAC
- #ifndef SIGRTMIN
-  #define SIGRTMIN 32
- #endif
-#endif
-
-ADDRINT mine;
-static CONTEXT saved;
+static CONTEXT saved_context;
 
 static BOOL Intercept(THREADID, INT32, CONTEXT *, BOOL, const EXCEPTION_INFO * ex, VOID *);
-static VOID SysBefore(ADDRINT ip, ADDRINT num, ADDRINT arg0, ADDRINT arg1, ADDRINT arg2, ADDRINT arg3, ADDRINT arg4, ADDRINT arg5);
 
-VOID SysBefore(ADDRINT ip,ADDRINT raddr, ADDRINT num, ADDRINT arg0, ADDRINT arg1, ADDRINT arg2, ADDRINT arg3, ADDRINT arg4, ADDRINT arg5)
+VOID PrintContext(const CONTEXT * ctxt);
+
+VOID GetCheckpoint(CONTEXT * context)
 {
+    cout<<"saving checkpoint"<<endl;
 
-    if(num == 1)
-    {
-        //mine = ip;
-        printf("at ip: 0x%lx,at return address: %p, syscall: %ld(0x%lx, 0x%lx, 0x%lx, 0x%lx, 0x%lx, 0x%lx)\n",
-                (unsigned long)ip,
-                raddr,
-                (long)num,
-                (unsigned long)arg0,
-                (unsigned long)arg1,
-                (unsigned long)arg2,
-                (unsigned long)arg3,
-                (unsigned long)arg4,
-                (unsigned long)arg5);
-    }
+    PrintContext(context);
+    PIN_SaveContext(context,&saved_context);
 }
 
+ADDRINT mine;
 
-VOID SyscallEntry(THREADID threadIndex, CONTEXT *ctxt, SYSCALL_STANDARD std, VOID *v)
+VOID PrintContext(const CONTEXT * ctxt)
 {
-    SysBefore(PIN_GetContextReg(ctxt, REG_INST_PTR),
-PIN_GetContextReg(ctxt, LEVEL_BASE::REG_RSP),
-            PIN_GetSyscallNumber(ctxt, std),
-            PIN_GetSyscallArgument(ctxt, std, 0),
-            PIN_GetSyscallArgument(ctxt, std, 1),
-            PIN_GetSyscallArgument(ctxt, std, 2),
-            PIN_GetSyscallArgument(ctxt, std, 3),
-            PIN_GetSyscallArgument(ctxt, std, 4),
-            PIN_GetSyscallArgument(ctxt, std, 5));
+    cout << "ip:    " <<hex<< PIN_GetContextReg( ctxt, REG_INST_PTR ) << endl;
+    cout << "gax:   " << hex<< PIN_GetContextReg( ctxt, REG_GAX )<<dec << endl;
+    cout << "gbx:   " << hex<< PIN_GetContextReg( ctxt, REG_GBX ) <<dec<< endl;
+    cout << "gcx:   " << hex<< PIN_GetContextReg( ctxt, REG_GCX ) <<dec<< endl;
+    cout << "gdx:   " << hex<< PIN_GetContextReg( ctxt, REG_GDX ) <<dec<< endl;
+    cout << "gsi:   " << hex<< PIN_GetContextReg( ctxt, REG_GSI ) <<dec<< endl;
+    cout << "gdi:   " << hex<< PIN_GetContextReg( ctxt, REG_GDI ) <<dec<< endl;
+    cout << "gbp:   " << hex<< PIN_GetContextReg( ctxt, REG_GBP ) <<dec<< endl;
+    cout << "sp:    " << hex<< PIN_GetContextReg( ctxt, REG_STACK_PTR ) <<dec<< endl;
+
+    cout << "ss:    " << hex<< PIN_GetContextReg( ctxt, REG_SEG_SS ) <<dec<< endl;
+    cout << "cs:    " << hex<< PIN_GetContextReg( ctxt, REG_SEG_CS ) <<dec<< endl;
+    cout << "ds:    " << hex<< PIN_GetContextReg( ctxt, REG_SEG_DS ) <<dec<< endl;
+    cout << "es:    " << hex<< PIN_GetContextReg( ctxt, REG_SEG_ES ) <<dec<< endl;
+    cout << "fs:    " << hex<< PIN_GetContextReg( ctxt, REG_SEG_FS ) <<dec<< endl;
+    cout << "gs:    " << hex<< PIN_GetContextReg( ctxt, REG_SEG_GS ) <<dec<< endl;
+    cout << "gflags:" << hex<< PIN_GetContextReg( ctxt, REG_GFLAGS ) <<dec<< endl;
+    cout << endl;
 }
 
-VOID GetReturnAddress(CONTEXT * context)
+VOID Before(CONTEXT * ctxt)
 {
-    cout<<"in get return address ";
-    ADDRINT temp = PIN_GetContextReg(context, LEVEL_BASE::REG_RSP);
-    mine = temp;
-    printf("rsp: %p\n", temp);
-    PIN_SaveContext(context,&saved);
+    ADDRINT BeforeIP = (ADDRINT)PIN_GetContextReg( ctxt, REG_INST_PTR);
+    cout << "Before: IP = " << hex << BeforeIP << dec << endl;
+    //PrintContext(ctxt);
+    /*
+       ADDRINT BeforeIP = (ADDRINT)PIN_GetContextReg( ctxt, REG_INST_PTR);
+       ADDRINT BeforeRBP = (ADDRINT)PIN_GetContextReg( ctxt, REG_EBP_PTR);
+       ADDRINT BeforeRSP = (ADDRINT)PIN_GetContextReg( ctxt, REG_STACK_PTR);
+       mine = BeforeIP;
+       cout << "Before: IP = " << hex << BeforeIP << dec << endl;
+       cout << "Before: RBP = " << hex << BeforeRBP << dec << endl;
+       cout << "Before: RSP = " << hex << BeforeRSP << dec << endl;
+       */
 }
 
 VOID instrument_routine(RTN rtn, void *ip)
 {
-	string name = RTN_Name(rtn);
-	if(name == "helloworld")
-	{
-        RTN_Open(rtn);
-        INS ins = RTN_InsHead(rtn);
-        INS_InsertCall(ins, IPOINT_BEFORE, AFUNPTR(GetReturnAddress),IARG_CONTEXT,IARG_END);
-        RTN_Close(rtn);
+    string name = RTN_Name(rtn);
+    RTN_Open(rtn);
+    INS ins = RTN_InsHead(rtn);
+    if(name == "helloworld")
+    {
 
-	}
+        /*
+           const UINT32 max_r = INS_MaxNumRRegs(ins);
+
+           for( UINT32 i=0; i < max_r; i++ )
+           {
+           const REG reg =  INS_RegR(ins, i );
+           if( REG_is_gr(reg) )
+           {
+           cout<<"read register: "<<REG_StringShort(reg)<<" "<<REG_FullRegName(reg)
+           <<", val: "<<""<<endl;
+           }
+           }
+
+           const UINT32 max_w = INS_MaxNumWRegs(ins);            
+
+           for( UINT32 i=0; i < max_w; i++ )
+           {
+           const REG reg =  INS_RegW(ins, i );
+           if( REG_is_gr(reg) )
+           {
+
+           cout<<"write register: "<<REG_StringShort(reg)<<" "<<REG_FullRegName(reg)
+           <<", val: "<<""<<endl;
+           }
+           }
+           */
+        INS_InsertCall(ins, IPOINT_BEFORE, AFUNPTR(GetCheckpoint),IARG_CONTEXT,IARG_END);
+
+    }
+
+     //   INS_InsertCall(ins, IPOINT_BEFORE, AFUNPTR(Before),IARG_CONTEXT,IARG_END);
+
+    RTN_Close(rtn);
+
 }
 
 int main(int argc, char **argv)
@@ -126,8 +151,6 @@ int main(int argc, char **argv)
         PIN_UnblockSignal(sig, TRUE);
     }
 
-    PIN_AddSyscallEntryFunction(SyscallEntry,0);
-
     PIN_StartProgram();
     return 0;
 }
@@ -135,14 +158,73 @@ int main(int argc, char **argv)
 
 static BOOL Intercept(THREADID, INT32 sig, CONTEXT * context, BOOL, const EXCEPTION_INFO * ex, VOID *)
 {
+    //PIN_ExecuteAt(&saved);
+    //context = &saved_context;
     std::cerr << "Intercepted signal " << sig << std::endl;
     cout<<PIN_ExceptionToString(ex)<<endl;
-    printf("rip:%p\n",PIN_GetContextReg(context, REG_INST_PTR));
-    ADDRINT temp = PIN_GetContextReg(context, LEVEL_BASE::REG_RSP);
-    printf("rsp: %p\n", temp);
-    printf("mine: %p\n", mine);
-    PIN_SetContextReg(context,REG_INST_PTR, mine );
-    //PIN_ExecuteAt(&saved);
-    context = &saved;
+    //printf("rip:%p\n",PIN_GetContextReg(context, REG_INST_PTR));
+ //   PIN_SetContextReg(context,REG_INST_PTR, mine);
+ //
+
+    //cout<<"register: "<<REG_FullRegName(REG_INST_PTR)<<endl;
+    /*
+    for(int i = 0; i < REG_LAST; i++)
+    {
+    }
+    */
+
+
+    cout<<"before setting:"<<endl;
+    PrintContext(context);
+    ADDRINT temp = PIN_GetContextReg(&saved_context, REG_INST_PTR );
+    PIN_SetContextReg(context,REG_INST_PTR, temp);
+
+    temp = PIN_GetContextReg(&saved_context, REG_GAX );
+    PIN_SetContextReg(context,REG_GAX, temp);
+
+    temp = PIN_GetContextReg(&saved_context, REG_GBX );
+    PIN_SetContextReg(context,REG_GBX, temp);
+
+    temp = PIN_GetContextReg(&saved_context, REG_GCX );
+    PIN_SetContextReg(context,REG_GCX, temp);
+
+    temp = PIN_GetContextReg(&saved_context, REG_GDX );
+    PIN_SetContextReg(context,REG_GDX, temp);
+
+    temp = PIN_GetContextReg(&saved_context, REG_GSI );
+    PIN_SetContextReg(context,REG_GSI, temp);
+
+    temp = PIN_GetContextReg(&saved_context, REG_GDI );
+    PIN_SetContextReg(context,REG_GDI, temp);
+
+    temp = PIN_GetContextReg(&saved_context, REG_GBP );
+    PIN_SetContextReg(context,REG_GBP, temp);
+
+    temp = PIN_GetContextReg(&saved_context, REG_STACK_PTR );
+    PIN_SetContextReg(context,REG_STACK_PTR, temp);
+
+    temp = PIN_GetContextReg(&saved_context, REG_SEG_SS );
+    PIN_SetContextReg(context,REG_SEG_SS, temp);
+
+    temp = PIN_GetContextReg(&saved_context, REG_SEG_CS );
+    PIN_SetContextReg(context,REG_SEG_CS, temp);
+
+    temp = PIN_GetContextReg(&saved_context, REG_SEG_DS );
+    PIN_SetContextReg(context,REG_SEG_DS, temp);
+
+    temp = PIN_GetContextReg(&saved_context, REG_SEG_ES );
+    PIN_SetContextReg(context,REG_SEG_ES, temp);
+
+    temp = PIN_GetContextReg(&saved_context, REG_SEG_FS );
+    PIN_SetContextReg(context,REG_SEG_FS, temp);
+
+    temp = PIN_GetContextReg(&saved_context, REG_SEG_GS );
+    PIN_SetContextReg(context,REG_SEG_GS, temp);
+
+    temp = PIN_GetContextReg(&saved_context, REG_GFLAGS );
+    PIN_SetContextReg(context,REG_GFLAGS, temp);
+
+    cout<<"after setting:"<<endl;
+    PrintContext(context);
     return false;
 }
