@@ -8,6 +8,7 @@ public class BasicBlock
 	private ArrayList<Edge> _outgoingEdges;
 	private int _id;
 	private String _description;
+	private int _index;
 	
 	public BasicBlock(String description)
 	{
@@ -57,5 +58,33 @@ public class BasicBlock
 	public void setDescription(String description)
 	{
 		_description = description;
+	}
+	
+	@Override
+	public String toString()
+	{
+		StringBuilder builder = new StringBuilder();
+		builder.append("BasicBlock: ");
+		builder.append(_id );
+		builder.append(", description: ");
+		builder.append(_description );
+		builder.append(", isExit: ");
+		builder.append(_isExit);
+		builder.append(", edges: ");
+		//append outgoing edges`
+		for(Edge edge: _outgoingEdges)
+		{
+			builder.append(edge);
+			builder.append(", ");
+		}
+		return builder.toString();
+	}
+	public int getIndex()
+	{
+		return _index;
+	}
+	public void setIndex(int index)
+	{
+		_index = index;
 	}
 }

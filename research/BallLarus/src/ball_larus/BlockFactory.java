@@ -8,6 +8,16 @@ public class BlockFactory
 	{
 		idGen = 0;
 	}
+	
+	public BasicBlock GetBlock(int id, String description, boolean isExit)
+	{
+		BasicBlock block = GetBlock(description);
+		block.setId(id);
+		block.setIsExit(isExit);
+		
+		return block;
+	}
+	
 	public BasicBlock GetBlock(String description, boolean isExit)
 	{
 		BasicBlock block = GetBlock(description);

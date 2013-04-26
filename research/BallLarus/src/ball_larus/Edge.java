@@ -5,6 +5,7 @@ public class Edge
 	private BasicBlock _start;
 	private BasicBlock _end;
 	private int _value;
+	private String _description;
 	
 	public Edge()
 	{
@@ -40,6 +41,22 @@ public class Edge
 	public void setValue(int value)
 	{
 		_value = value;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return _start.getId() + " -> " + _end.getId();
+	}
+
+	public String getDescription()
+	{
+		return _description;
+	}
+
+	public void setDescription(String description)
+	{
+		_description = description;
 	}
 	
 }

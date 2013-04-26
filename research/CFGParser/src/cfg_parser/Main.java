@@ -1,7 +1,7 @@
 package cfg_parser;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 import ball_larus.*;
@@ -11,57 +11,105 @@ public class Main
 
 	/**
 	 * @param args
-	 * @throws Exception 
+	 * @throws Exception
 	 */
 	public static void main(String[] args) throws Exception
 	{
 		BlockFactory factory = new BlockFactory();
-		
+
 		BasicBlockParser parser = new BasicBlockParser(factory);
-		FileReader reader = new FileReader("iwconfig.c.013t.cfg");
+		String file = "/home/alagenchev/school_code/research/research_software/sudo-1.8.0/src/sudo.c.013t.cfg";
+		FileReader reader = new FileReader(file);
 		Scanner scanner = new Scanner(reader);
 		boolean finish = false;
 		String line = "";
-		String bbl = "";
-		while (scanner.hasNext())
+		String label = "";
+		
+		boolean inLabel = false;
+		while(scanner.hasNext())
 		{
-			if(!finish)
+			line = scanner.nextLine();
+			
+			if(line.startsWith("<L") && line.endsWith(">:"))
 			{
-				line = scanner.nextLine();
-				line+="|";
+				inLabel = true;
+			}
+			else if(inLabel && line.trim().equals(""))
+			{
+				System.out.println("label: " + label);
+				inLabel = false;
+				label = "";
 			}
 			
-			if(line.contains("}"))
+			if(inLabel)
 			{
-				finish = true;
-			}
-			
-			if( line.indexOf("<bb ") == 0 && line.contains(">:") || finish)
-			{
-				if(bbl!=null && line!="")
-				{
-					parser.parseBBL(bbl);
-				}
-				if(finish)
-				{
-					break;
-				}
-				
-				bbl = new String();
-				bbl+=line;
-			}
-			else
-			{
-				bbl+=line;
-				
+				label += line;
+				label+="|";
 			}
 		}
 		
-		String graph = parser.BlocksToDOT();
-		System.out.println(graph);
+		
+		
+		reader.close();
+		System.exit(0);
+		reader = new FileReader(file);
+		scanner = new Scanner(reader);
+		
+		line = "";
+		String bbl = "";
+		while (scanner.hasNext())
+		{
+			if( !finish )
+			{
+				line = scanner.nextLine();
+				line += "|";
+			}
+
+			if( line.contains("}") )
+			{
+				finish = true;
+			}
+
+			if( line.startsWith("<bb ") && line.endsWith(">:") || finish )
+			{
+				if( bbl != null && line != "" )
+				{
+					parser.parseBBL(bbl);
+				}
+				if( finish )
+				{
+					break;
+				}
+
+				bbl = new String();
+				bbl += line;
+			}
+			else
+			{
+				bbl += line;
+
+			}
+		}
+		
+		
+
+		
+		BallLarus larus = new BallLarus();
+		ArrayList<BasicBlock> blocks = parser.GetBlocks();
+		larus.CalculateValues(blocks);
+		String graph = larus.GetDOT(blocks);
+		
+		
+		//String graph = parser.BlocksToDOT();
+
+		PrintWriter writer = new PrintWriter(
+				"/home/alagenchev/parser_graph.dot", "UTF-8");
+		graph = graph.replace("|", "\\n");
+		writer.println(graph);
+		writer.close();
+
+		System.out.println("done");
 
 	}
-
-
 
 }

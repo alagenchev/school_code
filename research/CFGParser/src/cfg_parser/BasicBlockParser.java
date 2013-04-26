@@ -44,7 +44,9 @@ public class BasicBlockParser
 		ArrayList<Edge> edges = new ArrayList<Edge>();
 		for (BasicBlock block : blocks)
 		{
-			edges.addAll(block.getOutgoingEdges());
+			ArrayList<Edge> myEdges = block.getOutgoingEdges();
+			
+			edges.addAll(myEdges);
 			builder.append(block.getId() + " [label=\""
 					+ block.getDescription() + "\"];\n");
 
@@ -61,6 +63,7 @@ public class BasicBlockParser
 			builder.append("->");
 			builder.append(edge.getEnd().getId());
 			builder.append("[label=");
+			builder.append(edge.getDescription() + ", ");
 			builder.append(edge.getValue());
 			builder.append("];\n");
 			
@@ -85,7 +88,7 @@ public class BasicBlockParser
 		for (int i = 0; i < _blocks.size(); i++)
 		{
 			BasicBlock current = _blocks.get(i);
-
+			current.setIndex(i);
 			if( current.getDescription() == "Start" && i < _blocks.size() - 1 )
 			{
 				Edge newEdge = new Edge(current, _blocks.get(i + 1));
@@ -100,10 +103,23 @@ public class BasicBlockParser
 					current.getOutgoingEdges().add(edge);
 				}
 			}
+			
+			for(int j = 0; j < current.getOutgoingEdges().size(); j++)
+			{
+				if(j == 0)
+				{
+					current.getOutgoingEdges().get(0).setDescription("True");
+				}
+				else
+				{
+					current.getOutgoingEdges().get(j).setDescription("False");
+				}
+			}
 		}
+		
 		return _blocks;
 	}
-
+	
 	public void parseBBL(String line)
 	{
 		String originalLine = line;
@@ -120,6 +136,7 @@ public class BasicBlockParser
 		ArrayList<Integer> edges = new ArrayList<Integer>();
 
 		int next = line.indexOf('|');
+		boolean addedNextEdge = false;
 		while (next != -1)
 		{
 			next++;// skip over the |
@@ -141,16 +158,18 @@ public class BasicBlockParser
 					edges.add(id);
 				}
 			}
-			else if( temp.contains("exit") || temp.contains("return") )
-			{
-				edges.add(-666);
-			}
 			else if( !originalLine.contains("goto")
-					&& !originalLine.contains("exit")
-					&& !originalLine.contains("return ") )
+					&& !originalLine.contains("exit (")
+					&& !originalLine.contains("return ") 
+					&& !addedNextEdge)
 			{
 				edges.add(block.getId() + 1);// point to next block
-				break;
+				addedNextEdge = true;
+			}
+			
+			if( temp.contains("exit (") || temp.contains("return") )
+			{
+				edges.add(-666);
 			}
 
 			line = line.substring(next, line.length());
