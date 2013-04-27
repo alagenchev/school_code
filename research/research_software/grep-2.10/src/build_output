@@ -1,0 +1,3 @@
+#!/bin/bash
+
+gcc -g -Wall -shared -fPIC -o liboverride.so override.c -ldl

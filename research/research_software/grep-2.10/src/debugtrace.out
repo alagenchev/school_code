@@ -1,0 +1,6131 @@
+Call main
+| Call set_program_name
+| | Call _dl_make_stack_executable
+| | | Call _dl_rtld_di_serinfo
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | Return _dl_debug_state
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | Return _dl_debug_state
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | Return calloc
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | Return calloc
+| | | | | Return _dl_rtld_di_serinfo
+| | | | Return _dl_rtld_di_serinfo
+| | | Return _dl_rtld_di_serinfo
+| | Return strncat
+| Return _dl_rtld_di_serinfo
+Return __nss_hosts_lookup
+@@@ return underflow
+Return set_program_name
+Call main
+| Call _dl_make_stack_executable
+| | Call _dl_rtld_di_serinfo
+| | | Call _dl_rtld_di_serinfo
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | Return _dl_debug_state
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | Return _dl_debug_state
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | Return calloc
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | Return calloc
+| | | | Return _dl_rtld_di_serinfo
+| | | Return _dl_rtld_di_serinfo
+| | Return _dl_rtld_di_serinfo
+| Return _dl_rtld_di_serinfo
+| Call setlocale
+| Return strcat
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| | Call getenv
+| | Return strncat
+| Return getenv
+| Call setlocale
+| Return strcat
+| Call setlocale
+| | Call setlocale
+| | | Call getenv
+| | | Return __strerror_r
+| | Return getenv
+| | Call setlocale
+| | | Call getenv
+| | | Return __strerror_r
+| | Return getenv
+| | Call setlocale
+| | | Call getenv
+| | | Return __strerror_r
+| | | Call getenv
+| | | Return strncat
+| | Return getenv
+| | Call setlocale
+| | Return strcat
+| | Call setlocale
+| | Return strcat
+| | Call setlocale
+| | | Call setlocale
+| | | | Call __sysconf
+| | | | Return getpagesize
+| | | Return __sysconf
+| | | Call setlocale
+| | | Return strcat
+| | | Call setlocale
+| | | Return strchrnul
+| | | Call setlocale
+| | | | Call textdomain
+| | | | | Call _dl_make_stack_executable
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | | | Return calloc
+| | | | | | | | Return _dl_rtld_di_serinfo
+| | | | | | | Return _dl_rtld_di_serinfo
+| | | | | | Return _dl_rtld_di_serinfo
+| | | | | Return _dl_rtld_di_serinfo
+| | | | | Call malloc
+| | | | | | Call malloc_usable_size
+| | | | | | Return getpagesize
+| | | | | | Call malloc_usable_size
+| | | | | | Return .text
+| | | | | Return .text
+| | | | Return _dl_addr
+| | | | Call malloc_usable_size
+| | | | Return pthread_exit
+| | | Return malloc_usable_size
+| | | Call malloc
+| | | | Call malloc_trim
+| | | | Return malloc_usable_size
+| | | | Call __default_morecore
+| | | | | Call sbrk
+| | | | | Return brk
+| | | | | Call sbrk
+| | | | | Return brk
+| | | | Return sbrk
+| | | Return __default_morecore
+| | | Call __default_morecore
+| | | Return sbrk
+| | Return __default_morecore
+| Return malloc_trim
+Tailcall malloc
+Return malloc
+@@@ return underflow
+Return textdomain
+Call setlocale
+Return strncat
+Call setlocale
+Return memchr
+Call setlocale
+Return memchr
+Call setlocale
+Return memccpy
+Call setlocale
+| Call _dl_make_stack_executable
+| | Call _dl_rtld_di_serinfo
+| | | Call _dl_rtld_di_serinfo
+| | | | Call _dl_rtld_di_serinfo
+| | | | Return _dl_rtld_di_serinfo
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | Return calloc
+| | | | Return _dl_rtld_di_serinfo
+| | | Return _dl_rtld_di_serinfo
+| | Return _dl_rtld_di_serinfo
+| Return _dl_rtld_di_serinfo
+Tailcall __libc_free
+| Call __libc_free
+| Return malloc_set_state
+Tailcall __libc_free
+Return __libc_free
+Call setlocale
+Return open
+Call setlocale
+Return __fxstat64
+Call setlocale
+Return mmap
+Call setlocale
+Return __strerror_r
+Call setlocale
+Return strcat
+Call setlocale
+| Call malloc
+| Return malloc_trim
+Tailcall malloc
+Return malloc
+Call setlocale
+| Call strdup
+| Return __strerror_r
+| Call strdup
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+Tailcall strdup
+Return memccpy
+Call setlocale
+| Call setlocale
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+Return setlocale
+Call setlocale
+| Call setlocale
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+Return setlocale
+Call setlocale
+| Call setlocale
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+Return setlocale
+Call setlocale
+| Call setlocale
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+Return setlocale
+Call setlocale
+| Call setlocale
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+Return setlocale
+Call setlocale
+| Call setlocale
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+Return setlocale
+Call setlocale
+| Call setlocale
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+Return setlocale
+Call setlocale
+| Call setlocale
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+Return setlocale
+Call setlocale
+| Call setlocale
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+Return setlocale
+Call setlocale
+| Call setlocale
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+Return setlocale
+Call setlocale
+| Call setlocale
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+Return setlocale
+Call setlocale
+| Call setlocale
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+Return setlocale
+@@@ return underflow
+Return setlocale
+@@@ return underflow
+Return setlocale
+Call setlocale
+Return strcat
+Call setlocale
+| Call strdup
+| Return __strerror_r
+| Call strdup
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+Tailcall strdup
+Return memccpy
+Call setlocale
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| Return getenv
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| Return getenv
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| | Call getenv
+| | Return strncat
+| Return getenv
+| Call setlocale
+| Return strcat
+| Call setlocale
+| Return strcat
+| Call setlocale
+| | Call setlocale
+| | | Call __sysconf
+| | | Return getpagesize
+| | Return __sysconf
+| | Call setlocale
+| | Return strcat
+| Return setlocale
+Return setlocale
+Call setlocale
+Return strcat
+Call setlocale
+| Call strdup
+| Return __strerror_r
+| Call strdup
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+Tailcall strdup
+Return memccpy
+Call setlocale
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| Return getenv
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| Return getenv
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| | Call getenv
+| | Return strncat
+| Return getenv
+| Call setlocale
+| Return strcat
+| Call setlocale
+| Return strcat
+| Call setlocale
+| | Call setlocale
+| | | Call __sysconf
+| | | Return getpagesize
+| | Return __sysconf
+| | Call setlocale
+| | Return strcat
+| Return setlocale
+Return setlocale
+Call setlocale
+Return strcat
+Call setlocale
+| Call strdup
+| Return __strerror_r
+| Call strdup
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+Tailcall strdup
+Return memccpy
+Call setlocale
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| Return getenv
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| Return getenv
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| | Call getenv
+| | Return strncat
+| Return getenv
+| Call setlocale
+| Return strcat
+| Call setlocale
+| Return strcat
+| Call setlocale
+| | Call setlocale
+| | | Call __sysconf
+| | | Return getpagesize
+| | Return __sysconf
+| | Call setlocale
+| | Return strcat
+| Return setlocale
+Return setlocale
+Call setlocale
+Return strcat
+Call setlocale
+| Call strdup
+| Return __strerror_r
+| Call strdup
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+Tailcall strdup
+Return memccpy
+Call setlocale
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| Return getenv
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| Return getenv
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| | Call getenv
+| | Return strncat
+| Return getenv
+| Call setlocale
+| Return strcat
+| Call setlocale
+| Return strcat
+| Call setlocale
+| | Call setlocale
+| | | Call __sysconf
+| | | Return getpagesize
+| | Return __sysconf
+| | Call setlocale
+| | Return strcat
+| Return setlocale
+Return setlocale
+Call setlocale
+Return strcat
+Call setlocale
+| Call strdup
+| Return __strerror_r
+| Call strdup
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+Tailcall strdup
+Return memccpy
+Call setlocale
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| Return getenv
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| Return getenv
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| | Call getenv
+| | Return strncat
+| Return getenv
+| Call setlocale
+| Return strcat
+| Call setlocale
+| Return strcat
+| Call setlocale
+| | Call setlocale
+| | | Call __sysconf
+| | | Return getpagesize
+| | Return __sysconf
+| | Call setlocale
+| | Return strcat
+| Return setlocale
+Return setlocale
+Call setlocale
+Return strcat
+Call setlocale
+| Call strdup
+| Return __strerror_r
+| Call strdup
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+Tailcall strdup
+Return memccpy
+Call setlocale
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| Return getenv
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| Return getenv
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| | Call getenv
+| | Return strncat
+| Return getenv
+| Call setlocale
+| Return strcat
+| Call setlocale
+| Return strcat
+| Call setlocale
+| | Call setlocale
+| | | Call __sysconf
+| | | Return getpagesize
+| | Return __sysconf
+| | Call setlocale
+| | Return strcat
+| Return setlocale
+Return setlocale
+Call setlocale
+Return strcat
+Call setlocale
+| Call strdup
+| Return __strerror_r
+| Call strdup
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+Tailcall strdup
+Return memccpy
+Call setlocale
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| Return getenv
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| Return getenv
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| | Call getenv
+| | Return strncat
+| Return getenv
+| Call setlocale
+| Return strcat
+| Call setlocale
+| Return strcat
+| Call setlocale
+| | Call setlocale
+| | | Call __sysconf
+| | | Return getpagesize
+| | Return __sysconf
+| | Call setlocale
+| | Return strcat
+| Return setlocale
+Return setlocale
+Call setlocale
+Return strcat
+Call setlocale
+| Call strdup
+| Return __strerror_r
+| Call strdup
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+Tailcall strdup
+Return memccpy
+Call setlocale
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| Return getenv
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| Return getenv
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| | Call getenv
+| | Return strncat
+| Return getenv
+| Call setlocale
+| Return strcat
+| Call setlocale
+| Return strcat
+| Call setlocale
+| | Call setlocale
+| | | Call __sysconf
+| | | Return getpagesize
+| | Return __sysconf
+| | Call setlocale
+| | Return strcat
+| Return setlocale
+Return setlocale
+Call setlocale
+Return strcat
+Call setlocale
+| Call strdup
+| Return __strerror_r
+| Call strdup
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+Tailcall strdup
+Return memccpy
+Call setlocale
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| Return getenv
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| Return getenv
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| | Call getenv
+| | Return strncat
+| Return getenv
+| Call setlocale
+| Return strcat
+| Call setlocale
+| Return strcat
+| Call setlocale
+| | Call setlocale
+| | | Call __sysconf
+| | | Return getpagesize
+| | Return __sysconf
+| | Call setlocale
+| | Return strcat
+| Return setlocale
+Return setlocale
+Call setlocale
+Return strcat
+Call setlocale
+| Call strdup
+| Return __strerror_r
+| Call strdup
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+Tailcall strdup
+Return memccpy
+Call setlocale
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| Return getenv
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| Return getenv
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| | Call getenv
+| | Return strncat
+| Return getenv
+| Call setlocale
+| Return strcat
+| Call setlocale
+| Return strcat
+| Call setlocale
+| | Call setlocale
+| | | Call __sysconf
+| | | Return getpagesize
+| | Return __sysconf
+| | Call setlocale
+| | Return strcat
+| Return setlocale
+Return setlocale
+Call setlocale
+Return strcat
+Call setlocale
+| Call strdup
+| Return __strerror_r
+| Call strdup
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+Tailcall strdup
+Return memccpy
+Call setlocale
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| Return getenv
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| Return getenv
+| Call setlocale
+| | Call getenv
+| | Return __strerror_r
+| | Call getenv
+| | Return strncat
+| Return getenv
+| Call setlocale
+| Return strcat
+| Call setlocale
+| Return strcat
+| Call setlocale
+| | Call setlocale
+| | | Call __sysconf
+| | | Return getpagesize
+| | Return __sysconf
+| | Call setlocale
+| | Return strcat
+| Return setlocale
+Return setlocale
+Call setlocale
+Return strcat
+Call setlocale
+| Call strdup
+| Return __strerror_r
+| Call strdup
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+Tailcall strdup
+Return memccpy
+Call setlocale
+| Call __ctype_get_mb_cur_max
+| Return __strerror_r
+| Call __ctype_get_mb_cur_max
+| Return __strerror_r
+| Call __ctype_get_mb_cur_max
+| Return strcat
+| Call __ctype_get_mb_cur_max
+| Return __strerror_r
+| Call __ctype_get_mb_cur_max
+| Return strcat
+| Call __ctype_get_mb_cur_max
+| Return __strerror_r
+| Call __ctype_get_mb_cur_max
+| Return strcat
+| Call __ctype_get_mb_cur_max
+| Return __strerror_r
+| Call __ctype_get_mb_cur_max
+| Return strcat
+| Call __ctype_get_mb_cur_max
+| Return __strerror_r
+| Call __ctype_get_mb_cur_max
+| Return strcat
+| Call __ctype_get_mb_cur_max
+| Return __strerror_r
+| Call __ctype_get_mb_cur_max
+| Return strcat
+| Call __ctype_get_mb_cur_max
+| Return __strerror_r
+| Call __ctype_get_mb_cur_max
+| Return strcat
+| Call __ctype_get_mb_cur_max
+| Return __strerror_r
+| Call __ctype_get_mb_cur_max
+| Return strcat
+| Call __ctype_get_mb_cur_max
+| Return __strerror_r
+| Call __ctype_get_mb_cur_max
+| Return strcat
+| Call __ctype_get_mb_cur_max
+| Return __strerror_r
+| Call __ctype_get_mb_cur_max
+| Return strcat
+| Call __ctype_get_mb_cur_max
+| Return __strerror_r
+| Call __ctype_get_mb_cur_max
+| Return strcat
+| Call __ctype_get_mb_cur_max
+| Return strcat
+| Call __ctype_get_mb_cur_max
+| Return strcat
+| Call __ctype_get_mb_cur_max
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+Tailcall __ctype_get_mb_cur_max
+Return memccpy
+@@@ return underflow
+Return uselocale
+Call setlocale
+Return __ctype_get_mb_cur_max
+Call setlocale
+Return __ctype_get_mb_cur_max
+Call setlocale
+Return __ctype_get_mb_cur_max
+Call setlocale
+Return __ctype_get_mb_cur_max
+Call setlocale
+Return __ctype_get_mb_cur_max
+Call setlocale
+Return __ctype_get_mb_cur_max
+Call setlocale
+Return __ctype_get_mb_cur_max
+Call setlocale
+Return __ctype_get_mb_cur_max
+Call setlocale
+Return __ctype_get_mb_cur_max
+Call setlocale
+Return __ctype_get_mb_cur_max
+Call setlocale
+Return __ctype_get_mb_cur_max
+Call setlocale
+Return __ctype_get_mb_cur_max
+Call setlocale
+Return __ctype_get_mb_cur_max
+Call setlocale
+Return __libc_free
+@@@ return underflow
+Return setlocale
+Call main
+| Call _dl_make_stack_executable
+| | Call _dl_rtld_di_serinfo
+| | | Call _dl_rtld_di_serinfo
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | Return _dl_debug_state
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | Return _dl_debug_state
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | Return calloc
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | Return calloc
+| | | | Return _dl_rtld_di_serinfo
+| | | Return _dl_rtld_di_serinfo
+| | Return _dl_rtld_di_serinfo
+| Return _dl_rtld_di_serinfo
+| Call bindtextdomain
+| | Call __ctype_b_loc
+| | Return __strerror_r
+| | Call __ctype_b_loc
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| | Call __ctype_b_loc
+| | Return memccpy
+| | Call __ctype_b_loc
+| | Return strcat
+| | Call __ctype_b_loc
+| | | Call strdup
+| | | Return __strerror_r
+| | | Call strdup
+| | | | Call malloc
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | Tailcall strdup
+| | Return memccpy
+| Return __ctype_b_loc
+Return bindtextdomain
+Call main
+| Call _dl_make_stack_executable
+| | Call _dl_rtld_di_serinfo
+| | | Call _dl_rtld_di_serinfo
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | Return _dl_debug_state
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | Return _dl_debug_state
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | Return calloc
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | Return calloc
+| | | | Return _dl_rtld_di_serinfo
+| | | Return _dl_rtld_di_serinfo
+| | Return _dl_rtld_di_serinfo
+| Return _dl_rtld_di_serinfo
+| Call textdomain
+| Return strcat
+| Call textdomain
+| Return strcat
+| Call textdomain
+| | Call strdup
+| | Return __strerror_r
+| | Call strdup
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Tailcall strdup
+| Return memccpy
+Return textdomain
+Call main
+Tailcall atexit
+| Call _dl_make_stack_executable
+| | Call _dl_rtld_di_serinfo
+| | | Call _dl_rtld_di_serinfo
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | Return _dl_debug_state
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | Return _dl_debug_state
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | Return calloc
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | Return calloc
+| | | | Return _dl_rtld_di_serinfo
+| | | Return _dl_rtld_di_serinfo
+| | Return _dl_rtld_di_serinfo
+| Return _dl_rtld_di_serinfo
+Tailcall __cxa_atexit
+| Call on_exit
+| Tailcall on_exit
+| Tailcall on_exit
+| Return on_exit
+Return on_exit
+Call main
+| Call _dl_make_stack_executable
+| | Call _dl_rtld_di_serinfo
+| | | Call _dl_rtld_di_serinfo
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | Return _dl_debug_state
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | Return _dl_debug_state
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | Return calloc
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | Return calloc
+| | | | Return _dl_rtld_di_serinfo
+| | | Return _dl_rtld_di_serinfo
+| | Return _dl_rtld_di_serinfo
+| Return _dl_rtld_di_serinfo
+| Call getenv
+| Return __strerror_r
+| Call getenv
+| Return strncat
+Return getenv
+Call main
+Return prepend_default_options
+Call main
+Return setmatcher
+Call main
+| Call get_nondigit_option
+| | Call rpl_getopt_long
+| | | Call rpl_getopt_internal
+| | | | Call _getopt_internal_r
+| | | | | Call _getopt_initialize
+| | | | | | Call getenv
+| | | | | | Return __strerror_r
+| | | | | Return getenv
+| | | | Return _getopt_initialize
+| | | Return _getopt_internal_r
+| | Return rpl_getopt_internal
+| Return rpl_getopt_long
+Return get_nondigit_option
+Call main
+Tailcall __fstat
+| Call _dl_make_stack_executable
+| | Call _dl_rtld_di_serinfo
+| | | Call _dl_rtld_di_serinfo
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | Return _dl_debug_state
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | Return _dl_debug_state
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | Return calloc
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | Return calloc
+| | | | Return _dl_rtld_di_serinfo
+| | | Return _dl_rtld_di_serinfo
+| | Return _dl_rtld_di_serinfo
+| Return _dl_rtld_di_serinfo
+Return __fxstat64
+Call main
+| Call xmalloc
+| | Call _dl_make_stack_executable
+| | | Call _dl_rtld_di_serinfo
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | Return _dl_debug_state
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | Return _dl_debug_state
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | Return calloc
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | Return calloc
+| | | | | Return _dl_rtld_di_serinfo
+| | | | Return _dl_rtld_di_serinfo
+| | | Return _dl_rtld_di_serinfo
+| | Return _dl_rtld_di_serinfo
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+Return xmalloc
+Call main
+| Call _dl_make_stack_executable
+| | Call _dl_rtld_di_serinfo
+| | | Call _dl_rtld_di_serinfo
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | Return _dl_debug_state
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | Return _dl_debug_state
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | Return calloc
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | Return calloc
+| | | | Return _dl_rtld_di_serinfo
+| | | Return _dl_rtld_di_serinfo
+| | Return _dl_rtld_di_serinfo
+| Return strcoll
+Return _dl_rtld_di_serinfo
+@@@ return underflow
+Return __nss_hosts_lookup
+Call main
+Return set_limits
+Call Gcompile
+| Call GEAcompile
+| | Call _dl_make_stack_executable
+| | | Call _dl_rtld_di_serinfo
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | Return _dl_debug_state
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | Return _dl_debug_state
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | Return calloc
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | Return calloc
+| | | | | Return _dl_rtld_di_serinfo
+| | | | Return _dl_rtld_di_serinfo
+| | | Return _dl_rtld_di_serinfo
+| | Return _dl_rtld_di_serinfo
+| Return re_set_syntax
+| Call GEAcompile
+| Return dfasyntax
+| Call GEAcompile
+| | Call _dl_make_stack_executable
+| | | Call _dl_rtld_di_serinfo
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | Return _dl_debug_state
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | Return _dl_debug_state
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | Return calloc
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | Return calloc
+| | | | | Return _dl_rtld_di_serinfo
+| | | | Return _dl_rtld_di_serinfo
+| | | Return _dl_rtld_di_serinfo
+| | Return _dl_rtld_di_serinfo
+| Return memchr
+| Call GEAcompile
+| | Call xnrealloc
+| | | Call xrealloc
+| | | | Call _dl_make_stack_executable
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | | Call _dl_debug_state
+| | | | | | | | Return calloc
+| | | | | | | | Call _dl_debug_state
+| | | | | | | | Return calloc
+| | | | | | | Return _dl_debug_state
+| | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | | Call _dl_debug_state
+| | | | | | | | Return calloc
+| | | | | | | | Call _dl_debug_state
+| | | | | | | | Return calloc
+| | | | | | | Return _dl_debug_state
+| | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | | Return calloc
+| | | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | | Return calloc
+| | | | | | | Return _dl_rtld_di_serinfo
+| | | | | | Return _dl_rtld_di_serinfo
+| | | | | Return _dl_rtld_di_serinfo
+| | | | Return _dl_rtld_di_serinfo
+| | | | Call realloc
+| | | | Return malloc_usable_size
+| | | Tailcall realloc
+| | | | Call malloc
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | Return xrealloc
+| Return xnrealloc
+| Call GEAcompile
+| | Call _dl_make_stack_executable
+| | | Call _dl_rtld_di_serinfo
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | Return _dl_debug_state
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | Return _dl_debug_state
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | Return calloc
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | Return calloc
+| | | | | Return _dl_rtld_di_serinfo
+| | | | Return _dl_rtld_di_serinfo
+| | | Return _dl_rtld_di_serinfo
+| | Return _dl_rtld_di_serinfo
+| | Call re_compile_pattern
+| | | Call re_match
+| | | | Call _dl_make_stack_executable
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | | Return calloc
+| | | | | | | Return _dl_rtld_di_serinfo
+| | | | | | Return _dl_rtld_di_serinfo
+| | | | | Return _dl_rtld_di_serinfo
+| | | | Return _dl_rtld_di_serinfo
+| | | Tailcall realloc
+| | | | Call malloc
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | | Call re_match
+| | | | Call malloc
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | | Call re_match
+| | | | Call _dl_make_stack_executable
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | | Return calloc
+| | | | | | | Return _dl_rtld_di_serinfo
+| | | | | | Return _dl_rtld_di_serinfo
+| | | | | Return _dl_rtld_di_serinfo
+| | | | Return _dl_rtld_di_serinfo
+| | | | Call __libc_calloc
+| | | | Return malloc_trim
+| | | Tailcall __libc_calloc
+| | | Return __libc_calloc
+| | | Call re_match
+| | | Return strcat
+| | | Call re_match
+| | | | Call regfree
+| | | | Tailcall realloc
+| | | | | Call malloc
+| | | | | Return malloc_trim
+| | | | Tailcall malloc
+| | | | Return malloc
+| | | Return regfree
+| | | Call re_match
+| | | | Call regfree
+| | | | | Call __mbrtowc
+| | | | | | Call __wcsncasecmp_l
+| | | | | | | Call malloc
+| | | | | | | Return malloc_trim
+| | | | | | Tailcall malloc
+| | | | | | Return malloc
+| | | | | | Call __wcsncasecmp_l
+| | | | | | | Call __wcsncasecmp_l
+| | | | | | | | Call __gconv_get_alias_db
+| | | | | | | | | Call __gconv_get_alias_db
+| | | | | | | | | | Call __gconv_get_cache
+| | | | | | | | | | | Call getenv
+| | | | | | | | | | | Return __strerror_r
+| | | | | | | | | | Return getenv
+| | | | | | | | | | Call __gconv_get_cache
+| | | | | | | | | | Return open
+| | | | | | | | | | Call __gconv_get_cache
+| | | | | | | | | | Return __fxstat64
+| | | | | | | | | | Call __gconv_get_cache
+| | | | | | | | | | Return mmap
+| | | | | | | | | Return __gconv_get_cache
+| | | | | | | | Return __gconv_get_alias_db
+| | | | | | | | Call __gconv_get_alias_db
+| | | | | | | | | Call __gconv_get_cache
+| | | | | | | | | | Call __gconv_get_cache
+| | | | | | | | | | Return textdomain
+| | | | | | | | | | Call __gconv_get_cache
+| | | | | | | | | | Return strcat
+| | | | | | | | | Return __gconv_get_cache
+| | | | | | | | | Call __gconv_get_cache
+| | | | | | | | | | Call __gconv_get_cache
+| | | | | | | | | | Return textdomain
+| | | | | | | | | | Call __gconv_get_cache
+| | | | | | | | | | Return strcat
+| | | | | | | | | Return __gconv_get_cache
+| | | | | | | | | Call __gconv_get_cache
+| | | | | | | | | | Call malloc
+| | | | | | | | | | Return malloc_trim
+| | | | | | | | | Tailcall malloc
+| | | | | | | | | Return malloc
+| | | | | | | | | Call __gconv_get_cache
+| | | | | | | | | | Call __gconv_get_alias_db
+| | | | | | | | | | Return strcat
+| | | | | | | | | | Call __gconv_get_alias_db
+| | | | | | | | | | Return strcat
+| | | | | | | | | | Call __gconv_get_alias_db
+| | | | | | | | | | Return strcat
+| | | | | | | | | | Call __gconv_get_alias_db
+| | | | | | | | | | Return strcat
+| | | | | | | | | | Call __gconv_get_alias_db
+| | | | | | | | | | Return strcat
+| | | | | | | | | | Call __gconv_get_alias_db
+| | | | | | | | | | Return strcat
+| | | | | | | | | Return __gconv_get_alias_db
+| | | | | | | | Return __gconv_get_cache
+| | | | | | | Return __gconv_get_alias_db
+| | | | | | Return __wcsncasecmp_l
+| | | | | | Call __wcsncasecmp_l
+| | | | | | | Call __wcsncasecmp_l
+| | | | | | | | Call __gconv_get_alias_db
+| | | | | | | | | Call __gconv_get_cache
+| | | | | | | | | | Call __gconv_get_cache
+| | | | | | | | | | Return textdomain
+| | | | | | | | | | Call __gconv_get_cache
+| | | | | | | | | | Return strcat
+| | | | | | | | | Return __gconv_get_cache
+| | | | | | | | | Call __gconv_get_cache
+| | | | | | | | | | Call __gconv_get_cache
+| | | | | | | | | | Return textdomain
+| | | | | | | | | | Call __gconv_get_cache
+| | | | | | | | | | Return strcat
+| | | | | | | | | Return __gconv_get_cache
+| | | | | | | | | Call __gconv_get_cache
+| | | | | | | | | | Call malloc
+| | | | | | | | | | Return malloc_trim
+| | | | | | | | | Tailcall malloc
+| | | | | | | | | Return malloc
+| | | | | | | | | Call __gconv_get_cache
+| | | | | | | | | | Call __gconv_get_alias_db
+| | | | | | | | | | Return strcat
+| | | | | | | | | | Call __gconv_get_alias_db
+| | | | | | | | | | Return strcat
+| | | | | | | | | | Call __gconv_get_alias_db
+| | | | | | | | | | Return strcat
+| | | | | | | | | | Call __gconv_get_alias_db
+| | | | | | | | | | Return strcat
+| | | | | | | | | | Call __gconv_get_alias_db
+| | | | | | | | | | Return strcat
+| | | | | | | | | Return __gconv_get_alias_db
+| | | | | | | | Return __gconv_get_cache
+| | | | | | | Return __gconv_get_alias_db
+| | | | | | Return __wcsncasecmp_l
+| | | | | Return __wcsncasecmp_l
+| | | | | Call __mbrtowc
+| | | | | Return _dl_mcount_wrapper_check
+| | | | Return __gconv_get_alias_db
+| | | Return __mbrtowc
+| | Return regfree
+| | Call re_match
+| | | Call regfree
+| | | | Call regfree
+| | | | Return iswalnum
+| | | Return regfree
+| | Return regfree
+| | Call re_match
+| | | Call re_match
+| | | | Call re_match
+| | | | | Call re_match
+| | | | | | Call re_set_registers
+| | | | | | | Call malloc
+| | | | | | | Return malloc_trim
+| | | | | | Tailcall malloc
+| | | | | | Return malloc
+| | | | | Return re_set_registers
+| | | | | Call re_match
+| | | | | | Call regfree
+| | | | | | Return regfree
+| | | | | Return regfree
+| | | | Return re_match
+| | | Return re_match
+| | Return re_match
+| | Call re_match
+| | | Call re_set_registers
+| | | Return re_set_registers
+| | Return re_set_registers
+| | Call re_match
+| | | Call re_set_registers
+| | | Return re_set_registers
+| | Return re_set_registers
+| | Call re_match
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| | Call re_match
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| | Call re_match
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| | Call re_match
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| | Call re_match
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| | Call re_match
+| | Return re_set_syntax
+| Return re_set_syntax
+Return re_set_syntax
+@@@ return underflow
+Return re_set_registers
+Call re_match
+Tailcall __libc_free
+| Call __libc_free
+| Return malloc_set_state
+Tailcall __libc_free
+Return __libc_free
+Call re_match
+Return re_set_registers
+@@@ return underflow
+Return re_set_registers
+@@@ return underflow
+Return re_set_registers
+@@@ return underflow
+Return re_set_registers
+Call re_match
+| Call regfree
+| Return regfree
+Return regfree
+Call regfree
+Return regfree
+@@@ return underflow
+Return regfree
+@@@ return underflow
+Return regfree
+@@@ return underflow
+Return re_set_registers
+Call re_match
+Return re_set_syntax
+@@@ return underflow
+Return re_set_syntax
+@@@ return underflow
+Return re_set_syntax
+@@@ return underflow
+Return re_set_registers
+Call re_match
+Return regfree
+@@@ return underflow
+Return regfree
+@@@ return underflow
+Return regfree
+@@@ return underflow
+Return re_set_registers
+Call re_match
+| Call regfree
+| | Call re_set_registers
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return re_set_registers
+| Call regfree
+| Return regfree
+Return regfree
+Call re_match
+| Call regfree
+| | Call re_set_registers
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return re_set_registers
+| Call regfree
+| Return regfree
+Return regfree
+Call re_match
+| Call regfree
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+| Call regfree
+| Return memccpy
+Return regfree
+Call re_match
+| Call regfree
+| | Call __libc_calloc
+| | Return malloc_trim
+| Tailcall __libc_calloc
+| | Call __libc_calloc
+| | Return memchr
+| Return __libc_calloc
+| Call regfree
+| | Call regfree
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| | Call regfree
+| | Return memccpy
+| Return regfree
+| Call regfree
+| | Call regfree
+| | | Call re_set_registers
+| | | | Call malloc
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | Return re_set_registers
+| | Call regfree
+| | Return regfree
+| | Call regfree
+| | Tailcall realloc
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return regfree
+Return regfree
+Call re_match
+Tailcall __libc_free
+| Call __libc_free
+| Return malloc_set_state
+Tailcall __libc_free
+Return __libc_free
+Call re_match
+| Call re_set_registers
+| Tailcall __libc_free
+| | Call __libc_free
+| | Return malloc_set_state
+| Tailcall __libc_free
+| Return __libc_free
+| Call re_set_registers
+| Tailcall __libc_free
+| | Call __libc_free
+| | Return malloc_set_state
+| Tailcall __libc_free
+| Return __libc_free
+Return re_set_registers
+Call re_match
+| Call re_set_registers
+| Tailcall __libc_free
+| | Call __libc_free
+| | Return malloc_set_state
+| Tailcall __libc_free
+| Return __libc_free
+| Call re_set_registers
+| Return __libc_free
+Return re_set_registers
+@@@ return underflow
+Return re_match
+@@@ return underflow
+Return re_compile_pattern
+Call GEAcompile
+| Call dfaalloc
+| | Call xmalloc
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return xmalloc
+Return dfaalloc
+Call GEAcompile
+| Call dfacomp
+| | Call dfainit
+| | | Call xnmalloc
+| | | | Call xmalloc
+| | | | | Call malloc
+| | | | | Return malloc_trim
+| | | | Tailcall malloc
+| | | | Return malloc
+| | | Return xmalloc
+| | Return xnmalloc
+| | Call dfainit
+| | | Call xnmalloc
+| | | | Call xmalloc
+| | | | | Call malloc
+| | | | | Return malloc_trim
+| | | | Tailcall malloc
+| | | | Return malloc
+| | | Return xmalloc
+| | Return xnmalloc
+| | Call dfainit
+| | | Call _dl_make_stack_executable
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | Return _dl_debug_state
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | Return _dl_debug_state
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Return calloc
+| | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Return calloc
+| | | | | | Return _dl_rtld_di_serinfo
+| | | | | Return _dl_rtld_di_serinfo
+| | | | Return _dl_rtld_di_serinfo
+| | | Return _dl_rtld_di_serinfo
+| | Return __ctype_get_mb_cur_max
+| | Call dfainit
+| | | Call xnmalloc
+| | | | Call xmalloc
+| | | | | Call malloc
+| | | | | Return malloc_trim
+| | | | Tailcall malloc
+| | | | Return malloc
+| | | Return xmalloc
+| | Return xnmalloc
+| | Call dfainit
+| | | Call xnmalloc
+| | | | Call xmalloc
+| | | | | Call malloc
+| | | | | Return malloc_trim
+| | | | Tailcall malloc
+| | | | Return malloc
+| | | Return xmalloc
+| | Return xnmalloc
+| Return dfainit
+| Call dfacomp
+| | Call dfaparse
+| | | Call hard_locale
+| | | Return setlocale
+| | Return hard_locale
+| | Call dfaparse
+| | Return __ctype_get_mb_cur_max
+| | Call dfaparse
+| | | Call lex
+| | | Return __ctype_get_mb_cur_max
+| | | Call lex
+| | | | Call _dl_make_stack_executable
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | | Call _dl_debug_state
+| | | | | | | | Return calloc
+| | | | | | | | Call _dl_debug_state
+| | | | | | | | Return calloc
+| | | | | | | Return _dl_debug_state
+| | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | | Call _dl_debug_state
+| | | | | | | | Return calloc
+| | | | | | | | Call _dl_debug_state
+| | | | | | | | Return calloc
+| | | | | | | Return _dl_debug_state
+| | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | | Return calloc
+| | | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | | Return calloc
+| | | | | | | Return _dl_rtld_di_serinfo
+| | | | | | Return _dl_rtld_di_serinfo
+| | | | | Return _dl_rtld_di_serinfo
+| | | | Return _dl_rtld_di_serinfo
+| | | | Call __mbrtowc
+| | | | Return _dl_mcount_wrapper_check
+| | | Return __gconv_get_alias_db
+| | Return __mbrtowc
+| | Call lex
+| | | Call _dl_make_stack_executable
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | Return _dl_debug_state
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | Return _dl_debug_state
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Return calloc
+| | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Return calloc
+| | | | | | Return _dl_rtld_di_serinfo
+| | | | | Return _dl_rtld_di_serinfo
+| | | | Return _dl_rtld_di_serinfo
+| | | Return _dl_rtld_di_serinfo
+| | Return wctob
+| | Call lex
+| | Return __ctype_get_mb_cur_max
+| Return lex
+| Call dfaparse
+| | Call regexp
+| | | Call branch
+| | | | Call closure
+| | | | | Call atom
+| | | | | | Call addtok_wc
+| | | | | | | Call _dl_make_stack_executable
+| | | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | | | | | Call _dl_debug_state
+| | | | | | | | | | | Return calloc
+| | | | | | | | | | | Call _dl_debug_state
+| | | | | | | | | | | Return calloc
+| | | | | | | | | | Return _dl_debug_state
+| | | | | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | | | | | Call _dl_debug_state
+| | | | | | | | | | | Return calloc
+| | | | | | | | | | | Call _dl_debug_state
+| | | | | | | | | | | Return calloc
+| | | | | | | | | | Return _dl_debug_state
+| | | | | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | | | | | Return calloc
+| | | | | | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | | | | | Return calloc
+| | | | | | | | | | Return _dl_rtld_di_serinfo
+| | | | | | | | | Return _dl_rtld_di_serinfo
+| | | | | | | | Return _dl_rtld_di_serinfo
+| | | | | | | Return _dl_rtld_di_serinfo
+| | | | | | | Call wcrtomb
+| | | | | | | Return _dl_mcount_wrapper_check
+| | | | | | Return __gconv_get_alias_db
+| | | | | Return wcrtomb
+| | | | | Call addtok_wc
+| | | | | | Call addtok_mb
+| | | | | | Return __ctype_get_mb_cur_max
+| | | | | | Call addtok_mb
+| | | | | | | Call x2nrealloc
+| | | | | | | | Call xrealloc
+| | | | | | | | | Call realloc
+| | | | | | | | | Return malloc_stats
+| | | | | | | | Return realloc
+| | | | | | | Return xrealloc
+| | | | | | Return x2nrealloc
+| | | | | | Call addtok_mb
+| | | | | | | Call x2nrealloc
+| | | | | | | | Call xrealloc
+| | | | | | | | | Call realloc
+| | | | | | | | | Return malloc_stats
+| | | | | | | | Return realloc
+| | | | | | | Return xrealloc
+| | | | | | Return x2nrealloc
+| | | | | Return addtok_mb
+| | | | Return addtok_wc
+| | | | Call atom
+| | | | | Call lex
+| | | | | Return __ctype_get_mb_cur_max
+| | | | Return lex
+| | | Return atom
+| | Return closure
+| Return branch
+Return regexp
+Call dfaparse
+| Call addtok
+| Return __ctype_get_mb_cur_max
+| Call addtok
+| | Call addtok_mb
+| | Return __ctype_get_mb_cur_max
+| | Call addtok_mb
+| | | Call x2nrealloc
+| | | | Call xrealloc
+| | | | | Call realloc
+| | | | | Return malloc_stats
+| | | | Return realloc
+| | | Return xrealloc
+| | Return x2nrealloc
+| | Call addtok_mb
+| | | Call x2nrealloc
+| | | | Call xrealloc
+| | | | | Call realloc
+| | | | | Return malloc_stats
+| | | | Return realloc
+| | | Return xrealloc
+| | Return x2nrealloc
+| Return addtok_mb
+Return addtok
+Call dfaparse
+| Call addtok
+| Return __ctype_get_mb_cur_max
+| Call addtok
+| | Call addtok_mb
+| | Return __ctype_get_mb_cur_max
+| | Call addtok_mb
+| | | Call x2nrealloc
+| | | | Call xrealloc
+| | | | | Call realloc
+| | | | | Return malloc_stats
+| | | | Return realloc
+| | | Return xrealloc
+| | Return x2nrealloc
+| | Call addtok_mb
+| | | Call x2nrealloc
+| | | | Call xrealloc
+| | | | | Call realloc
+| | | | | Return malloc_stats
+| | | | Return realloc
+| | | Return xrealloc
+| | Return x2nrealloc
+| Return addtok_mb
+Return addtok
+@@@ return underflow
+Return dfaparse
+Call dfacomp
+| Call dfamust
+| | Call xnmalloc
+| | | Call xmalloc
+| | | | Call malloc
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | Return xmalloc
+| Return xnmalloc
+| Call dfamust
+| | Call xmalloc
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return xmalloc
+| Call dfamust
+| | Call xmalloc
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return xmalloc
+| Call dfamust
+| | Call xmalloc
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return xmalloc
+| Call dfamust
+| | Call xmalloc
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return xmalloc
+| Call dfamust
+| | Call xmalloc
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return xmalloc
+| Call dfamust
+| | Call xmalloc
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return xmalloc
+| Call dfamust
+| | Call xmalloc
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return xmalloc
+| Call dfamust
+| | Call xmalloc
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return xmalloc
+| Call dfamust
+| | Call xmalloc
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return xmalloc
+| Call dfamust
+| | Call xmalloc
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return xmalloc
+| Call dfamust
+| | Call xmalloc
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return xmalloc
+| Call dfamust
+| | Call xmalloc
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return xmalloc
+| Call dfamust
+| | Call xmalloc
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return xmalloc
+| Call dfamust
+| | Call xmalloc
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return xmalloc
+| Call dfamust
+| | Call xmalloc
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return xmalloc
+| Call dfamust
+| | Call xmalloc
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return xmalloc
+| Call dfamust
+| | Call resetmust
+| | Return freelist
+| Return resetmust
+| Call dfamust
+| | Call enlist
+| | | Call icpyalloc
+| | | | Call icatalloc
+| | | | | Call xrealloc
+| | | | | Tailcall realloc
+| | | | | | Call malloc
+| | | | | | Return malloc_trim
+| | | | | Tailcall malloc
+| | | | | Return malloc
+| | | | Return xrealloc
+| | | | Call icatalloc
+| | | | Return __nss_hosts_lookup
+| | | Return icatalloc
+| | Return icpyalloc
+| | Call enlist
+| | | Call xnrealloc
+| | | | Call xrealloc
+| | | | | Call realloc
+| | | | | Return malloc_stats
+| | | | Return realloc
+| | | Return xrealloc
+| | Return xnrealloc
+| Return enlist
+| Call dfamust
+| | Call _dl_make_stack_executable
+| | | Call _dl_rtld_di_serinfo
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | Return _dl_debug_state
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | Return _dl_debug_state
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | Return calloc
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | Return calloc
+| | | | | Return _dl_rtld_di_serinfo
+| | | | Return _dl_rtld_di_serinfo
+| | | Return _dl_rtld_di_serinfo
+| | Return strcat
+| Return _dl_rtld_di_serinfo
+Return __nss_hosts_lookup
+Call dfamust
+| Call xnmalloc
+| | Call xmalloc
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return xmalloc
+Return xnmalloc
+Call dfamust
+| Call xmalloc
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+Return xmalloc
+Call dfamust
+Return __nss_hosts_lookup
+Call dfamust
+| Call freelist
+| | Call _dl_make_stack_executable
+| | | Call _dl_rtld_di_serinfo
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | Return _dl_rtld_di_serinfo
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | Return _dl_debug_state
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | Return _dl_debug_state
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | Return calloc
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | Return calloc
+| | | | | Return _dl_rtld_di_serinfo
+| | | | Return _dl_rtld_di_serinfo
+| | | Return _dl_rtld_di_serinfo
+| | Return _dl_rtld_di_serinfo
+| Tailcall __libc_free
+| | Call __libc_free
+| | Return malloc_set_state
+| Tailcall __libc_free
+| Return __libc_free
+Return freelist
+Call dfamust
+Tailcall __libc_free
+| Call __libc_free
+| Return malloc_set_state
+Tailcall __libc_free
+Return __libc_free
+Call dfamust
+Tailcall __libc_free
+| Call __libc_free
+| Return malloc_set_state
+Tailcall __libc_free
+Return __libc_free
+Call dfamust
+Tailcall __libc_free
+| Call __libc_free
+| Return malloc_set_state
+Tailcall __libc_free
+Return __libc_free
+Call dfamust
+Tailcall __libc_free
+| Call __libc_free
+| Return malloc_set_state
+Tailcall __libc_free
+Return __libc_free
+Call dfamust
+Return freelist
+Call dfamust
+Tailcall __libc_free
+| Call __libc_free
+| Return malloc_set_state
+Tailcall __libc_free
+Return __libc_free
+Call dfamust
+Tailcall __libc_free
+| Call __libc_free
+| Return malloc_set_state
+Tailcall __libc_free
+Return __libc_free
+Call dfamust
+Tailcall __libc_free
+| Call __libc_free
+| Return malloc_set_state
+Tailcall __libc_free
+Return __libc_free
+Call dfamust
+Tailcall __libc_free
+| Call __libc_free
+| Return malloc_set_state
+Tailcall __libc_free
+Return __libc_free
+Call dfamust
+Return freelist
+Call dfamust
+Tailcall __libc_free
+| Call __libc_free
+| Return malloc_set_state
+Tailcall __libc_free
+Return __libc_free
+Call dfamust
+Tailcall __libc_free
+| Call __libc_free
+| Return malloc_set_state
+Tailcall __libc_free
+Return __libc_free
+Call dfamust
+Tailcall __libc_free
+| Call __libc_free
+| Return malloc_set_state
+Tailcall __libc_free
+Return __libc_free
+Call dfamust
+Tailcall __libc_free
+| Call __libc_free
+| Return malloc_set_state
+Tailcall __libc_free
+Return __libc_free
+Call dfamust
+Return freelist
+Call dfamust
+Tailcall __libc_free
+| Call __libc_free
+| Return malloc_set_state
+Tailcall __libc_free
+Return __libc_free
+Call dfamust
+Tailcall __libc_free
+| Call __libc_free
+| Return malloc_set_state
+Tailcall __libc_free
+Return __libc_free
+Call dfamust
+Tailcall __libc_free
+| Call __libc_free
+| Return malloc_set_state
+Tailcall __libc_free
+Return __libc_free
+Call dfamust
+Tailcall __libc_free
+| Call __libc_free
+| Return malloc_set_state
+Tailcall __libc_free
+Return __libc_free
+Call dfamust
+Tailcall __libc_free
+| Call __libc_free
+| Return malloc_set_state
+Tailcall __libc_free
+Return __libc_free
+@@@ return underflow
+Return dfamust
+Call dfacomp
+| Call dfaoptimize
+| | Call using_utf8
+| | | Call _dl_make_stack_executable
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | Return _dl_debug_state
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | Return _dl_debug_state
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Return calloc
+| | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Return calloc
+| | | | | | Return _dl_rtld_di_serinfo
+| | | | | Return _dl_rtld_di_serinfo
+| | | | Return _dl_rtld_di_serinfo
+| | | Return _dl_rtld_di_serinfo
+| | Tailcall nl_langinfo
+| | Return __nl_langinfo_l
+| Return using_utf8
+| Call dfaoptimize
+| | Call free_mbdata
+| | Tailcall __libc_free
+| | | Call __libc_free
+| | | Return malloc_set_state
+| | Tailcall __libc_free
+| | Return __libc_free
+| | Call free_mbdata
+| | Tailcall __libc_free
+| | | Call __libc_free
+| | | Return malloc_set_state
+| | Tailcall __libc_free
+| | Return __libc_free
+| Return free_mbdata
+Return dfaoptimize
+Call dfacomp
+| Call dfaanalyze
+| | Call xnmalloc
+| | | Call xmalloc
+| | | | Call malloc
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | Return xmalloc
+| Return xnmalloc
+| Call dfaanalyze
+| | Call xnmalloc
+| | | Call xmalloc
+| | | | Call malloc
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | Return xmalloc
+| Return xnmalloc
+| Call dfaanalyze
+| | Call xnmalloc
+| | | Call xmalloc
+| | | | Call malloc
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | Return xmalloc
+| Return xnmalloc
+| Call dfaanalyze
+| | Call xnmalloc
+| | | Call xmalloc
+| | | | Call malloc
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | Return xmalloc
+| Return xnmalloc
+| Call dfaanalyze
+| | Call xnmalloc
+| | | Call xmalloc
+| | | | Call malloc
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | Return xmalloc
+| Return xnmalloc
+| Call dfaanalyze
+| | Call xcalloc
+| | | Call _dl_make_stack_executable
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | Return _dl_debug_state
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | Return _dl_debug_state
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Return calloc
+| | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Return calloc
+| | | | | | Return _dl_rtld_di_serinfo
+| | | | | Return _dl_rtld_di_serinfo
+| | | | Return _dl_rtld_di_serinfo
+| | | Return _dl_rtld_di_serinfo
+| | | Call __libc_calloc
+| | | Return malloc_trim
+| | Tailcall __libc_calloc
+| | Return __libc_calloc
+| Return xcalloc
+| Call dfaanalyze
+| | Call xnmalloc
+| | | Call xmalloc
+| | | | Call malloc
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | Return xmalloc
+| Return xnmalloc
+| Call dfaanalyze
+| | Call xcalloc
+| | | Call __libc_calloc
+| | | Return malloc_trim
+| | Tailcall __libc_calloc
+| | Return __libc_calloc
+| Return xcalloc
+| Call dfaanalyze
+| | Call xnmalloc
+| | | Call xmalloc
+| | | | Call malloc
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | Return xmalloc
+| Return xnmalloc
+| Call dfaanalyze
+| | Call xnmalloc
+| | | Call xmalloc
+| | | | Call malloc
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | Return xmalloc
+| Return xnmalloc
+| Call dfaanalyze
+| Return merge
+| Call dfaanalyze
+| | Call x2nrealloc
+| | | Call xrealloc
+| | | | Call realloc
+| | | | Return malloc_stats
+| | | Return realloc
+| | Return xrealloc
+| Return x2nrealloc
+| Call dfaanalyze
+| | Call copy
+| | | Call _dl_make_stack_executable
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | Return _dl_debug_state
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | Return _dl_debug_state
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Return calloc
+| | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Return calloc
+| | | | | | Return _dl_rtld_di_serinfo
+| | | | | Return _dl_rtld_di_serinfo
+| | | | Return _dl_rtld_di_serinfo
+| | | Return memccpy
+| | Return _dl_rtld_di_serinfo
+| Return __nss_hosts_lookup
+Return copy
+Call dfaanalyze
+| Call copy
+| Return __nss_hosts_lookup
+Return copy
+Call dfaanalyze
+| Call epsclosure
+| | Call xzalloc
+| | | Call xmalloc
+| | | | Call malloc
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | Return xmalloc
+| | Call xzalloc
+| | | Call _dl_make_stack_executable
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | Return _dl_debug_state
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | Return _dl_debug_state
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Return calloc
+| | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Return calloc
+| | | | | | Return _dl_rtld_di_serinfo
+| | | | | Return _dl_rtld_di_serinfo
+| | | | Return _dl_rtld_di_serinfo
+| | | Return memchr
+| | Return _dl_rtld_di_serinfo
+| Return memchr
+Return xzalloc
+Call epsclosure
+Tailcall __libc_free
+| Call __libc_free
+| Return malloc_set_state
+Tailcall __libc_free
+Return __libc_free
+@@@ return underflow
+Return epsclosure
+Call dfaanalyze
+| Call copy
+| Return __nss_hosts_lookup
+Return copy
+Call dfaanalyze
+| Call copy
+| Return __nss_hosts_lookup
+Return copy
+Call dfaanalyze
+| Call epsclosure
+| | Call xzalloc
+| | | Call xmalloc
+| | | | Call malloc
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | Return xmalloc
+| | Call xzalloc
+| | Return memchr
+| Return xzalloc
+| Call epsclosure
+| Tailcall __libc_free
+| | Call __libc_free
+| | Return malloc_set_state
+| Tailcall __libc_free
+| Return __libc_free
+Return epsclosure
+Call dfaanalyze
+| Call copy
+| Return __nss_hosts_lookup
+Return copy
+Call dfaanalyze
+Return insert
+Call dfaanalyze
+| Call epsclosure
+| | Call xzalloc
+| | | Call xmalloc
+| | | | Call malloc
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | Return xmalloc
+| | Call xzalloc
+| | Return memchr
+| Return xzalloc
+| Call epsclosure
+| Tailcall __libc_free
+| | Call __libc_free
+| | Return malloc_set_state
+| Tailcall __libc_free
+| Return __libc_free
+Return epsclosure
+Call dfaanalyze
+| Call xnmalloc
+| | Call xmalloc
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return xmalloc
+Return xnmalloc
+Call dfaanalyze
+| Call state_index
+| | Call x2nrealloc
+| | | Call xrealloc
+| | | | Call realloc
+| | | | | Call malloc_stats
+| | | | | Return malloc_trim
+| | | | | Call malloc_stats
+| | | | | Return malloc_set_state
+| | | | Return malloc_stats
+| | | Return realloc
+| | Return xrealloc
+| Return x2nrealloc
+| Call state_index
+| | Call xnmalloc
+| | | Call xmalloc
+| | | | Call malloc
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | Return xmalloc
+| Return xnmalloc
+| Call state_index
+| | Call copy
+| | Return __nss_hosts_lookup
+| Return copy
+Return state_index
+Call dfaanalyze
+Tailcall __libc_free
+| Call __libc_free
+| Return malloc_set_state
+Tailcall __libc_free
+Return __libc_free
+Call dfaanalyze
+Tailcall __libc_free
+| Call __libc_free
+| Return malloc_set_state
+Tailcall __libc_free
+Return __libc_free
+Call dfaanalyze
+Tailcall __libc_free
+| Call __libc_free
+| Return malloc_set_state
+Tailcall __libc_free
+Return __libc_free
+Call dfaanalyze
+Tailcall __libc_free
+| Call __libc_free
+| Return malloc_set_state
+Tailcall __libc_free
+Return __libc_free
+Call dfaanalyze
+Tailcall __libc_free
+| Call __libc_free
+| Return malloc_set_state
+Tailcall __libc_free
+Return __libc_free
+Call dfaanalyze
+Tailcall __libc_free
+| Call __libc_free
+| Return malloc_set_state
+Tailcall __libc_free
+Return __libc_free
+Call dfaanalyze
+Tailcall __libc_free
+| Call __libc_free
+| Return malloc_set_state
+Tailcall __libc_free
+Return __libc_free
+@@@ return underflow
+Return dfaanalyze
+@@@ return underflow
+Return dfacomp
+Call GEAcompile
+| Call kwsmusts
+| Return dfamusts
+| Call kwsmusts
+| | Call kwsinit
+| | | Call kwsalloc
+| | | | Call xmalloc
+| | | | | Call malloc
+| | | | | | Call malloc_trim
+| | | | | | Return malloc_usable_size
+| | | | | Return malloc_trim
+| | | | Tailcall malloc
+| | | | Return malloc
+| | | Return xmalloc
+| | | Call kwsalloc
+| | | | Call _dl_make_stack_executable
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | | Call _dl_debug_state
+| | | | | | | | Return calloc
+| | | | | | | | Call _dl_debug_state
+| | | | | | | | Return calloc
+| | | | | | | Return _dl_debug_state
+| | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | | Call _dl_debug_state
+| | | | | | | | Return calloc
+| | | | | | | | Call _dl_debug_state
+| | | | | | | | Return calloc
+| | | | | | | Return _dl_debug_state
+| | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | | Return calloc
+| | | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | | Return calloc
+| | | | | | | Return _dl_rtld_di_serinfo
+| | | | | | Return _dl_rtld_di_serinfo
+| | | | | Return _dl_rtld_di_serinfo
+| | | | Return _dl_rtld_di_serinfo
+| | | | Call xmalloc
+| | | | | Call malloc
+| | | | | Return malloc_trim
+| | | | Tailcall malloc
+| | | | Return malloc
+| | | Return xmalloc
+| | Return _obstack_begin
+| Return kwsalloc
+Return kwsinit
+Call kwsmusts
+| Call kwsincr_case
+| Return kwsincr
+Return kwsincr_case
+Call kwsmusts
+Return dfamusts
+Call kwsmusts
+Return kwsprep
+@@@ return underflow
+Return kwsmusts
+Call GEAcompile
+Return __libc_free
+@@@ return underflow
+Return GEAcompile
+@@@ return underflow
+Return Gcompile
+Call main
+Tailcall __libc_free
+| Call __libc_free
+| Return malloc_set_state
+Tailcall __libc_free
+Return __libc_free
+Call main
+| Call _dl_make_stack_executable
+| | Call _dl_rtld_di_serinfo
+| | | Call _dl_rtld_di_serinfo
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | Return _dl_debug_state
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | | Call _dl_debug_state
+| | | | | Return calloc
+| | | | Return _dl_debug_state
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | Return calloc
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | Return calloc
+| | | | Return _dl_rtld_di_serinfo
+| | | Return _dl_rtld_di_serinfo
+| | Return _dl_rtld_di_serinfo
+| Return _dl_rtld_di_serinfo
+| Call isatty
+| Return tcgetattr
+Return isatty
+Call main
+| Call grepfile
+| | Call _dl_make_stack_executable
+| | | Call _dl_rtld_di_serinfo
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | Return _dl_debug_state
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | | Call _dl_debug_state
+| | | | | | Return calloc
+| | | | | Return _dl_debug_state
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | Return calloc
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | Return calloc
+| | | | | Return _dl_rtld_di_serinfo
+| | | | Return _dl_rtld_di_serinfo
+| | | Return _dl_rtld_di_serinfo
+| | Return _dl_rtld_di_serinfo
+| Tailcall gettext
+| Tailcall dcgettext
+| | Call gettext
+| | Return uselocale
+| | Call gettext
+| | Return __strerror_r
+| | Call gettext
+| | Return memccpy
+| | Call gettext
+| | Return tfind
+| | Call gettext
+| | Return strcat
+| | Call gettext
+| | | Call getenv
+| | | Return __strerror_r
+| | | Call getenv
+| | | Return strncat
+| | Return getenv
+| | Call gettext
+| | Return uselocale
+| | Call gettext
+| | Return __strerror_r
+| | Call gettext
+| | Return __strerror_r
+| | Call gettext
+| | Return ffsll
+| | Call gettext
+| | Return memchr
+| | Call gettext
+| | Return __strerror_r
+| | Call gettext
+| | | Call ngettext
+| | | Return __strerror_r
+| | | Call ngettext
+| | | | Call textdomain
+| | | | Return __strerror_r
+| | | | Call textdomain
+| | | | Return __strerror_r
+| | | | Call textdomain
+| | | | | Call malloc
+| | | | | Return malloc_trim
+| | | | Tailcall malloc
+| | | | Return malloc
+| | | | Call textdomain
+| | | | Return memccpy
+| | | | Call textdomain
+| | | | | Call __argz_stringify
+| | | | | Return strnlen
+| | | | Return __argz_stringify
+| | | | Call textdomain
+| | | | Return ffsll
+| | | | Call textdomain
+| | | | Return strcoll
+| | | | Call textdomain
+| | | | Tailcall __libc_free
+| | | | | Call __libc_free
+| | | | | Return malloc_set_state
+| | | | Tailcall __libc_free
+| | | | Return __libc_free
+| | | Return textdomain
+| | | Call ngettext
+| | | | Call ngettext
+| | | | | Call ngettext
+| | | | | Return memchr
+| | | | | Call ngettext
+| | | | | Tailcall _IO_fopen
+| | | | | | Call _IO_fgets
+| | | | | | | Call malloc
+| | | | | | | Return malloc_trim
+| | | | | | Tailcall malloc
+| | | | | | Return malloc
+| | | | | | Call _IO_fgets
+| | | | | | | Call _IO_sgetn
+| | | | | | | Return _IO_sgetn
+| | | | | | Return _IO_sgetn
+| | | | | | Call _IO_fgets
+| | | | | | | Call _IO_file_init
+| | | | | | | Tailcall _IO_link_in
+| | | | | | | Tailcall _IO_link_in
+| | | | | | | Tailcall _IO_link_in
+| | | | | | | Tailcall _IO_link_in
+| | | | | | | Return _IO_link_in
+| | | | | | Return _IO_file_init
+| | | | | | Call _IO_fgets
+| | | | | | | Call _IO_file_fopen
+| | | | | | | | Call _IO_file_open
+| | | | | | | | Return open
+| | | | | | | | Call _IO_file_open
+| | | | | | | | Return _IO_link_in
+| | | | | | | Return _IO_file_open
+| | | | | | | Call _IO_file_fopen
+| | | | | | | Return envz_add
+| | | | | | Return _IO_file_fopen
+| | | | | Return _IO_fgets
+| | | | | Call ngettext
+| | | | | | Call fgets_unlocked
+| | | | | | Tailcall _IO_getline
+| | | | | | | Call _IO_getline_info
+| | | | | | | | Call _IO_file_underflow
+| | | | | | | | Tailcall _IO_file_stat
+| | | | | | | | Return __fxstat64
+| | | | | | | | Call _IO_file_doallocate
+| | | | | | | | Return mmap
+| | | | | | | | Call _IO_file_doallocate
+| | | | | | | | Return _IO_setb
+| | | | | | | Return _IO_file_doallocate
+| | | | | | Return _IO_doallocbuf
+| | | | | | Call _IO_file_underflow
+| | | | | | Return _IO_switch_to_get_mode
+| | | | | | Call _IO_file_read
+| | | | | | Return __read
+| | | | | Return _IO_file_read
+| | | | Return _IO_file_underflow
+| | | Return _IO_default_uflow
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Tailcall realloc
+| | Call malloc
+| | | Call malloc_trim
+| | | Return malloc_usable_size
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Tailcall realloc
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| | Call realloc
+| | Return malloc_stats
+| Return realloc
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | Return memchr
+| | | Call _IO_getline_info
+| | | Return memccpy
+| | Return _IO_getline_info
+| Return fgets_unlocked
+| Call ngettext
+| Return strcat
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return __strerror_r
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| Return memccpy
+| Call ngettext
+| | Call fgets_unlocked
+| | Tailcall _IO_getline
+| | | Call _IO_getline_info
+| | | | Call _IO_file_underflow
+| | | | Return _IO_switch_to_get_mode
+| | | | Call _IO_file_read
+| | | | Return __read
+| | | Return _IO_file_read
+| | Return _IO_file_underflow
+| Return _IO_default_uflow
+Return _IO_getline_info
+@@@ return underflow
+Return fgets_unlocked
+Call ngettext
+| Call fclose
+| Tailcall _IO_un_link
+| Tailcall _IO_un_link
+| Return _IO_un_link
+| Call fclose
+| | Call _IO_file_close_it
+| | Return _IO_unsave_markers
+| Tailcall _IO_file_close
+| Return close
+| Call _IO_file_close_it
+| | Call _IO_setb
+| | Return munmap
+| Return _IO_setb
+| Call _IO_file_close_it
+| Return _IO_un_link
+Return _IO_file_close_it
+Tailcall _IO_file_finish
+Tailcall _IO_default_finish
+@@@ return underflow
+Return _IO_un_link
+Call fclose
+Tailcall __libc_free
+| Call __libc_free
+| Return malloc_set_state
+Tailcall __libc_free
+Return __libc_free
+@@@ return underflow
+Return fclose
+Call ngettext
+Tailcall qsort
+| Call qsort_r
+| | Call bsearch
+| | | Call bsearch
+| | | | Call bsearch
+| | | | | Call bsearch
+| | | | | | Call bsearch
+| | | | | | Return bsearch
+| | | | | | Call bsearch
+| | | | | | Return bsearch
+| | | | | Tailcall ngettext
+| | | | | Tailcall __nss_hosts_lookup
+| | | | | Return __nss_hosts_lookup
+| | | | Tailcall bsearch
+| | | | Return memccpy
+| | | | Call bsearch
+| | | | | Call bsearch
+| | | | | Return bsearch
+| | | | | Call bsearch
+| | | | | | Call bsearch
+| | | | | | Return bsearch
+| | | | | | Call bsearch
+| | | | | | Return bsearch
+| | | | | Tailcall ngettext
+| | | | | Tailcall __nss_hosts_lookup
+| | | | | Return __nss_hosts_lookup
+| | | | Tailcall bsearch
+| | | | Return memccpy
+| | | Tailcall ngettext
+| | | Tailcall __nss_hosts_lookup
+| | | Return __nss_hosts_lookup
+| | Tailcall bsearch
+| | Return memccpy
+| Tailcall ngettext
+| Tailcall __nss_hosts_lookup
+| Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+Return __nss_hosts_lookup
+Tailcall bsearch
+@@@ return underflow
+Return memccpy
+Call bsearch
+| Call bsearch
+| | Call bsearch
+| | Return bsearch
+| | Call bsearch
+| | | Call bsearch
+| | | Return bsearch
+| | | Call bsearch
+| | | Return bsearch
+| | Tailcall ngettext
+| | Tailcall __nss_hosts_lookup
+| | Return __nss_hosts_lookup
+| Tailcall bsearch
+| Return memccpy
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+Return __nss_hosts_lookup
+Tailcall bsearch
+@@@ return underflow
+Return memccpy
+Call bsearch
+| Call bsearch
+| Return bsearch
+| Call bsearch
+| | Call bsearch
+| | Return bsearch
+| | Call bsearch
+| | Return bsearch
+| Tailcall ngettext
+| Tailcall __nss_hosts_lookup
+| Return __nss_hosts_lookup
+Tailcall bsearch
+Return memccpy
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall bsearch
+@@@ return underflow
+Return memccpy
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall bsearch
+@@@ return underflow
+Return memccpy
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall bsearch
+@@@ return underflow
+Return memccpy
+Call bsearch
+| Call bsearch
+| | Call bsearch
+| | | Call bsearch
+| | | Return bsearch
+| | | Call bsearch
+| | | | Call bsearch
+| | | | Return bsearch
+| | | | Call bsearch
+| | | | Return bsearch
+| | | Tailcall ngettext
+| | | Tailcall __nss_hosts_lookup
+| | | Return __nss_hosts_lookup
+| | Tailcall bsearch
+| | Return memccpy
+| Tailcall ngettext
+| Tailcall __nss_hosts_lookup
+| Return __nss_hosts_lookup
+Tailcall bsearch
+Return memccpy
+Call bsearch
+| Call bsearch
+| Return bsearch
+| Call bsearch
+| | Call bsearch
+| | Return bsearch
+| | Call bsearch
+| | Return bsearch
+| Tailcall ngettext
+| Tailcall __nss_hosts_lookup
+| Return __nss_hosts_lookup
+Tailcall bsearch
+Return memccpy
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall bsearch
+@@@ return underflow
+Return memccpy
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall bsearch
+@@@ return underflow
+Return memccpy
+Call bsearch
+| Call bsearch
+| | Call bsearch
+| | Return bsearch
+| | Call bsearch
+| | | Call bsearch
+| | | Return bsearch
+| | | Call bsearch
+| | | Return bsearch
+| | Tailcall ngettext
+| | Tailcall __nss_hosts_lookup
+| | Return __nss_hosts_lookup
+| Tailcall bsearch
+| Return memccpy
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+Return __nss_hosts_lookup
+Tailcall bsearch
+@@@ return underflow
+Return memccpy
+Call bsearch
+| Call bsearch
+| Return bsearch
+| Call bsearch
+| | Call bsearch
+| | Return bsearch
+| | Call bsearch
+| | Return bsearch
+| Tailcall ngettext
+| Tailcall __nss_hosts_lookup
+| Return __nss_hosts_lookup
+Tailcall bsearch
+Return memccpy
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall bsearch
+@@@ return underflow
+Return memccpy
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall bsearch
+@@@ return underflow
+Return memccpy
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall bsearch
+@@@ return underflow
+Return memccpy
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall bsearch
+@@@ return underflow
+Return memccpy
+Call bsearch
+| Call bsearch
+| | Call bsearch
+| | | Call bsearch
+| | | | Call bsearch
+| | | | Return bsearch
+| | | | Call bsearch
+| | | | | Call bsearch
+| | | | | Return bsearch
+| | | | | Call bsearch
+| | | | | Return bsearch
+| | | | Tailcall ngettext
+| | | | Tailcall __nss_hosts_lookup
+| | | | Return __nss_hosts_lookup
+| | | | Call bsearch
+| | | | Return memccpy
+| | | Tailcall bsearch
+| | | Return memccpy
+| | Tailcall ngettext
+| | Tailcall __nss_hosts_lookup
+| | Return __nss_hosts_lookup
+| Tailcall ngettext
+| Tailcall __nss_hosts_lookup
+| Return __nss_hosts_lookup
+Tailcall bsearch
+Return memccpy
+Call bsearch
+| Call bsearch
+| Return bsearch
+| Call bsearch
+| | Call bsearch
+| | Return bsearch
+| | Call bsearch
+| | Return bsearch
+| Tailcall ngettext
+| Tailcall __nss_hosts_lookup
+| Return __nss_hosts_lookup
+Tailcall bsearch
+Return memccpy
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall bsearch
+@@@ return underflow
+Return memccpy
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall bsearch
+@@@ return underflow
+Return memccpy
+Call bsearch
+| Call bsearch
+| | Call bsearch
+| | Return bsearch
+| | Call bsearch
+| | | Call bsearch
+| | | Return bsearch
+| | | Call bsearch
+| | | Return bsearch
+| | Tailcall ngettext
+| | Tailcall __nss_hosts_lookup
+| | Return __nss_hosts_lookup
+| Tailcall bsearch
+| Return memccpy
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall bsearch
+@@@ return underflow
+Return memccpy
+Call bsearch
+| Call bsearch
+| Return bsearch
+| Call bsearch
+| | Call bsearch
+| | Return bsearch
+| | Call bsearch
+| | Return bsearch
+| Tailcall ngettext
+| Tailcall __nss_hosts_lookup
+| Return __nss_hosts_lookup
+Tailcall bsearch
+Return memccpy
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall bsearch
+@@@ return underflow
+Return memccpy
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall bsearch
+@@@ return underflow
+Return memccpy
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall bsearch
+@@@ return underflow
+Return memccpy
+Call bsearch
+| Call bsearch
+| | Call bsearch
+| | | Call bsearch
+| | | Return bsearch
+| | | Call bsearch
+| | | | Call bsearch
+| | | | Return bsearch
+| | | | Call bsearch
+| | | | Return bsearch
+| | | Tailcall ngettext
+| | | Tailcall __nss_hosts_lookup
+| | | Return __nss_hosts_lookup
+| | Tailcall bsearch
+| | Return memccpy
+| Tailcall ngettext
+| Tailcall __nss_hosts_lookup
+| Return __nss_hosts_lookup
+Tailcall bsearch
+Return memccpy
+Call bsearch
+| Call bsearch
+| Return bsearch
+| Call bsearch
+| | Call bsearch
+| | Return bsearch
+| | Call bsearch
+| | Return bsearch
+| Tailcall ngettext
+| Tailcall __nss_hosts_lookup
+| Return __nss_hosts_lookup
+Tailcall bsearch
+Return memccpy
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall bsearch
+@@@ return underflow
+Return memccpy
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall bsearch
+@@@ return underflow
+Return memccpy
+Call bsearch
+| Call bsearch
+| | Call bsearch
+| | Return bsearch
+| | Call bsearch
+| | | Call bsearch
+| | | Return bsearch
+| | | Call bsearch
+| | | Return bsearch
+| | Tailcall ngettext
+| | Tailcall __nss_hosts_lookup
+| | Return __nss_hosts_lookup
+| Tailcall bsearch
+| Return memccpy
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+Return __nss_hosts_lookup
+Tailcall bsearch
+@@@ return underflow
+Return memccpy
+Call bsearch
+| Call bsearch
+| Return bsearch
+| Call bsearch
+| | Call bsearch
+| | Return bsearch
+| | Call bsearch
+| | Return bsearch
+| Tailcall ngettext
+| Tailcall __nss_hosts_lookup
+| Return __nss_hosts_lookup
+Tailcall bsearch
+Return memccpy
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall bsearch
+@@@ return underflow
+Return memccpy
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall bsearch
+@@@ return underflow
+Return memccpy
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall bsearch
+@@@ return underflow
+Return memccpy
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall bsearch
+@@@ return underflow
+Return memccpy
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall bsearch
+@@@ return underflow
+Return memccpy
+Call qsort_r
+Return __libc_free
+@@@ return underflow
+Return qsort_r
+@@@ return underflow
+Return ngettext
+Call ngettext
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+Tailcall ngettext
+Tailcall __nss_hosts_lookup
+@@@ return underflow
+Return __nss_hosts_lookup
+@@@ return underflow
+Return bsearch
+@@@ return underflow
+Return ngettext
+Call ngettext
+| Call textdomain
+| | Call textdomain
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return textdomain
+| Call textdomain
+| Return strcat
+Return textdomain
+Call ngettext
+Return __strerror_r
+Call ngettext
+| Call textdomain
+| Return __strerror_r
+| Call textdomain
+| Return __strerror_r
+| Call textdomain
+| Return __strerror_r
+| Call textdomain
+| Return __strerror_r
+| Call textdomain
+| Return __strerror_r
+| Call textdomain
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+| Call textdomain
+| Return memccpy
+| Call textdomain
+| | Call __argz_stringify
+| | Return strnlen
+| Return __argz_stringify
+| Call textdomain
+| Return ffsll
+| Call textdomain
+| Return ffsll
+| Call textdomain
+| Return ffsll
+| Call textdomain
+| Return ffsll
+| Call textdomain
+| Return strcoll
+| Call textdomain
+| | Call __argz_count
+| | Return __strerror_r
+| Return __argz_count
+| Call textdomain
+| | Call malloc
+| | Return malloc_trim
+| Tailcall malloc
+| Return malloc
+| Call textdomain
+| | Call __argz_count
+| | Return __strerror_r
+| Return __argz_count
+| Call textdomain
+| | Call __argz_count
+| | Return __strerror_r
+| Return __argz_count
+| Call textdomain
+| Return __strerror_r
+| Call textdomain
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| | Call textdomain
+| | Return memccpy
+| | Call textdomain
+| | | Call __argz_stringify
+| | | Return strnlen
+| | Return __argz_stringify
+| | Call textdomain
+| | Return ffsll
+| | Call textdomain
+| | Return ffsll
+| | Call textdomain
+| | Return ffsll
+| | Call textdomain
+| | Return strcoll
+| | Call textdomain
+| | Return strcat
+| | Call textdomain
+| | | Call __argz_count
+| | | Return __strerror_r
+| | Return __argz_count
+| | Call textdomain
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| | Call textdomain
+| | | Call __argz_count
+| | | Return __strerror_r
+| | Return __argz_count
+| | Call textdomain
+| | | Call __argz_count
+| | | Return __strerror_r
+| | Return __argz_count
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | | Call textdomain
+| | | Return __strerror_r
+| | | Call textdomain
+| | | Return __strerror_r
+| | | Call textdomain
+| | | Return __strerror_r
+| | | Call textdomain
+| | | | Call malloc
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | | Call textdomain
+| | | Return memccpy
+| | | Call textdomain
+| | | | Call __argz_stringify
+| | | | Return strnlen
+| | | Return __argz_stringify
+| | | Call textdomain
+| | | Return ffsll
+| | | Call textdomain
+| | | Return ffsll
+| | | Call textdomain
+| | | Return strcoll
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | | Call __argz_count
+| | | | Return __strerror_r
+| | | Return __argz_count
+| | | Call textdomain
+| | | | Call malloc
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | | Call textdomain
+| | | | Call __argz_count
+| | | | Return __strerror_r
+| | | Return __argz_count
+| | | Call textdomain
+| | | | Call __argz_count
+| | | | Return __strerror_r
+| | | Return __argz_count
+| | | Call textdomain
+| | | Return __strerror_r
+| | | Call textdomain
+| | | | Call textdomain
+| | | | Return __strerror_r
+| | | | Call textdomain
+| | | | Return __strerror_r
+| | | | Call textdomain
+| | | | | Call malloc
+| | | | | Return malloc_trim
+| | | | Tailcall malloc
+| | | | Return malloc
+| | | | Call textdomain
+| | | | Return memccpy
+| | | | Call textdomain
+| | | | | Call __argz_stringify
+| | | | | Return strnlen
+| | | | Return __argz_stringify
+| | | | Call textdomain
+| | | | Return ffsll
+| | | | Call textdomain
+| | | | Return strcoll
+| | | | Call textdomain
+| | | | Return strcat
+| | | | Call textdomain
+| | | | Return strcat
+| | | | Call textdomain
+| | | | Return strcat
+| | | | Call textdomain
+| | | | | Call __argz_count
+| | | | | Return __strerror_r
+| | | | Return __argz_count
+| | | | Call textdomain
+| | | | | Call malloc
+| | | | | Return malloc_trim
+| | | | Tailcall malloc
+| | | | Return malloc
+| | | | Call textdomain
+| | | | | Call __argz_count
+| | | | | Return __strerror_r
+| | | | Return __argz_count
+| | | | Call textdomain
+| | | | | Call __argz_count
+| | | | | Return __strerror_r
+| | | | Return __argz_count
+| | | Return textdomain
+| | | Call textdomain
+| | | Return memmem
+| | Return textdomain
+| | Call textdomain
+| | Return memmem
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | | Call textdomain
+| | | Return __strerror_r
+| | | Call textdomain
+| | | Return __strerror_r
+| | | Call textdomain
+| | | Return __strerror_r
+| | | Call textdomain
+| | | | Call malloc
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | | Call textdomain
+| | | Return memccpy
+| | | Call textdomain
+| | | | Call __argz_stringify
+| | | | Return strnlen
+| | | Return __argz_stringify
+| | | Call textdomain
+| | | Return ffsll
+| | | Call textdomain
+| | | Return ffsll
+| | | Call textdomain
+| | | Return strcoll
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | | Call __argz_count
+| | | | Return __strerror_r
+| | | Return __argz_count
+| | | Call textdomain
+| | | | Call malloc
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | | Call textdomain
+| | | | Call __argz_count
+| | | | Return __strerror_r
+| | | Return __argz_count
+| | | Call textdomain
+| | | | Call __argz_count
+| | | | Return __strerror_r
+| | | Return __argz_count
+| | | Call textdomain
+| | | Return __strerror_r
+| | | Call textdomain
+| | | | Call textdomain
+| | | | Return __strerror_r
+| | | | Call textdomain
+| | | | Return __strerror_r
+| | | | Call textdomain
+| | | | | Call malloc
+| | | | | Return malloc_trim
+| | | | Tailcall malloc
+| | | | Return malloc
+| | | | Call textdomain
+| | | | Return memccpy
+| | | | Call textdomain
+| | | | | Call __argz_stringify
+| | | | | Return strnlen
+| | | | Return __argz_stringify
+| | | | Call textdomain
+| | | | Return ffsll
+| | | | Call textdomain
+| | | | Return strcoll
+| | | | Call textdomain
+| | | | Return strcat
+| | | | Call textdomain
+| | | | Return strcat
+| | | | Call textdomain
+| | | | Return strcat
+| | | | Call textdomain
+| | | | Return strcat
+| | | | Call textdomain
+| | | | Tailcall __libc_free
+| | | | | Call __libc_free
+| | | | | Return malloc_set_state
+| | | | Tailcall __libc_free
+| | | | Return __libc_free
+| | | Return textdomain
+| | | Call textdomain
+| | | Return memmem
+| | Return textdomain
+| | Call textdomain
+| | Return memmem
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | | Call textdomain
+| | | Return __strerror_r
+| | | Call textdomain
+| | | Return __strerror_r
+| | | Call textdomain
+| | | | Call malloc
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | | Call textdomain
+| | | Return memccpy
+| | | Call textdomain
+| | | | Call __argz_stringify
+| | | | Return strnlen
+| | | Return __argz_stringify
+| | | Call textdomain
+| | | Return ffsll
+| | | Call textdomain
+| | | Return strcoll
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Tailcall __libc_free
+| | | | Call __libc_free
+| | | | Return malloc_set_state
+| | | Tailcall __libc_free
+| | | Return __libc_free
+| | Return textdomain
+| | Call textdomain
+| | Return memmem
+| Return textdomain
+| Call textdomain
+| Return memmem
+| Call textdomain
+| Return __strerror_r
+| Call textdomain
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| | Call textdomain
+| | Return memccpy
+| | Call textdomain
+| | | Call __argz_stringify
+| | | Return strnlen
+| | Return __argz_stringify
+| | Call textdomain
+| | Return ffsll
+| | Call textdomain
+| | Return ffsll
+| | Call textdomain
+| | Return ffsll
+| | Call textdomain
+| | Return strcoll
+| | Call textdomain
+| | Return strcat
+| | Call textdomain
+| | Return strcat
+| | Call textdomain
+| | | Call __argz_count
+| | | Return __strerror_r
+| | Return __argz_count
+| | Call textdomain
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| | Call textdomain
+| | | Call __argz_count
+| | | Return __strerror_r
+| | Return __argz_count
+| | Call textdomain
+| | | Call __argz_count
+| | | Return __strerror_r
+| | Return __argz_count
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | | Call textdomain
+| | | Return __strerror_r
+| | | Call textdomain
+| | | Return __strerror_r
+| | | Call textdomain
+| | | Return __strerror_r
+| | | Call textdomain
+| | | | Call malloc
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | | Call textdomain
+| | | Return memccpy
+| | | Call textdomain
+| | | | Call __argz_stringify
+| | | | Return strnlen
+| | | Return __argz_stringify
+| | | Call textdomain
+| | | Return ffsll
+| | | Call textdomain
+| | | Return ffsll
+| | | Call textdomain
+| | | Return strcoll
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Tailcall __libc_free
+| | | | Call __libc_free
+| | | | Return malloc_set_state
+| | | Tailcall __libc_free
+| | | Return __libc_free
+| | Return textdomain
+| | Call textdomain
+| | Return memmem
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | | Call textdomain
+| | | Return __strerror_r
+| | | Call textdomain
+| | | Return __strerror_r
+| | | Call textdomain
+| | | Return __strerror_r
+| | | Call textdomain
+| | | | Call malloc
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | | Call textdomain
+| | | Return memccpy
+| | | Call textdomain
+| | | | Call __argz_stringify
+| | | | Return strnlen
+| | | Return __argz_stringify
+| | | Call textdomain
+| | | Return ffsll
+| | | Call textdomain
+| | | Return ffsll
+| | | Call textdomain
+| | | Return strcoll
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | | Call __argz_count
+| | | | Return __strerror_r
+| | | Return __argz_count
+| | | Call textdomain
+| | | | Call malloc
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | | Call textdomain
+| | | | Call __argz_count
+| | | | Return __strerror_r
+| | | Return __argz_count
+| | | Call textdomain
+| | | | Call __argz_count
+| | | | Return __strerror_r
+| | | Return __argz_count
+| | | Call textdomain
+| | | Return __strerror_r
+| | | Call textdomain
+| | | | Call textdomain
+| | | | Return __strerror_r
+| | | | Call textdomain
+| | | | Return __strerror_r
+| | | | Call textdomain
+| | | | | Call malloc
+| | | | | Return malloc_trim
+| | | | Tailcall malloc
+| | | | Return malloc
+| | | | Call textdomain
+| | | | Return memccpy
+| | | | Call textdomain
+| | | | | Call __argz_stringify
+| | | | | Return strnlen
+| | | | Return __argz_stringify
+| | | | Call textdomain
+| | | | Return ffsll
+| | | | Call textdomain
+| | | | Return strcoll
+| | | | Call textdomain
+| | | | Return strcat
+| | | | Call textdomain
+| | | | Return strcat
+| | | | Call textdomain
+| | | | Return strcat
+| | | | Call textdomain
+| | | | Return strcat
+| | | | Call textdomain
+| | | | Return strcat
+| | | | Call textdomain
+| | | | Tailcall __libc_free
+| | | | | Call __libc_free
+| | | | | Return malloc_set_state
+| | | | Tailcall __libc_free
+| | | | Return __libc_free
+| | | Return textdomain
+| | | Call textdomain
+| | | Return memmem
+| | Return textdomain
+| | Call textdomain
+| | Return memmem
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | | Call textdomain
+| | | Return __strerror_r
+| | | Call textdomain
+| | | Return __strerror_r
+| | | Call textdomain
+| | | | Call malloc
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | | Call textdomain
+| | | Return memccpy
+| | | Call textdomain
+| | | | Call __argz_stringify
+| | | | Return strnlen
+| | | Return __argz_stringify
+| | | Call textdomain
+| | | Return ffsll
+| | | Call textdomain
+| | | Return strcoll
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Tailcall __libc_free
+| | | | Call __libc_free
+| | | | Return malloc_set_state
+| | | Tailcall __libc_free
+| | | Return __libc_free
+| | Return textdomain
+| | Call textdomain
+| | Return memmem
+| Return textdomain
+| Call textdomain
+| Return memmem
+| Call textdomain
+| Return __strerror_r
+| Call textdomain
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| | Call textdomain
+| | Return memccpy
+| | Call textdomain
+| | | Call __argz_stringify
+| | | Return strnlen
+| | Return __argz_stringify
+| | Call textdomain
+| | Return ffsll
+| | Call textdomain
+| | Return ffsll
+| | Call textdomain
+| | Return strcoll
+| | Call textdomain
+| | Return strcat
+| | Call textdomain
+| | Tailcall __libc_free
+| | | Call __libc_free
+| | | Return malloc_set_state
+| | Tailcall __libc_free
+| | Return __libc_free
+| Return textdomain
+| Call textdomain
+| Return memmem
+| Call textdomain
+| Return __strerror_r
+| Call textdomain
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| | Call textdomain
+| | Return memccpy
+| | Call textdomain
+| | | Call __argz_stringify
+| | | Return strnlen
+| | Return __argz_stringify
+| | Call textdomain
+| | Return ffsll
+| | Call textdomain
+| | Return ffsll
+| | Call textdomain
+| | Return ffsll
+| | Call textdomain
+| | Return strcoll
+| | Call textdomain
+| | Return strcat
+| | Call textdomain
+| | Return strcat
+| | Call textdomain
+| | Return strcat
+| | Call textdomain
+| | Return strcat
+| | Call textdomain
+| | Return strcat
+| | Call textdomain
+| | Return strcat
+| | Call textdomain
+| | Return strcat
+| | Call textdomain
+| | | Call __argz_count
+| | | Return __strerror_r
+| | Return __argz_count
+| | Call textdomain
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| | Call textdomain
+| | | Call __argz_count
+| | | Return __strerror_r
+| | Return __argz_count
+| | Call textdomain
+| | | Call __argz_count
+| | | Return __strerror_r
+| | Return __argz_count
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | | Call textdomain
+| | | Return __strerror_r
+| | | Call textdomain
+| | | Return __strerror_r
+| | | Call textdomain
+| | | Return __strerror_r
+| | | Call textdomain
+| | | | Call malloc
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | | Call textdomain
+| | | Return memccpy
+| | | Call textdomain
+| | | | Call __argz_stringify
+| | | | Return strnlen
+| | | Return __argz_stringify
+| | | Call textdomain
+| | | Return ffsll
+| | | Call textdomain
+| | | Return ffsll
+| | | Call textdomain
+| | | Return strcoll
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Tailcall __libc_free
+| | | | Call __libc_free
+| | | | Return malloc_set_state
+| | | Tailcall __libc_free
+| | | Return __libc_free
+| | Return textdomain
+| | Call textdomain
+| | Return memmem
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | | Call textdomain
+| | | Return __strerror_r
+| | | Call textdomain
+| | | Return __strerror_r
+| | | Call textdomain
+| | | Return __strerror_r
+| | | Call textdomain
+| | | | Call malloc
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | | Call textdomain
+| | | Return memccpy
+| | | Call textdomain
+| | | | Call __argz_stringify
+| | | | Return strnlen
+| | | Return __argz_stringify
+| | | Call textdomain
+| | | Return ffsll
+| | | Call textdomain
+| | | Return ffsll
+| | | Call textdomain
+| | | Return strcoll
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Tailcall __libc_free
+| | | | Call __libc_free
+| | | | Return malloc_set_state
+| | | Tailcall __libc_free
+| | | Return __libc_free
+| | Return textdomain
+| | Call textdomain
+| | Return memmem
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | | Call textdomain
+| | | Return __strerror_r
+| | | Call textdomain
+| | | Return __strerror_r
+| | | Call textdomain
+| | | | Call malloc
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | | Call textdomain
+| | | Return memccpy
+| | | Call textdomain
+| | | | Call __argz_stringify
+| | | | Return strnlen
+| | | Return __argz_stringify
+| | | Call textdomain
+| | | Return ffsll
+| | | Call textdomain
+| | | Return strcoll
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Return strcat
+| | | Call textdomain
+| | | Tailcall __libc_free
+| | | | Call __libc_free
+| | | | Return malloc_set_state
+| | | Tailcall __libc_free
+| | | Return __libc_free
+| | Return textdomain
+| | Call textdomain
+| | Return memmem
+| Return textdomain
+| Call textdomain
+| Return memmem
+| Call textdomain
+| Return __strerror_r
+| Call textdomain
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| | Call textdomain
+| | Return memccpy
+| | Call textdomain
+| | | Call __argz_stringify
+| | | Return strnlen
+| | Return __argz_stringify
+| | Call textdomain
+| | Return ffsll
+| | Call textdomain
+| | Return ffsll
+| | Call textdomain
+| | Return strcoll
+| | Call textdomain
+| | Return strcat
+| | Call textdomain
+| | Return strcat
+| | Call textdomain
+| | Return strcat
+| | Call textdomain
+| | Return strcat
+| | Call textdomain
+| | Return strcat
+| | Call textdomain
+| | Return strcat
+| | Call textdomain
+| | Return strcat
+| | Call textdomain
+| | Tailcall __libc_free
+| | | Call __libc_free
+| | | Return malloc_set_state
+| | Tailcall __libc_free
+| | Return __libc_free
+| Return textdomain
+| Call textdomain
+| Return memmem
+| Call textdomain
+| Return __strerror_r
+| Call textdomain
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| | Call textdomain
+| | Return memccpy
+| | Call textdomain
+| | | Call __argz_stringify
+| | | Return strnlen
+| | Return __argz_stringify
+| | Call textdomain
+| | Return ffsll
+| | Call textdomain
+| | Return ffsll
+| | Call textdomain
+| | Return strcoll
+| | Call textdomain
+| | Return strcat
+| | Call textdomain
+| | Return strcat
+| | Call textdomain
+| | Return strcat
+| | Call textdomain
+| | Return strcat
+| | Call textdomain
+| | Return strcat
+| | Call textdomain
+| | Return strcat
+| | Call textdomain
+| | Tailcall __libc_free
+| | | Call __libc_free
+| | | Return malloc_set_state
+| | Tailcall __libc_free
+| | Return __libc_free
+| Return textdomain
+| Call textdomain
+| Return memmem
+| Call textdomain
+| Return __strerror_r
+| Call textdomain
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | Return __strerror_r
+| | Call textdomain
+| | | Call malloc
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| | Call textdomain
+| | Return memccpy
+| | Call textdomain
+| | | Call __argz_stringify
+| | | Return strnlen
+| | Return __argz_stringify
+| | Call textdomain
+| | Return ffsll
+| | Call textdomain
+| | Return strcoll
+| | Call textdomain
+| | Return strcat
+| | Call textdomain
+| | Return strcat
+| | Call textdomain
+| | Return strcat
+| | Call textdomain
+| | Return strcat
+| | Call textdomain
+| | Return strcat
+| | Call textdomain
+| | Tailcall __libc_free
+| | | Call __libc_free
+| | | Return malloc_set_state
+| | Tailcall __libc_free
+| | Return __libc_free
+| Return textdomain
+| Call textdomain
+| Return memmem
+Return textdomain
+Call ngettext
+| Call ngettext
+| Return open
+Return ngettext
+Call ngettext
+| Call ngettext
+| Return open
+Return ngettext
+Call ngettext
+| Call ngettext
+| Return open
+Return ngettext
+Call ngettext
+| Call ngettext
+| Return open
+Return ngettext
+Call ngettext
+| Call ngettext
+| Return open
+Return ngettext
+Call ngettext
+| Call ngettext
+| Return open
+Return ngettext
+Call ngettext
+Tailcall __libc_free
+| Call __libc_free
+| Return malloc_set_state
+Tailcall __libc_free
+Return __libc_free
+@@@ return underflow
+Return ngettext
+Call gettext
+Return gettext
+Call gettext
+Return gettext
+Call gettext
+Return gettext
+Call gettext
+Return gettext
+Call gettext
+Return gettext
+Call gettext
+Return gettext
+Call gettext
+Return gettext
+Call gettext
+Return gettext
+@@@ return underflow
+Return gettext
+Call grepfile
+| Call isatty
+| Return tcgetattr
+Return isatty
+Call grepfile
+| Call grep
+| | Call reset
+| | | Call _dl_make_stack_executable
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | Return _dl_debug_state
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | Return _dl_debug_state
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Return calloc
+| | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Return calloc
+| | | | | | Return _dl_rtld_di_serinfo
+| | | | | Return _dl_rtld_di_serinfo
+| | | | Return _dl_rtld_di_serinfo
+| | | Return _dl_rtld_di_serinfo
+| | Return getpagesize
+| | Call reset
+| | | Call xmalloc
+| | | | Call malloc
+| | | | | Call malloc_trim
+| | | | | Return malloc_usable_size
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | Return xmalloc
+| Return reset
+| Call grep
+| | Call fillbuf
+| | | Call _dl_make_stack_executable
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | Return _dl_debug_state
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | Return _dl_debug_state
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Return calloc
+| | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Return calloc
+| | | | | | Return _dl_rtld_di_serinfo
+| | | | | Return _dl_rtld_di_serinfo
+| | | | Return _dl_rtld_di_serinfo
+| | | Return _dl_rtld_di_serinfo
+| | Return __read
+| Return fillbuf
+| Call grep
+| Return memchr
+| Call grep
+| | Call fillbuf
+| | | Call xmalloc
+| | | | Call malloc
+| | | | Return malloc_trim
+| | | Tailcall malloc
+| | | Return malloc
+| | Return xmalloc
+| | Call fillbuf
+| | | Call _dl_make_stack_executable
+| | | | Call _dl_rtld_di_serinfo
+| | | | | Call _dl_rtld_di_serinfo
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | Return _dl_debug_state
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | | Call _dl_debug_state
+| | | | | | | Return calloc
+| | | | | | Return _dl_debug_state
+| | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Return calloc
+| | | | | | | Call _dl_rtld_di_serinfo
+| | | | | | | Return calloc
+| | | | | | Return _dl_rtld_di_serinfo
+| | | | | Return _dl_rtld_di_serinfo
+| | | | Return _dl_rtld_di_serinfo
+| | | Return memchr
+| | Return _dl_rtld_di_serinfo
+| Return __nss_hosts_lookup
+| Call fillbuf
+| Tailcall __libc_free
+| | Call __libc_free
+| | Return malloc_set_state
+| Tailcall __libc_free
+| Return __libc_free
+| Call fillbuf
+| Return __read
+Return fillbuf
+Call grep
+| Call fillbuf
+| | Call xmalloc
+| | | Call malloc
+| | | | Call malloc_trim
+| | | | Return mmap
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return xmalloc
+| Call fillbuf
+| Return __nss_hosts_lookup
+| Call fillbuf
+| Tailcall __libc_free
+| | Call __libc_free
+| | Return malloc_set_state
+| Tailcall __libc_free
+| Return __libc_free
+| Call fillbuf
+| Return __read
+Return fillbuf
+Call grep
+| Call fillbuf
+| | Call xmalloc
+| | | Call malloc
+| | | | Call malloc_trim
+| | | | Return mmap
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return xmalloc
+| Call fillbuf
+| Return __nss_hosts_lookup
+| Call fillbuf
+| Tailcall __libc_free
+| | Call malloc_set_state
+| | Return munmap
+| Return malloc_set_state
+| Call fillbuf
+| Return __read
+Return fillbuf
+Call grep
+| Call fillbuf
+| | Call xmalloc
+| | | Call malloc
+| | | | Call malloc_trim
+| | | | Return mmap
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return xmalloc
+| Call fillbuf
+| Return __nss_hosts_lookup
+| Call fillbuf
+| Tailcall __libc_free
+| | Call malloc_set_state
+| | Return munmap
+| Return malloc_set_state
+| Call fillbuf
+| Return __read
+Return fillbuf
+Call grep
+| Call fillbuf
+| | Call xmalloc
+| | | Call malloc
+| | | | Call malloc_trim
+| | | | Return mmap
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return xmalloc
+| Call fillbuf
+| Return __nss_hosts_lookup
+| Call fillbuf
+| Tailcall __libc_free
+| | Call malloc_set_state
+| | Return munmap
+| Return malloc_set_state
+| Call fillbuf
+| Return __read
+Return fillbuf
+Call grep
+| Call fillbuf
+| | Call xmalloc
+| | | Call malloc
+| | | | Call malloc_trim
+| | | | Return mmap
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return xmalloc
+| Call fillbuf
+| Return __nss_hosts_lookup
+| Call fillbuf
+| Tailcall __libc_free
+| | Call malloc_set_state
+| | Return munmap
+| Return malloc_set_state
+| Call fillbuf
+| Return __read
+Return fillbuf
+Call grep
+| Call fillbuf
+| | Call xmalloc
+| | | Call malloc
+| | | | Call malloc_trim
+| | | | Return mmap
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return xmalloc
+| Call fillbuf
+| Return __nss_hosts_lookup
+| Call fillbuf
+| Tailcall __libc_free
+| | Call malloc_set_state
+| | Return munmap
+| Return malloc_set_state
+| Call fillbuf
+| Return __read
+Return fillbuf
+Call grep
+| Call fillbuf
+| | Call xmalloc
+| | | Call malloc
+| | | | Call malloc_trim
+| | | | Return mmap
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return xmalloc
+| Call fillbuf
+| Return __nss_hosts_lookup
+| Call fillbuf
+| Tailcall __libc_free
+| | Call malloc_set_state
+| | Return munmap
+| Return malloc_set_state
+| Call fillbuf
+| Return __read
+Return fillbuf
+Call grep
+| Call fillbuf
+| | Call xmalloc
+| | | Call malloc
+| | | | Call malloc_trim
+| | | | Return mmap
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return xmalloc
+| Call fillbuf
+| Return __nss_hosts_lookup
+| Call fillbuf
+| Tailcall __libc_free
+| | Call malloc_set_state
+| | Return munmap
+| Return malloc_set_state
+| Call fillbuf
+| Return __read
+Return fillbuf
+Call grep
+| Call fillbuf
+| | Call xmalloc
+| | | Call malloc
+| | | | Call malloc_trim
+| | | | Return mmap
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return xmalloc
+| Call fillbuf
+| Return __nss_hosts_lookup
+| Call fillbuf
+| Tailcall __libc_free
+| | Call malloc_set_state
+| | Return munmap
+| Return malloc_set_state
+| Call fillbuf
+| Return __read
+Return fillbuf
+Call grep
+| Call fillbuf
+| | Call xmalloc
+| | | Call malloc
+| | | | Call malloc_trim
+| | | | Return mmap
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return xmalloc
+| Call fillbuf
+| Return __nss_hosts_lookup
+| Call fillbuf
+| Tailcall __libc_free
+| | Call malloc_set_state
+| | Return munmap
+| Return malloc_set_state
+| Call fillbuf
+| Return __read
+Return fillbuf
+Call grep
+| Call fillbuf
+| | Call xmalloc
+| | | Call malloc
+| | | | Call malloc_trim
+| | | | Return mmap
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return xmalloc
+| Call fillbuf
+| Return __nss_hosts_lookup
+| Call fillbuf
+| Tailcall __libc_free
+| | Call malloc_set_state
+| | Return munmap
+| Return malloc_set_state
+| Call fillbuf
+| Return __read
+Return fillbuf
+Call grep
+| Call fillbuf
+| | Call xmalloc
+| | | Call malloc
+| | | | Call malloc_trim
+| | | | Return mmap
+| | | Return malloc_trim
+| | Tailcall malloc
+| | Return malloc
+| Return xmalloc
+| Call fillbuf
+| Return __nss_hosts_lookup
+| Call fillbuf
+| Tailcall __libc_free
+| | Call malloc_set_state
+| | Return munmap
+| Return malloc_set_state
+| Call fillbuf
+| Return __read
+Return fillbuf
+SIG signal=0x2 on thread 0 at address 0x406210 FATALSIG2
+# $eof

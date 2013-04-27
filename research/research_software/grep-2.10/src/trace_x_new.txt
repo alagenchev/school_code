@@ -1,0 +1,167 @@
+Entering Routine: grep-> main
+
+grep-> set_program_name
+
+Entering Routine: grep-> atexit
+
+grep-> prepend_default_options
+grep-> setmatcher
+
+Entering Routine: grep-> get_nondigit_option
+Entering Routine: grep-> rpl_getopt_long
+
+grep->rpl_getopt_internal->_getopt_internal_r->_getopt_initialize
+
+Leaving Routine: grep-> rpl_getopt_long
+Leaving Routine: grep-> get_nondigit_option
+
+grep-> __fstat
+grep-> xmalloc
+grep-> set_limits
+
+
+Entering Routine: grep-> Gcompile
+Entering Routine: grep-> GEAcompile
+
+grep-> dfasyntax
+
+grep->xnrealloc->xrealloc
+grep->dfaalloc->xmalloc
+
+Entering Routine: grep-> dfacomp
+Entering Routine: grep-> dfainit
+
+grep->xnmalloc->xmalloc         x4
+
+Leaving Routine: grep-> dfainit
+Entering Routine: grep-> dfaparse
+
+grep-> hard_locale
+grep-> lex
+
+Entering Routine: grep-> regexp
+    Entering Routine: grep-> branch
+        Entering Routine: grep-> closure
+            Entering Routine: grep-> atom
+
+            grep->addtok_wc->addtok_mb->(x2nrealloc->xrealloc x2)
+            grep-> lex
+
+            Leaving Routine: grep-> atom
+        Leaving Routine: grep-> closure
+    Leaving Routine: grep-> branch
+Leaving Routine: grep-> regexp
+
+grep->( addtok->addtok_mb->(x2nrealloc->xrealloc x2) ) x2
+
+
+Leaving Routine: grep-> dfaparse
+Entering Routine: grep-> dfamust
+
+grep->xnmalloc->xmalloc
+
+grep-> xmalloc    x16
+
+grep->resetmust->freelist
+
+
+Entering Routine: grep-> enlist
+
+    grep->icpyalloc->icatalloc->xrealloc
+    grep->xnrealloc->xrealloc
+
+Leaving Routine: grep-> enlist
+
+grep->xnmalloc->xmalloc
+
+grep-> xmalloc
+
+grep-> freelist  x4
+
+Leaving Routine: grep-> dfamust
+
+
+Entering Routine: grep-> dfaoptimize
+
+    grep-> using_utf8
+    grep-> free_mbdata
+
+Leaving Routine: grep-> dfaoptimize
+
+
+Entering Routine: grep-> dfaanalyze
+
+grep->xnmalloc->xmalloc         x5
+
+grep-> xcalloc
+
+
+grep-> xnmalloc-> xmalloc
+
+grep-> xcalloc
+
+grep-> xnmalloc-> xmalloc x2
+
+
+grep-> merge
+
+grep->x2nrealloc->xrealloc
+
+grep-> copy     x2
+grep->epsclosure->xzalloc->xmalloc
+
+grep-> copy    x2
+
+grep-> epsclosure->xzalloc->xmalloc
+
+grep-> copy
+grep-> insert
+
+grep-> epsclosure->xzalloc->xmalloc
+
+grep->xnmalloc->xmalloc
+
+
+Entering Routine: grep-> state_index
+
+    grep->x2nrealloc->xrealloc
+    grep->xnmalloc->xmalloc
+    grep-> copy
+
+Leaving Routine: grep-> state_index
+
+Leaving Routine: grep-> dfaanalyze
+Leaving Routine: grep-> dfacomp
+
+Entering Routine: grep-> kwsmusts
+
+    grep-> dfamusts
+    grep->kwsinit->kwsalloc->(xmalloc x 2)
+    grep-> kwsincr_case-> kwsincr
+    grep-> dfamusts
+    grep-> kwsprep
+
+Leaving Routine: grep-> kwsmusts
+
+Leaving Routine: grep-> GEAcompile
+Leaving Routine: grep-> Gcompile
+
+
+Entering Routine: grep-> grepfile
+Entering Routine: grep-> grep
+grep-> reset-> xmalloc
+
+grep-> fillbuf
+
+grep->fillbuf->xmalloc       x17
+Entering Routine: grep-> grepbuf
+
+grep-> do_execute -> EGexecute -> kwsexec-> bmexec-> is_mb_middle
+
+grep->prtext->prline->print_line_head
+
+Entering Routine: grep-> do_execute
+Entering Routine: grep-> EGexecute
+Entering Routine: grep-> kwsexec
+Entering Routine: grep-> bmexec
+
