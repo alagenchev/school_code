@@ -1,0 +1,106 @@
+Entering Routine: sudo-> main
+sudo-> disable_coredumps
+
+sudo-> fix_fds
+
+Entering Routine: sudo-> get_user_info
+
+sudo-> emalloc2
+
+ld-linux-x86-64.so.2-> _dl_debug_state   x2
+
+
+libnsl.so.1-> _init-> .text
+
+libnss_compat.so.2-> _init-> .text
+
+Entering Routine: libnss_compat.so.2-> _nss_compat_getpwuid_r
+
+    ld-linux-x86-64.so.2-> _dl_debug_state  x2
+
+    libnss_files.so.2-> _init-> .text
+
+    libnss_nis.so.2-> _init-> .text
+
+Leaving Routine: libnss_compat.so.2-> _nss_compat_getpwuid_r
+
+
+libnss_nis.so.2-> _nss_nis_endpwent
+sudo-> fmt_string
+
+sudo-> estrdupa->emalloc
+
+sudo-> easprintf            x4
+
+Entering Routine: sudo-> get_user_groups
+    sudo-> emalloc2
+    sudo-> emalloc
+Leaving Routine: sudo-> get_user_groups
+
+
+
+sudo-> fmt_string         x3
+sudo-> get_ttysize
+sudo-> easprintf          x2
+
+Leaving Routine: sudo-> get_user_info
+
+
+Entering Routine: sudo-> sudo_load_plugins
+Entering Routine: sudo-> sudo_read_conf
+
+sudo-> emalloc
+sudo-> tq_append
+sudo-> emalloc
+
+Entering Routine: sudo-> tq_append
+Leaving Routine: sudo-> sudo_read_conf
+
+sudo-> __stat
+
+Entering Routine: libdl.so.2-> dlopen
+
+ld-linux-x86-64.so.2-> _dl_debug_statea      x2
+
+Entering Routine: libz.so.1-> _init
+Entering Routine: libz.so.1-> .text
+Leaving Routine: libz.so.1-> _init
+
+Entering Routine: libpam.so.0-> _init
+Entering Routine: libpam.so.0-> .text
+Leaving Routine: libpam.so.0-> _init
+
+
+Entering Routine: sudoers.so-> _init
+
+sudoers.so-> call_gmon_start
+
+Entering Routine: sudoers.so-> frame_dummy
+
+sudoers.so-> __do_global_ctors_aux
+Leaving Routine: sudoers.so-> _init
+
+
+Entering Routine: libdl.so.2-> dlsym
+
+sudo-> __stat
+
+Entering Routine: libdl.so.2-> dlopen
+Entering Routine: libdl.so.2-> dlsym
+
+sudo-> emalloc
+sudo-> tq_append
+
+Leaving Routine: sudo-> sudo_load_plugins
+Entering Routine: sudo-> parse_args
+
+sudo-> emalloc2
+
+Entering Routine: sudo-> get_net_ifs
+    sudo-> emalloc
+    ld-linux-x86-64.so.2-> __tls_get_addr
+Leaving Routine: sudo-> get_net_ifs
+
+sudo-> emalloc2  x2
+Entering Routine: sudo-> sudo_debug
+sudo-> easprintf
